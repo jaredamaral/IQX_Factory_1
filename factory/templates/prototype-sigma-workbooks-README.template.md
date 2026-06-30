@@ -2,7 +2,8 @@
 
 Version-controlled Sigma **workbook-as-code** specs for `<Industry>IQX`. Authored
 by Agent 21 (prototype-experience-spec-builder) using the `sigma-workbook-as-code`
-skill, validated against `shared/sigma-capability-matrix.yaml`.
+skill, validated against `shared/sigma-capability-matrix.yaml`. Spec shape and
+deploy/auth setup: see `factory/SIGMA-INTEGRATION.md`.
 
 ## Rules (beta — see shared/sigma-workbook-as-code-rules.md)
 - **Full-representation workflow:** updates send the complete workbook spec, not
@@ -12,7 +13,7 @@ skill, validated against `shared/sigma-capability-matrix.yaml`.
   stay in the spec/feasibility matrix as `Requires manual Sigma build` —
   never emitted as generated workbook YAML.
 - One workbook spec per Sigma-native page (or a documented multi-page workbook).
-- API deploy is credential-gated (`Sigma_Skills/.env`, never committed).
+- API deploy is credential-gated (repo-root `.env`, never committed).
 
 ## Files
 - `feasibility-matrix.yaml` — copied from Agent 21 output; classifies every

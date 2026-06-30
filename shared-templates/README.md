@@ -20,23 +20,6 @@ doctrine, capability matrices, data-modeling patterns, quality gates).
 | `quality-gates.md` | Shared pass/fail checks |
 | `docs-ledger.md` | Source/recheck cadence ledger for the knowledge pack |
 
-## How these files get here
-
-Until `factory/bootstrap.ps1` runs, this directory may contain only this README.
-The factory reads from the documented fallback
-(`IQX_Factory_Claude/shared-templates/`) in the meantime — see `factory/paths.yaml`.
-
-To promote the canonical copies into this folder:
-
-```powershell
-pwsh -File factory/bootstrap.ps1
-```
-
-Reading the knowledge pack from `IQX_Factory_Claude/shared-templates/` is
-allowed: these are industry-agnostic IP, distinct from the StudentIQX
-reference (which is planning-only and must never be a factory input — see Rule 1
-in `factory/BLUEPRINT-ADDENDUM.md`).
-
 ## Updating the knowledge pack
 
 When Sigma/Snowflake capabilities change, update the canonical file here, record

@@ -52,8 +52,8 @@ Every Sigma page must trace to a `MART_SIGMA` view, a `SEMANTIC` metric, an
 - Snowflake credentials are user-provided and environment-gated — never commit
   secrets. Prefer generating reviewable SQL files over executing destructively.
 - For Sigma data models (semantic layer via API), use the official
-  `sigma-data-models` skill (`Sigma_Skills/sigma-agent-skills/skills/sigma-data-models/`),
-  authenticated via the `sigma-api` skill.
+  `sigma-data-models` skill, authenticated via the `sigma-api` skill. Install
+  both per `factory/SIGMA-INTEGRATION.md` (external upstream dependency).
 
 ## Guardrails
 - Snowflake is the source of truth for data, metrics, intelligence, activation

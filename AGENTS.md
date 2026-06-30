@@ -16,21 +16,22 @@ Verndale's industry-specific customer intelligence and activation offerings
 
 | Path | Role |
 |------|------|
-| `factory/` | Toolset core: `IQX_AGENT_BLUEPRINT.md` (canonical), `BLUEPRINT-ADDENDUM.md` (Cursor v1.3, wins on conflict), `phases.yaml` (agent/stage graph), `paths.yaml` (repo-relative config), `templates/`, `bootstrap.ps1`, `SIGMA-INTEGRATION.md` |
+| `factory/` | Toolset core: `IQX_AGENT_BLUEPRINT.md` (canonical), `BLUEPRINT-ADDENDUM.md` (Cursor v1.3, wins on conflict), `phases.yaml` (agent/stage graph), `paths.yaml` (repo-relative config), `templates/`, `SIGMA-INTEGRATION.md` |
 | `shared-templates/` | The 10-file industry-agnostic knowledge pack (copied into each offering's `shared/`) |
 | `.cursor/agents/` | `iqx-factory.md` — the scaffold generator |
 | `.cursor/skills/` | `iqx-factory`, `iqx-stage-runner`, `iqx-gate-review`, `sigma-workbook-as-code`, `sigma-snowflake-prototype` |
 | `.cursor/rules/` | `sigma-first-doctrine.mdc` (always-on platform doctrine) |
 | `offerings/` | Factory output — fresh per-industry scaffolds (empty until Step 2) |
-| `Sigma_Skills/` | Imported Sigma tooling: official `sigma-api` + `sigma-data-models` skills, example workbook spec, token helpers |
-| `IQX_Factory_Claude/` | **Reference only.** Claude artifacts incl. `StudentIQX/` |
+
+The official Sigma skills (`sigma-api`, `sigma-data-models`) are an **external
+dependency** installed into `.cursor/skills/` when needed for Stage 4 — see
+`factory/SIGMA-INTEGRATION.md`. They are not vendored in this repo.
 
 ## Hard rules
 
-1. **StudentIQX is planning-only (Rule 1).** During scaffold generation, NEVER
-   read/copy/paraphrase/diff `IQX_Factory_Claude/StudentIQX/`. Generate agents
-   from the Blueprint + `shared-templates/` only. (Blueprint + shared-templates
-   under `IQX_Factory_Claude/` ARE allowed — they are canonical IP.)
+1. **Build every offering fresh (Rule 1).** Generate agents from the Blueprint +
+   `shared-templates/` only. Never seed/copy/diff a new offering against a
+   previously generated offering.
 2. **Sigma-first, Snowflake-backed (Rule 2).** See `.cursor/rules/sigma-first-doctrine.mdc`.
 3. **Workbook-as-code is beta (Rule 3).** Only Sigma-supported elements become
    generated workbook content.
@@ -58,12 +59,7 @@ Guidance:
 
 ## First-time setup
 
-Run once (needs a shell) to promote canonical IP and init git:
-
-```powershell
-pwsh -File factory/bootstrap.ps1 -InitGit
-```
-
-Then wire the official Sigma skills per `factory/SIGMA-INTEGRATION.md`.
-Until bootstrap runs, the factory falls back to reading the Blueprint and
-`shared-templates/` from `IQX_Factory_Claude/` (see `factory/paths.yaml`).
+The toolset (Blueprint, `shared-templates/`, factory, skills) is in-repo and
+ready. Only when you reach **Stage 4** do you need the official Sigma skills —
+install them per `factory/SIGMA-INTEGRATION.md` and add Sigma API credentials to
+a gitignored `.env`.

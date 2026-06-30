@@ -5,28 +5,18 @@
 # skills must resolve paths through this file rather than hard-coding absolute
 # OneDrive/Windows paths (a portability defect in the original Claude factory).
 #
-# Resolution rule: prefer the canonical path. If a canonical asset is not yet
-# present (e.g. before factory/bootstrap.ps1 has run), fall back to the
-# documented fallback location. The fallback points into IQX_Factory_Claude/,
-# which holds the canonical IP (Blueprint + shared-templates) copied from the
-# Claude project. Reading the Blueprint and shared-templates from the fallback
-# is allowed: they are industry-agnostic IP the factory is built on.
-#
-# HARD PROHIBITION (Rule 1): No factory operation may read, copy, paraphrase, or
-# diff against IQX_Factory_Claude/StudentIQX/ during scaffold generation. That
-# folder is a planning-only reference, never a factory input.
+# The canonical IP (Blueprint + 10-file shared-templates pack) lives IN this repo
+# and is version-controlled. There are no external reference folders.
 
 repo_root: "."
 
-# --- Canonical IP (promoted into the toolset by factory/bootstrap.ps1) ---
+# --- Canonical IP (in-repo, committed) ---
 blueprint:
   canonical: "factory/IQX_AGENT_BLUEPRINT.md"
-  fallback: "IQX_Factory_Claude/IQX_AGENT_BLUEPRINT.md"
-  addendum: "factory/BLUEPRINT-ADDENDUM.md"   # v1.3 reconciliation, Cursor-specific
+  addendum: "factory/BLUEPRINT-ADDENDUM.md"   # v1.3 reconciliation, Cursor-specific (wins on conflict)
 
 shared_templates:
   canonical: "shared-templates/"
-  fallback: "IQX_Factory_Claude/shared-templates/"
   # The 10 industry-agnostic knowledge-pack files copied into every offering's shared/ folder.
   files:
     - product-doctrine.md
@@ -44,19 +34,24 @@ shared_templates:
 phases: "factory/phases.yaml"
 templates: "factory/templates/"
 
-# --- Sigma tooling (from the imported Sigma_Skills project) ---
-sigma_skills:
-  root: "Sigma_Skills/"
-  agent_skills: "Sigma_Skills/sigma-agent-skills/skills/"   # sigma-api, sigma-data-models
-  setup_script: "Sigma_Skills/scripts/setup-cursor-skills.ps1"
-  example_workbook: "Sigma_Skills/workbooks/SIQx-v1.3-JA-COPY.spec.yaml"  # reference pattern only
-  env_example: "Sigma_Skills/.env.example"
+# --- Sigma tooling (EXTERNAL dependency — not vendored in this repo) ---
+# The official Sigma skills are installed from the public upstream into
+# .cursor/skills/ when needed for Stage 4. See factory/SIGMA-INTEGRATION.md.
+sigma_tooling:
+  upstream_repo: "https://github.com/sigmacomputing/sigma-agent-skills.git"
+  installed_skills_dir: ".cursor/skills/"          # expect sigma-api/, sigma-data-models/ after install
+  official_skills: [sigma-api, sigma-data-models]
+  credentials: ".env"                               # SIGMA_BASE_URL / SIGMA_CLIENT_ID / SIGMA_CLIENT_SECRET (gitignored)
+  # IQX-owned Sigma skills that DO live in this repo:
+  iqx_skills: [sigma-workbook-as-code, sigma-snowflake-prototype]
 
 # --- Factory output (Step 2 creates these; empty in the toolset itself) ---
 offerings_root: "offerings/"
 # Each offering is created at: offerings/<Industry>IQX/
 # See factory/templates/ for the per-offering layout the factory generates.
 
-# --- Reference only (NEVER a factory input for generation) ---
-reference_only:
-  - "IQX_Factory_Claude/"   # Claude artifacts, including StudentIQX example
+# --- Rule 1 (still in force) ---
+# New offerings are generated FRESH from the Blueprint + shared-templates. Never
+# seed an offering by copying a previously generated offering (e.g. a prior
+# StudentIQX). The Claude reference material that originally demonstrated this
+# has been removed from the repo; the principle remains.

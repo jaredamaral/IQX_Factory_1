@@ -20,10 +20,9 @@ cover (it targets `/v2/dataModels`).
 - `shared/sigma-capability-matrix.yaml` — Sigma-native / approximate / unsupported per feature
 - `shared/sigma-first-design-rules.md` — design-to-Sigma translation
 - `shared/product-doctrine.md` — Sigma-first / Snowflake-backed doctrine
-- Reference pattern (read-only, do NOT treat as canonical StudentIQX output):
-  `Sigma_Skills/workbooks/SIQx-v1.3-JA-COPY.spec.yaml`
+- Workbook-as-code spec shape + install steps: `factory/SIGMA-INTEGRATION.md`
 
-## Spec shape (from the reference workbook)
+## Spec shape (workbook-as-code)
 Top-level keys include `name`, `schemaVersion`, and `pages[]`. Each page has
 `elements[]` with a `kind` (e.g. `table`, `viz`, `pivot`, `text`, `container`,
 `control`), a `source` (often a `warehouse-table`/`join` pointing at Snowflake
@@ -53,10 +52,9 @@ Top-level keys include `name`, `schemaVersion`, and `pages[]`. Each page has
 - Metrics are consistent across pages and with the value case.
 
 ## Optional deploy (credential-gated)
-1. Get a token via the official **sigma-api** skill
-   (`Sigma_Skills/sigma-agent-skills/skills/sigma-api/`). On Windows use
-   `Sigma_Skills/scripts/get-sigma-token.ps1`; otherwise the bundled
-   `get-token.sh`. Credentials come from `Sigma_Skills/.env` (NEVER commit).
+1. Get a token via the official **sigma-api** skill. Install it first per
+   `factory/SIGMA-INTEGRATION.md` (upstream: sigmacomputing/sigma-agent-skills);
+   credentials come from a repo-root `.env` (NEVER commit).
 2. Workbook spec endpoints: `GET/POST/PUT /v2/workbooks/spec` (full
    representation). Verify with `GET /v2/whoami` first.
 3. Never echo tokens/secrets; never write secrets into the workspace.

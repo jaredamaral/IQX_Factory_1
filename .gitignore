@@ -1,3 +1,7 @@
+# Reference-only folders (provided to inform the build; not part of this repo)
+IQX_Factory_Claude/
+Sigma_Skills/
+
 # Secrets — never commit Sigma/Snowflake credentials
 .env
 **/.env

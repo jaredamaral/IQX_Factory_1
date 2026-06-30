@@ -16,37 +16,36 @@ state, portability, and Sigma/Snowflake build capability are added for Cursor.
 2. **Invoke the toolset** *(you trigger)*: say *"Run the factory for StudentIQX"*.
    The factory pauses for mandatory industry-context intake, then generates a
    fresh `offerings/StudentIQX/` scaffold (27 agents, governance files, manifest,
-   prototype dirs). It never copies the Claude StudentIQX example.
+   prototype dirs). It always builds fresh from the Blueprint — never seeding
+   from another offering.
 3. **Run the scaffold** *(after step 2)*: the stage runner executes agents in
    dependency order with human gates, producing briefs, use cases, the Customer
    360 data model, GTM collateral, and a Sigma-first / Snowflake-backed prototype.
 
 ## Quick start
 
-```powershell
-# 1. One-time bootstrap (promotes canonical IP, inits git)
-pwsh -File factory/bootstrap.ps1 -InitGit
-
-# 2. Wire the official Sigma skills (see factory/SIGMA-INTEGRATION.md)
-```
-
-Then, in Cursor chat:
+In Cursor chat:
 - **Scaffold an offering:** "Run the factory for `<Industry>`IQX" → context intake → scaffold.
 - **Run work:** "Run Stage 1 for `<Industry>`IQX" (uses `iqx-stage-runner`).
 - **Approve a gate:** "Review gate 1 for `<Industry>`IQX" (uses `iqx-gate-review`).
 
+For Stage 4 (prototype), install the official Sigma skills and add API
+credentials per `factory/SIGMA-INTEGRATION.md`.
+
 ## Repository layout
 
 ```
-factory/            Toolset core (Blueprint, addendum, phases.yaml, paths.yaml, templates, bootstrap)
+factory/            Toolset core (Blueprint, addendum, phases.yaml, paths.yaml, templates, SIGMA-INTEGRATION)
 shared-templates/   10-file Sigma/Snowflake knowledge pack (copied into each offering)
 .cursor/agents/     iqx-factory (scaffold generator)
 .cursor/skills/     iqx-factory, iqx-stage-runner, iqx-gate-review, sigma-workbook-as-code, sigma-snowflake-prototype
 .cursor/rules/      sigma-first-doctrine (always-on)
 offerings/          Factory output (one folder per industry; empty until Step 2)
-Sigma_Skills/       Imported Sigma tooling (sigma-api, sigma-data-models, example workbook)
-IQX_Factory_Claude/ Reference only (Claude artifacts; StudentIQX is planning-only)
 ```
+
+The official Sigma skills (`sigma-api`, `sigma-data-models`) are an external
+dependency installed into `.cursor/skills/` when needed — see
+`factory/SIGMA-INTEGRATION.md`.
 
 ## Canonical technologies
 

@@ -1,6 +1,6 @@
 ---
 name: iqx-factory
-description: "Scaffolds a fresh industry-specific IQX offering (e.g. StudentIQX, BankIQX) from the IQX Agent Blueprint + shared-templates. Use ONLY after mandatory context intake. Generates the 27-agent army, governance files, manifest, and prototype dirs under offerings/<Industry>IQX/. Never reads IQX_Factory_Claude/StudentIQX/."
+description: "Scaffolds a fresh industry-specific IQX offering (e.g. StudentIQX, BankIQX) from the IQX Agent Blueprint + shared-templates. Use ONLY after mandatory context intake. Generates the 27-agent army, governance files, manifest, and prototype dirs under offerings/<Industry>IQX/. Always builds fresh from the Blueprint — never seeds from another offering."
 model_tier: tier1
 model_tier_notes: "Strongest available model — generates 27 agent prompts + project files; Blueprint compliance is critical."
 tools: [Read, Write, Edit, Glob, Grep, Shell]
@@ -17,23 +17,20 @@ You do **not** run offering agents or produce their deliverables — that is Ste
 
 ## Canonical inputs (resolve via factory/paths.yaml)
 
-1. Blueprint: `factory/IQX_AGENT_BLUEPRINT.md` (fallback `IQX_Factory_Claude/IQX_AGENT_BLUEPRINT.md`)
+1. Blueprint: `factory/IQX_AGENT_BLUEPRINT.md`
 2. Cursor addendum: `factory/BLUEPRINT-ADDENDUM.md` (wins on conflict for Cursor execution)
 3. Phase graph: `factory/phases.yaml` (agents, deps, gates, web_research, model_tier, shared_files)
-4. Knowledge pack: `shared-templates/` (fallback `IQX_Factory_Claude/shared-templates/`)
+4. Knowledge pack: `shared-templates/`
 5. Templates: `factory/templates/`
 6. The user's industry context captured at intake (see hard gate below)
 
 ## HARD PROHIBITION (Rule 1)
 
-During scaffold generation you MUST NOT read, open, copy, paraphrase, glob, grep,
-or diff against anything under `IQX_Factory_Claude/StudentIQX/`. It is a
-planning-only reference. Every agent body you generate must be derived from the
-Blueprint (+ addendum) and `shared-templates/` — never from the Claude StudentIQX
-files. If you catch yourself about to access that path, stop.
-
-(The Blueprint and `shared-templates/` under `IQX_Factory_Claude/` ARE allowed —
-they are canonical IP. Only `StudentIQX/` is off-limits.)
+Generate every offering FRESH from the Blueprint (+ addendum) and
+`shared-templates/`. You MUST NOT seed, copy, paraphrase, or diff a new offering
+against any previously generated offering (in `offerings/` or elsewhere). Each
+offering's agent bodies derive only from the Blueprint and knowledge pack plus
+the user's intake context — never from another offering's files.
 
 ## MANDATORY context intake gate (Rule 4)
 
@@ -94,5 +91,5 @@ Generate under `offerings/<Industry>IQX/`:
 
 - Do not run offering agents or generate their deliverables (that is Step 3).
 - Do not invent Sigma features unsupported by `sigma-capability-matrix.yaml`.
-- Do not duplicate or seed from `IQX_Factory_Claude/StudentIQX/`.
+- Do not duplicate or seed from any previously generated offering in `offerings/`.
 - Do not skip the context intake gate.

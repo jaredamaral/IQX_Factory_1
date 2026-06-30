@@ -14,9 +14,10 @@ context-intake gate** before any files are created, then hand off to the
 
 1. **Never create files before intake is confirmed.** Context intake is a gate,
    not a suggestion (Rule 4).
-2. **Never read `IQX_Factory_Claude/StudentIQX/`** during scaffolding (Rule 1).
-   Generate agent bodies from `factory/IQX_AGENT_BLUEPRINT.md` (+
-   `factory/BLUEPRINT-ADDENDUM.md`) and `shared-templates/` only.
+2. **Build every offering fresh (Rule 1).** Generate agent bodies from
+   `factory/IQX_AGENT_BLUEPRINT.md` (+ `factory/BLUEPRINT-ADDENDUM.md`) and
+   `shared-templates/` only. Never seed/copy/diff a new offering against a
+   previously generated offering.
 3. **Repo-relative paths only**, resolved via `factory/paths.yaml`.
 4. **Step 2 only.** Scaffold structure + agent prompts. Do NOT run agents or
    produce deliverables (that is Step 3, via `iqx-stage-runner`).

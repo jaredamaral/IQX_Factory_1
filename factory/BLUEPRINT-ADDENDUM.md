@@ -41,9 +41,9 @@ This matches the proven pattern in the Claude project's
 
 **Base Blueprint Section 8** shows an `output/` directory nested under each
 agent. **Cursor uses a flat top-level** `agent-outputs/<agent-name>/`
-directory per offering, matching the Claude StudentIQX convention and the
-`output` paths in `factory/phases.yaml`. Project rule: each agent writes only
-inside its own `agent-outputs/<agent-name>/` folder.
+directory per offering, matching the `output` paths in `factory/phases.yaml`.
+Project rule: each agent writes only inside its own `agent-outputs/<agent-name>/`
+folder.
 
 ## 3. Agent frontmatter (provider-agnostic models)
 
@@ -75,13 +75,8 @@ absolute machine path. This makes the toolset portable and team-shareable.
 
 ## 5. Shared knowledge pack location
 
-- Canonical source in the toolset: `shared-templates/` (repo root).
-- Fallback until `factory/bootstrap.ps1` runs: `IQX_Factory_Claude/shared-templates/`.
+- Canonical source in the toolset: `shared-templates/` (repo root, version-controlled).
 - The factory copies the 10 files into each offering's `shared/` folder at scaffold time.
-
-Reading the Blueprint and `shared-templates/` from `IQX_Factory_Claude/` is
-permitted — they are industry-agnostic IP. This is distinct from the StudentIQX
-prohibition below.
 
 ## 6. Stage 4 prototype directories (new in Cursor)
 
@@ -132,19 +127,18 @@ external research → `research-inputs/` → Agent 27 finalizes). Cursor users m
 optionally use the browser MCP for some research, but the VERIFY/ledger
 discipline still applies.
 
-## 9. StudentIQX reference prohibition (Rule 1)
+## 9. Fresh-build rule (Rule 1)
 
-`IQX_Factory_Claude/StudentIQX/` is a **planning-only reference**. During any
-scaffold generation the factory must NOT read, copy, paraphrase, or diff against
-it. New offering agents are generated from this Blueprint (+ addendum) and
-`shared-templates/` only. This prohibition does **not** apply to the Blueprint
-or shared-templates, which are canonical IP.
+Every offering is generated FRESH from this Blueprint (+ addendum) and
+`shared-templates/`. The factory must NOT seed, copy, paraphrase, or diff a new
+offering against any previously generated offering. (The original Claude
+reference material that demonstrated the desired scaffold shape has been removed
+from the repo; the principle remains: Blueprint + knowledge pack + intake context
+are the only inputs.)
 
-## 10. Eleventh shared file
+## 10. Optional eleventh shared file (Verndale strategy)
 
-The Claude StudentIQX shipped a `shared/Strategy_Execution_Bridge.md` (Verndale
-strategy) beyond the Blueprint's 10-file pack. In Cursor, Verndale strategy is
-captured at scaffold time in the offering's `AGENTS.md` (Verndale Context
-section) and/or provided via context intake. If a strategy source file is
-supplied, the factory places it in the offering's `shared/` folder and notes it
-in `docs-ledger.md`. It is not one of the 10 industry-agnostic templates.
+Verndale strategy is captured at scaffold time in the offering's `AGENTS.md`
+(Verndale Context section) and/or via context intake. If a strategy source file
+is supplied, the factory places it in the offering's `shared/` folder and notes
+it in `docs-ledger.md`. It is not one of the 10 industry-agnostic templates.
