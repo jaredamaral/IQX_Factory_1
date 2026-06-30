@@ -2,6 +2,10 @@
 IQX_Factory_Claude/
 Sigma_Skills/
 
+# Official Sigma skills — external dependency installed via factory/scripts/install-sigma-skills.ps1
+.cursor/skills/sigma-api/
+.cursor/skills/sigma-data-models/
+
 # Secrets — never commit Sigma/Snowflake credentials
 .env
 **/.env

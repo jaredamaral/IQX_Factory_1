@@ -14,28 +14,17 @@ them once, per machine.
 
 ## Install the official Sigma skills
 
-Clone the upstream and link/copy the two skills into the repo-root `.cursor/skills/`
-so Cursor auto-discovers them:
+Run the bundled installer (clones the upstream to a reusable cache and junctions
+`sigma-api` + `sigma-data-models` into `.cursor/skills/`):
 
 ```powershell
-# 1. Clone the upstream somewhere outside this repo (e.g. a tools folder)
-git clone https://github.com/sigmacomputing/sigma-agent-skills.git C:\Users\<you>\tools\sigma-agent-skills
-
-# 2. Link the two skills into this repo's .cursor/skills (junctions; needs a shell)
-$src = "C:\Users\<you>\tools\sigma-agent-skills\skills"
-foreach ($name in @("sigma-api","sigma-data-models")) {
-  $target = ".cursor\skills\$name"
-  if (Test-Path $target) { Remove-Item $target -Recurse -Force }
-  cmd /c mklink /J "$target" "$src\$name" | Out-Null
-}
+pwsh -File factory/scripts/install-sigma-skills.ps1
+# optional: -CacheDir "C:\tools\sigma-agent-skills"
 ```
 
-(Alternatively, copy the two skill folders into `.cursor/skills/` instead of
-junctioning — copies are simpler but won't auto-update when upstream changes.)
-
-> Do not commit the official skills into this repo. They are an external
-> dependency; `.gitignore` should keep `.cursor/skills/sigma-api/` and
-> `.cursor/skills/sigma-data-models/` untracked if you copy them in.
+The official skills are **gitignored** (`.cursor/skills/sigma-api/`,
+`.cursor/skills/sigma-data-models/`) — they are an external dependency and must
+not be committed into this repo. Re-run the installer to update them.
 
 ## Credentials
 
@@ -48,9 +37,17 @@ SIGMA_CLIENT_SECRET=your-client-secret
 ```
 
 Find these in Sigma: **Administration → Developer Access → API credentials**.
-The `sigma-api` skill exchanges these for a short-lived bearer token; verify with
-`GET /v2/whoami`. `SIGMA_BASE_URL` is the API host (e.g.
-`https://aws-api.sigmacomputing.com`), not `https://app.sigmacomputing.com`.
+`SIGMA_BASE_URL` is the API host (e.g. `https://aws-api.sigmacomputing.com`), not
+`https://app.sigmacomputing.com`.
+
+Get a token (Windows PowerShell helper; sets `$env:SIGMA_API_TOKEN`):
+
+```powershell
+. .\factory\scripts\get-sigma-token.ps1
+```
+
+Verify with `GET /v2/whoami`. Tokens last ~1 hour; re-run to refresh. (The
+upstream also ships a bash `get-token.sh` if you prefer.)
 
 ## Stage 4 invocation order (Agents 21–22)
 1. `sigma-api` → obtain `SIGMA_API_TOKEN`.

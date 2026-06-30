@@ -39,9 +39,12 @@ templates: "factory/templates/"
 # .cursor/skills/ when needed for Stage 4. See factory/SIGMA-INTEGRATION.md.
 sigma_tooling:
   upstream_repo: "https://github.com/sigmacomputing/sigma-agent-skills.git"
-  installed_skills_dir: ".cursor/skills/"          # expect sigma-api/, sigma-data-models/ after install
+  installed_skills_dir: ".cursor/skills/"          # expect sigma-api/, sigma-data-models/ after install (gitignored)
   official_skills: [sigma-api, sigma-data-models]
+  install_script: "factory/scripts/install-sigma-skills.ps1"   # clones upstream + junctions skills
+  token_helper: "factory/scripts/get-sigma-token.ps1"          # Windows token exchange -> $env:SIGMA_API_TOKEN
   credentials: ".env"                               # SIGMA_BASE_URL / SIGMA_CLIENT_ID / SIGMA_CLIENT_SECRET (gitignored)
+  guide: "factory/SIGMA-INTEGRATION.md"
   # IQX-owned Sigma skills that DO live in this repo:
   iqx_skills: [sigma-workbook-as-code, sigma-snowflake-prototype]
 
