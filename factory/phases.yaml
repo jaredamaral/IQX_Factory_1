@@ -1,0 +1,443 @@
+# IQX Factory — Phase & Agent Graph (machine-readable)
+#
+# Derived from IQX_AGENT_BLUEPRINT.md Sections 4 (Agent Army), 5 (Sequencing),
+# 6 (Web Research), 3.6 (Shared-file wiring), and 12 (Model Assignments).
+#
+# This file is the canonical orchestration contract consumed by:
+#   - iqx-factory skill        (to generate the 27 agent files + manifest)
+#   - iqx-stage-runner skill   (to find the next runnable agent, verify deps)
+#   - iqx-gate-review skill     (to enforce the 5 human gates)
+#
+# model_tier is PROVIDER-AGNOSTIC. Map tiers to your Cursor models at runtime:
+#   tier1 = strongest reasoning model   (Blueprint "Opus 4")
+#   tier2 = balanced model              (Blueprint "Sonnet 4")
+#   tier3 = fast/economical model       (Blueprint "Haiku 4.5")
+# See AGENTS.md for the mapping table.
+
+version: "1.3-cursor"
+blueprint_version: "1.2"
+
+model_tiers:
+  tier1: "Strongest available reasoning model (Blueprint Opus-class)"
+  tier2: "Balanced model (Blueprint Sonnet-class)"
+  tier3: "Fast/economical model (Blueprint Haiku-class)"
+
+# Default tool grants for generated agents (Cursor subagent frontmatter).
+tool_profiles:
+  producer: [Read, Write, Edit, Glob, Grep]   # writes deliverables
+  analyst:  [Read, Glob, Grep]                  # read + analyze only
+  builder:  [Read, Write, Edit, Glob, Grep, Shell]  # Stage 4: may run Snowflake/Sigma scripts
+
+stages:
+  - id: 1
+    name: "Commercial Scan"
+    purpose: "Rapidly assess whether a painful, budget-backed, executive-relevant wedge exists and whether Verndale is strategically fit, before committing to full definition."
+    gate:
+      id: gate-1
+      name: "Proceed / Revise / Kill"
+      after_agent: commercial-wedge-validator
+      decision_options: [proceed, revise, kill]
+      logged_to: OFFERING-DECISIONS.md
+
+  - id: 2
+    name: "Offering Spine"
+    purpose: "Define the strategic, analytical, and data foundations of the offering."
+    gate:
+      id: gate-2
+      name: "Approve Offering Brief"
+      after_agent: delivery-architecture-and-implementation-planner
+      decision_options: [approve, revise]
+      writes: OFFERING-BRIEF.md
+      logged_to: OFFERING-DECISIONS.md
+
+  - id: 3
+    name: "GTM and Sales Enablement"
+    purpose: "Build competitive positioning, packaging, objection handling, and sales collateral."
+    gate:
+      id: gate-3
+      name: "Approve Sales Readiness"
+      after_agent: gtm-collateral-generator
+      decision_options: [approve, revise, hold]
+      logged_to: OFFERING-DECISIONS.md
+
+  - id: 4
+    name: "Prototype"
+    purpose: "Produce a Sigma-first prototype spec, Snowflake-backed synthetic data, and launch readiness assessment. Stage 4 agents bias to tier1."
+    gate:
+      id: gate-4
+      name: "Launch Readiness Review"
+      after_agent: launch-readiness-assessor
+      decision_options: [approve, revise, hold]
+      logged_to: OFFERING-DECISIONS.md
+
+  - id: 5
+    name: "Learning Loop"
+    purpose: "Ongoing intake, sales learnings, and governed updates to the canonical offering."
+    gate:
+      id: gate-5
+      name: "Approve Changes Into Canonical Offering"
+      sub_gates:
+        - id: gate-5a
+          name: "Inbox triage"
+          action: "Review UPDATES-INBOX.md; trigger offering-updater or defer/reject."
+        - id: gate-5b
+          name: "PROPOSED diff review"
+          action: "Review PROPOSED/ diff; approve (move to live + commit + UPDATES-LOG) or reject."
+
+agents:
+  # ---------------- Stage 1: Commercial Scan ----------------
+  - id: industry-landscape-analyst
+    n: 1
+    stage: 1
+    model_tier: tier1
+    tool_profile: producer
+    web_research: true
+    depends_on: []
+    output: agent-outputs/industry-landscape-analyst/industry-brief.md
+    shared_files: []
+
+  - id: business-deep-dive-analyst
+    n: 2
+    stage: 1
+    model_tier: tier1
+    tool_profile: producer
+    web_research: optional
+    depends_on: [industry-landscape-analyst]
+    output: agent-outputs/business-deep-dive-analyst/business-profile.md
+    shared_files: []
+
+  - id: strategic-fitness-assessor
+    n: 3
+    stage: 1
+    model_tier: tier2
+    tool_profile: producer
+    web_research: false
+    depends_on: [business-deep-dive-analyst]
+    informal_gate: "go/no-go — user may kill before proceeding"
+    output: agent-outputs/strategic-fitness-assessor/strategic-fitness-assessment.md
+    shared_files: []
+
+  - id: constituent-journey-mapper
+    n: 4
+    stage: 1
+    model_tier: tier2
+    tool_profile: producer
+    web_research: false
+    depends_on: [strategic-fitness-assessor]
+    output: agent-outputs/constituent-journey-mapper/journey-maps.md
+    shared_files: []
+
+  - id: persona-and-pain-analyst
+    n: 5
+    stage: 1
+    model_tier: tier2
+    tool_profile: producer
+    web_research: false
+    depends_on: [constituent-journey-mapper]
+    output: agent-outputs/persona-and-pain-analyst/persona-pain-inventory.md
+    shared_files: []
+
+  - id: systems-and-data-analyst
+    n: 6
+    stage: 1
+    model_tier: tier2
+    tool_profile: producer
+    web_research: optional
+    depends_on: [persona-and-pain-analyst]
+    can_parallel_with: [persona-and-pain-analyst]
+    output: agent-outputs/systems-and-data-analyst/systems-data-inventory.md
+    shared_files: []
+
+  - id: industry-evidence-researcher
+    n: 7
+    stage: 1
+    model_tier: tier1
+    tool_profile: producer
+    web_research: true
+    depends_on: [persona-and-pain-analyst, systems-and-data-analyst]
+    output: agent-outputs/industry-evidence-researcher/proof-point-library.md
+    also_writes: [EVIDENCE-LEDGER.md]
+    shared_files: []
+
+  - id: commercial-wedge-validator
+    n: 8
+    stage: 1
+    model_tier: tier1
+    tool_profile: producer
+    web_research: false
+    depends_on:
+      [industry-landscape-analyst, business-deep-dive-analyst, strategic-fitness-assessor,
+       constituent-journey-mapper, persona-and-pain-analyst, systems-and-data-analyst,
+       industry-evidence-researcher]
+    output: agent-outputs/commercial-wedge-validator/commercial-wedge-assessment.md
+    shared_files: []
+
+  # ---------------- Stage 2: Offering Spine ----------------
+  - id: regulatory-compliance-researcher
+    n: 9
+    stage: 2
+    model_tier: tier1
+    tool_profile: producer
+    web_research: true
+    depends_on: [industry-landscape-analyst, business-deep-dive-analyst]
+    gate_required: gate-1
+    output: agent-outputs/regulatory-compliance-researcher/regulatory-constraints.md
+    shared_files: []
+
+  - id: strategy-alignment-analyst
+    n: 10
+    stage: 2
+    model_tier: tier1
+    tool_profile: producer
+    web_research: false
+    depends_on: [commercial-wedge-validator]
+    gate_required: gate-1
+    output: agent-outputs/strategy-alignment-analyst/differentiation-positioning-brief.md
+    shared_files: []
+
+  - id: market-and-icp-analyst
+    n: 11
+    stage: 2
+    model_tier: tier1
+    tool_profile: producer
+    web_research: true
+    depends_on: [strategy-alignment-analyst]
+    can_parallel_with: [use-case-architect]
+    output: agent-outputs/market-and-icp-analyst/market-icp-analysis.md
+    shared_files: []
+
+  - id: use-case-architect
+    n: 12
+    stage: 2
+    model_tier: tier1
+    tool_profile: producer
+    web_research: false
+    depends_on: [regulatory-compliance-researcher, strategy-alignment-analyst]
+    output: agent-outputs/use-case-architect/use-case-library.md
+    shared_files:
+      - product-doctrine.md
+      - sigma-capability-matrix.yaml
+      - sigma-first-design-rules.md
+      - snowflake-platform-rules.md
+      - activation-data-patterns.md
+      - quality-gates.md
+
+  - id: customer-360-data-modeler
+    n: 13
+    stage: 2
+    model_tier: tier1
+    tool_profile: producer
+    web_research: false
+    depends_on: [use-case-architect]
+    output: agent-outputs/customer-360-data-modeler/data-model.md
+    shared_files:
+      - product-doctrine.md
+      - snowflake-platform-rules.md
+      - snowflake-data-modeling-patterns.md
+      - activation-data-patterns.md
+      - quality-gates.md
+
+  - id: value-case-modeler
+    n: 14
+    stage: 2
+    model_tier: tier1
+    tool_profile: producer
+    web_research: true
+    depends_on: [use-case-architect]
+    can_parallel_with: [customer-360-data-modeler]
+    output: agent-outputs/value-case-modeler/value-case.md
+    shared_files: []
+
+  - id: delivery-architecture-and-implementation-planner
+    n: 15
+    stage: 2
+    model_tier: tier2
+    tool_profile: producer
+    web_research: false
+    depends_on: [customer-360-data-modeler]
+    output: agent-outputs/delivery-architecture-and-implementation-planner/delivery-model.md
+    shared_files:
+      - product-doctrine.md
+      - snowflake-platform-rules.md
+      - snowflake-data-modeling-patterns.md
+      - activation-data-patterns.md
+
+  # ---------------- Stage 3: GTM and Sales Enablement ----------------
+  - id: competitive-positioning-analyst
+    n: 16
+    stage: 3
+    model_tier: tier1
+    tool_profile: producer
+    web_research: true
+    depends_on: [commercial-wedge-validator, use-case-architect, market-and-icp-analyst]
+    gate_required: gate-2
+    output: agent-outputs/competitive-positioning-analyst/competitive-analysis.md
+    shared_files: []
+
+  - id: packaging-pricing-and-delivery-modeler
+    n: 17
+    stage: 3
+    model_tier: tier2
+    tool_profile: producer
+    web_research: false
+    depends_on: [competitive-positioning-analyst]
+    output: agent-outputs/packaging-pricing-and-delivery-modeler/packaging-pricing.md
+    shared_files: []
+
+  - id: sales-objection-architect
+    n: 18
+    stage: 3
+    model_tier: tier2
+    tool_profile: producer
+    web_research: false
+    depends_on: [competitive-positioning-analyst]
+    can_parallel_with: [packaging-pricing-and-delivery-modeler]
+    output: agent-outputs/sales-objection-architect/objection-library.md
+    shared_files: []
+
+  - id: red-team-commercial-skeptic
+    n: 19
+    stage: 3
+    model_tier: tier1
+    tool_profile: producer
+    web_research: false
+    depends_on:
+      [competitive-positioning-analyst, packaging-pricing-and-delivery-modeler, sales-objection-architect]
+    output: agent-outputs/red-team-commercial-skeptic/red-team-report.md
+    shared_files: []
+
+  - id: gtm-collateral-generator
+    n: 20
+    stage: 3
+    model_tier: tier1
+    model_tier_notes: "tier1 for the narrative spine; tier2 acceptable for derivative collateral."
+    tool_profile: producer
+    web_research: false
+    depends_on: [red-team-commercial-skeptic]
+    output: agent-outputs/gtm-collateral-generator/
+    shared_files: []
+
+  # ---------------- Stage 4: Prototype (tier1 bias) ----------------
+  - id: prototype-experience-spec-builder
+    n: 21
+    stage: 4
+    model_tier: tier1
+    tool_profile: builder
+    web_research: false
+    depends_on: [gtm-collateral-generator, customer-360-data-modeler, value-case-modeler]
+    gate_required: gate-3
+    output: agent-outputs/prototype-experience-spec-builder/prototype-spec.md
+    also_writes:
+      - prototype/sigma-workbooks/feasibility-matrix.yaml
+      - prototype/sigma-workbooks/   # Sigma-native pages as workbook-as-code YAML
+    skills: [sigma-snowflake-prototype, sigma-workbook-as-code]
+    shared_files:
+      - product-doctrine.md
+      - sigma-workbook-as-code-rules.md
+      - sigma-capability-matrix.yaml
+      - sigma-first-design-rules.md
+      - snowflake-platform-rules.md
+      - activation-data-patterns.md
+      - react-sketchpad-constraints.md
+      - quality-gates.md
+
+  - id: synthetic-data-generator
+    n: 22
+    stage: 4
+    model_tier: tier2
+    model_tier_notes: "Run at tier1 if strongest model available — Snowflake DDL punishes shortcuts."
+    tool_profile: builder
+    web_research: false
+    depends_on: [prototype-experience-spec-builder]
+    output: agent-outputs/synthetic-data-generator/
+    also_writes:
+      - prototype/snowflake/   # DDL, MART_SIGMA views, load scripts, data dictionary
+    skills: [sigma-snowflake-prototype]
+    shared_files:
+      - product-doctrine.md
+      - snowflake-platform-rules.md
+      - snowflake-data-modeling-patterns.md
+      - activation-data-patterns.md
+      - quality-gates.md
+
+  - id: launch-readiness-assessor
+    n: 23
+    stage: 4
+    model_tier: tier2
+    model_tier_notes: "Run at tier1 if available — technical honesty gate."
+    tool_profile: producer
+    web_research: false
+    depends_on: [synthetic-data-generator]
+    output: agent-outputs/launch-readiness-assessor/launch-readiness-assessment.md
+    skills: [sigma-workbook-as-code]
+    shared_files:
+      - product-doctrine.md
+      - sigma-workbook-as-code-rules.md
+      - sigma-capability-matrix.yaml
+      - sigma-first-design-rules.md
+      - snowflake-platform-rules.md
+      - snowflake-data-modeling-patterns.md
+      - activation-data-patterns.md
+      - react-sketchpad-constraints.md
+      - quality-gates.md
+
+  # ---------------- Stage 5: Learning Loop ----------------
+  - id: slack-intake-monitor
+    n: 24
+    stage: 5
+    model_tier: tier3
+    tool_profile: producer
+    web_research: false
+    depends_on: []
+    trigger: "on demand or scheduled"
+    mcp: [slack]
+    writes: [UPDATES-INBOX.md]
+    shared_files: []
+
+  - id: sales-learning-synthesizer
+    n: 25
+    stage: 5
+    model_tier: tier2
+    tool_profile: producer
+    web_research: false
+    depends_on: []
+    trigger: "on demand against SALES-LEARNINGS.md"
+    writes: [UPDATES-INBOX.md]
+    shared_files: []
+
+  - id: offering-updater
+    n: 26
+    stage: 5
+    model_tier: tier2
+    tool_profile: producer
+    web_research: situational
+    depends_on: []
+    trigger: "manual against a selected UPDATES-INBOX.md entry"
+    writes: [PROPOSED/]
+    shared_files:
+      - product-doctrine.md
+      - sigma-capability-matrix.yaml
+      - quality-gates.md
+
+  - id: research-verifier
+    n: 27
+    stage: 5
+    model_tier: tier3
+    tool_profile: producer
+    web_research: false
+    depends_on: []
+    trigger: "after user completes external web research into research-inputs/"
+    writes: [EVIDENCE-LEDGER.md]
+    shared_files: []
+
+# Agents requiring EXTERNAL web research (Blueprint Section 6).
+# These emit drafts with inline VERIFY: flags; user researches in
+# claude.ai/ChatGPT (or Cursor browser MCP), drops results into
+# research-inputs/, then research-verifier (Agent 27) finalizes.
+web_research_agents:
+  - industry-landscape-analyst
+  - industry-evidence-researcher
+  - regulatory-compliance-researcher
+  - market-and-icp-analyst
+  - value-case-modeler
+  - competitive-positioning-analyst

@@ -1,0 +1,591 @@
+# Sigma Capability Matrix
+#
+# Purpose:
+#   Tracks Sigma feature support for IQX prototype planning.
+#   Agents use this file to classify proposed UI/workflow patterns as:
+#   Sigma-native, Sigma-approximate, Requires manual Sigma build,
+#   Currently unsupported / aspirational, or React-only.
+#
+# Important:
+#   Workbook-as-code is beta. Recheck official Sigma docs and OpenAPI schema
+#   before treating any feature as implementation-ready.
+
+metadata:
+  name: sigma-capability-matrix
+  owner: IQX shared knowledge pack
+  last_reviewed: "2026-06-17"
+  review_cadence: monthly_during_workbook_as_code_beta
+  primary_sources:
+    - name: Sigma Manage workbooks as code
+      url: https://help.sigmacomputing.com/docs/manage-workbooks-as-code
+    - name: Sigma Public REST API OpenAPI
+      location: C:\Users\jared.amaral\Downloads\sigma-computing-public-rest-api.json
+    - name: Sigma data-models skill references
+      location: C:\Users\jared.amaral\Downloads
+
+classification_definitions:
+  Sigma-native: Feature can be represented with supported Sigma workbook-as-code primitives for the canonical prototype.
+  Sigma-approximate: The business workflow can be represented in Sigma, but not with the exact interaction style of a custom app.
+  Requires manual Sigma build: Sigma UI may support the feature, but workbook-as-code does not currently represent it cleanly.
+  Currently unsupported / aspirational: The feature should not be part of canonical scope unless future Sigma support is verified.
+  React-only, not allowed in canonical prototype: The feature belongs only in an optional non-canonical React sketch.
+
+capabilities:
+  - feature: table
+    category: data_element
+    sigma_ui_supported: true
+    workbook_as_code_supported: true
+    manual_build_supported: true
+    default_classification: Sigma-native
+    react_equivalent: data grid or table component
+    prototype_guidance: Use for customer lists, account lists, audience review, activation readiness, recommendation review, detail drilldowns, and data quality views.
+    canonical_allowed: true
+    notes: Best default primitive for IQX operational workflows.
+    source: Sigma workbook-as-code docs
+    date_reviewed: "2026-06-17"
+
+  - feature: pivot_table
+    category: data_element
+    sigma_ui_supported: true
+    workbook_as_code_supported: true
+    manual_build_supported: true
+    default_classification: Sigma-native
+    react_equivalent: pivot grid
+    prototype_guidance: Use for summaries by segment, region, product, lifecycle stage, risk band, or campaign.
+    canonical_allowed: true
+    notes: Prefer for aggregate exploratory views.
+    source: Sigma workbook-as-code docs
+    date_reviewed: "2026-06-17"
+
+  - feature: controls
+    category: interaction
+    sigma_ui_supported: true
+    workbook_as_code_supported: true
+    manual_build_supported: true
+    default_classification: Sigma-native
+    react_equivalent: filters, dropdowns, sliders, toggles, inputs
+    prototype_guidance: Use for date range, region, persona segment, risk tier, value band, propensity threshold, activation eligibility, and consent/suppression filters.
+    canonical_allowed: true
+    notes: Controls are preferred over custom React-style interactions.
+    source: Sigma workbook-as-code docs; Sigma data-models controls reference
+    date_reviewed: "2026-06-17"
+
+  - feature: list_control
+    category: interaction
+    sigma_ui_supported: true
+    workbook_as_code_supported: true
+    manual_build_supported: true
+    default_classification: Sigma-native
+    react_equivalent: dropdown or multi-select
+    prototype_guidance: Use for segment, market, product, channel, journey stage, and campaign filters.
+    canonical_allowed: true
+    notes: Control should be wired to one or more table columns.
+    source: Sigma data-models controls reference
+    date_reviewed: "2026-06-17"
+
+  - feature: text_control
+    category: interaction
+    sigma_ui_supported: true
+    workbook_as_code_supported: true
+    manual_build_supported: true
+    default_classification: Sigma-native
+    react_equivalent: search input
+    prototype_guidance: Use for search-like filters over customer, account, email, name, ID, or campaign fields.
+    canonical_allowed: true
+    notes: Use contains/equals mode intentionally.
+    source: Sigma data-models controls reference
+    date_reviewed: "2026-06-17"
+
+  - feature: number_slider_or_range
+    category: interaction
+    sigma_ui_supported: true
+    workbook_as_code_supported: true
+    manual_build_supported: true
+    default_classification: Sigma-native
+    react_equivalent: slider or range slider
+    prototype_guidance: Use for propensity score, risk score, value band, engagement threshold, or recency thresholds.
+    canonical_allowed: true
+    notes: Strong fit for customer intelligence thresholding.
+    source: Sigma data-models controls reference
+    date_reviewed: "2026-06-17"
+
+  - feature: date_or_date_range_control
+    category: interaction
+    sigma_ui_supported: true
+    workbook_as_code_supported: true
+    manual_build_supported: true
+    default_classification: Sigma-native
+    react_equivalent: date picker or date range picker
+    prototype_guidance: Use for journey windows, campaign periods, purchase recency, event windows, and value-case measurement periods.
+    canonical_allowed: true
+    notes: Prefer dynamic dates for reusable demos where feasible.
+    source: Sigma data-models controls reference
+    date_reviewed: "2026-06-17"
+
+  - feature: checkbox_or_switch
+    category: interaction
+    sigma_ui_supported: true
+    workbook_as_code_supported: true
+    manual_build_supported: true
+    default_classification: Sigma-native
+    react_equivalent: checkbox or toggle
+    prototype_guidance: Use for binary filters such as active customers, consent available, eligible only, high risk only, or include suppressed.
+    canonical_allowed: true
+    notes: Good replacement for simple app toggles.
+    source: Sigma data-models controls reference
+    date_reviewed: "2026-06-17"
+
+  - feature: top_n_control
+    category: interaction
+    sigma_ui_supported: true
+    workbook_as_code_supported: true
+    manual_build_supported: true
+    default_classification: Sigma-native
+    react_equivalent: top-N selector
+    prototype_guidance: Use for top customers, top products, top segments, top opportunities, or highest-risk records.
+    canonical_allowed: true
+    notes: Useful for executive and manager views.
+    source: Sigma data-models controls reference
+    date_reviewed: "2026-06-17"
+
+  - feature: kpi_chart
+    category: chart
+    sigma_ui_supported: true
+    workbook_as_code_supported: true
+    manual_build_supported: true
+    default_classification: Sigma-native
+    react_equivalent: KPI card
+    prototype_guidance: Use for executive summary metrics and key business outcomes.
+    canonical_allowed: true
+    notes: Avoid vanity metrics; each KPI must trace to a use case and governed metric definition.
+    source: Sigma workbook-as-code docs
+    date_reviewed: "2026-06-17"
+
+  - feature: bar_chart
+    category: chart
+    sigma_ui_supported: true
+    workbook_as_code_supported: true
+    manual_build_supported: true
+    default_classification: Sigma-native
+    react_equivalent: bar chart
+    prototype_guidance: Use for comparisons across segment, product, region, journey stage, channel, or campaign.
+    canonical_allowed: true
+    notes: Strong default comparison chart.
+    source: Sigma workbook-as-code docs
+    date_reviewed: "2026-06-17"
+
+  - feature: line_chart
+    category: chart
+    sigma_ui_supported: true
+    workbook_as_code_supported: true
+    manual_build_supported: true
+    default_classification: Sigma-native
+    react_equivalent: line chart
+    prototype_guidance: Use for time-series trends such as churn risk, engagement, retention, revenue, conversion, or activation performance.
+    canonical_allowed: true
+    notes: Ensure time grain is defined consistently.
+    source: Sigma workbook-as-code docs
+    date_reviewed: "2026-06-17"
+
+  - feature: area_chart
+    category: chart
+    sigma_ui_supported: true
+    workbook_as_code_supported: true
+    manual_build_supported: true
+    default_classification: Sigma-native
+    react_equivalent: area chart
+    prototype_guidance: Use sparingly for time-series magnitude or composition over time.
+    canonical_allowed: true
+    notes: Prefer line chart when precision matters.
+    source: Sigma workbook-as-code docs
+    date_reviewed: "2026-06-17"
+
+  - feature: combo_chart
+    category: chart
+    sigma_ui_supported: true
+    workbook_as_code_supported: true
+    manual_build_supported: true
+    default_classification: Sigma-native
+    react_equivalent: combined bar/line chart
+    prototype_guidance: Use when comparing volume and rate, such as activation count plus conversion rate.
+    canonical_allowed: true
+    notes: Use only when both metrics share a clear business story.
+    source: Sigma workbook-as-code docs
+    date_reviewed: "2026-06-17"
+
+  - feature: scatter_chart
+    category: chart
+    sigma_ui_supported: true
+    workbook_as_code_supported: true
+    manual_build_supported: true
+    default_classification: Sigma-native
+    react_equivalent: scatter plot
+    prototype_guidance: Use for opportunity maps, value versus risk, engagement versus propensity, or cost-to-serve versus value.
+    canonical_allowed: true
+    notes: Strong fit for customer intelligence pattern discovery.
+    source: Sigma workbook-as-code docs
+    date_reviewed: "2026-06-17"
+
+  - feature: pie_or_donut_chart
+    category: chart
+    sigma_ui_supported: true
+    workbook_as_code_supported: true
+    manual_build_supported: true
+    default_classification: Sigma-native
+    react_equivalent: pie or donut chart
+    prototype_guidance: Use only for simple composition with few categories; avoid when precise comparison matters.
+    canonical_allowed: true
+    notes: Prefer bar charts for most comparisons.
+    source: Sigma workbook-as-code docs
+    date_reviewed: "2026-06-17"
+
+  - feature: container
+    category: layout
+    sigma_ui_supported: true
+    workbook_as_code_supported: true
+    manual_build_supported: true
+    default_classification: Sigma-native
+    react_equivalent: layout container
+    prototype_guidance: Use to organize related controls, tables, charts, and explanatory text.
+    canonical_allowed: true
+    notes: Avoid designing nested card-heavy custom app layouts.
+    source: Sigma workbook-as-code docs
+    date_reviewed: "2026-06-17"
+
+  - feature: text_element
+    category: ui_element
+    sigma_ui_supported: true
+    workbook_as_code_supported: true
+    manual_build_supported: true
+    default_classification: Sigma-native
+    react_equivalent: text block
+    prototype_guidance: Use for concise page labels, section labels, annotations, and sales-story context.
+    canonical_allowed: true
+    notes: Avoid replacing data evidence with prose-heavy explanation.
+    source: Sigma workbook-as-code docs
+    date_reviewed: "2026-06-17"
+
+  - feature: image_element
+    category: ui_element
+    sigma_ui_supported: true
+    workbook_as_code_supported: true
+    manual_build_supported: true
+    default_classification: Sigma-native
+    react_equivalent: image
+    prototype_guidance: Use sparingly for logos, industry context, or diagrammatic support.
+    canonical_allowed: true
+    notes: Not a substitute for a data-backed workflow.
+    source: Sigma workbook-as-code docs
+    date_reviewed: "2026-06-17"
+
+  - feature: divider_element
+    category: ui_element
+    sigma_ui_supported: true
+    workbook_as_code_supported: true
+    manual_build_supported: true
+    default_classification: Sigma-native
+    react_equivalent: separator
+    prototype_guidance: Use for lightweight page organization.
+    canonical_allowed: true
+    notes: Minor layout primitive.
+    source: Sigma workbook-as-code docs
+    date_reviewed: "2026-06-17"
+
+  - feature: input_table
+    category: writeback_or_editing
+    sigma_ui_supported: unknown
+    workbook_as_code_supported: false
+    manual_build_supported: unknown
+    default_classification: Requires manual Sigma build
+    react_equivalent: editable grid or form-backed table
+    prototype_guidance: Do not include as generated workbook-as-code behavior. For activation prototypes, model state in Snowflake tables and use Sigma as review/readiness surface unless UI support is verified.
+    canonical_allowed: conditional
+    notes: Workbook-as-code beta docs list input tables as unsupported. Verify Sigma UI support and delivery approach before promising.
+    source: Sigma workbook-as-code docs
+    date_reviewed: "2026-06-17"
+
+  - feature: button
+    category: action
+    sigma_ui_supported: unknown
+    workbook_as_code_supported: false
+    manual_build_supported: unknown
+    default_classification: Requires manual Sigma build
+    react_equivalent: button
+    prototype_guidance: Do not make button-driven workflows canonical unless Sigma UI support and manual-build path are verified. Represent activation as Snowflake-backed review/status tables by default.
+    canonical_allowed: conditional
+    notes: Workbook-as-code beta docs list buttons as unsupported.
+    source: Sigma workbook-as-code docs
+    date_reviewed: "2026-06-17"
+
+  - feature: action_sequence
+    category: action
+    sigma_ui_supported: unknown
+    workbook_as_code_supported: false
+    manual_build_supported: unknown
+    default_classification: Requires manual Sigma build
+    react_equivalent: command workflow or event handler
+    prototype_guidance: Treat as manual-build or aspirational. Do not encode as generated workbook-as-code.
+    canonical_allowed: conditional
+    notes: Workbook-as-code beta docs list action sequences as unsupported.
+    source: Sigma workbook-as-code docs
+    date_reviewed: "2026-06-17"
+
+  - feature: embed
+    category: integration
+    sigma_ui_supported: unknown
+    workbook_as_code_supported: false
+    manual_build_supported: unknown
+    default_classification: Currently unsupported / aspirational
+    react_equivalent: embedded iframe or custom component
+    prototype_guidance: Do not depend on embeds for canonical workbook-as-code prototype.
+    canonical_allowed: false
+    notes: Workbook-as-code beta docs list embeds as unsupported in code representation.
+    source: Sigma workbook-as-code docs
+    date_reviewed: "2026-06-17"
+
+  - feature: plugin
+    category: integration
+    sigma_ui_supported: unknown
+    workbook_as_code_supported: false
+    manual_build_supported: unknown
+    default_classification: Currently unsupported / aspirational
+    react_equivalent: custom component/plugin
+    prototype_guidance: Do not include plugin-based UX in canonical generated workbook scope.
+    canonical_allowed: false
+    notes: Workbook-as-code beta docs list plugins as unsupported.
+    source: Sigma workbook-as-code docs
+    date_reviewed: "2026-06-17"
+
+  - feature: python_element
+    category: advanced_element
+    sigma_ui_supported: unknown
+    workbook_as_code_supported: false
+    manual_build_supported: unknown
+    default_classification: Currently unsupported / aspirational
+    react_equivalent: notebook cell or custom calculation component
+    prototype_guidance: Keep Python logic in Snowflake/Cortex/Snowpark specs or outside canonical Sigma UI unless verified.
+    canonical_allowed: false
+    notes: Workbook-as-code beta docs list Python elements as unsupported.
+    source: Sigma workbook-as-code docs
+    date_reviewed: "2026-06-17"
+
+  - feature: value_list
+    category: data_element
+    sigma_ui_supported: unknown
+    workbook_as_code_supported: false
+    manual_build_supported: unknown
+    default_classification: Currently unsupported / aspirational
+    react_equivalent: static option list
+    prototype_guidance: Prefer Snowflake tables or controls sourced from data columns.
+    canonical_allowed: false
+    notes: Workbook-as-code beta docs list value lists as unsupported.
+    source: Sigma workbook-as-code docs
+    date_reviewed: "2026-06-17"
+
+  - feature: modal
+    category: layout
+    sigma_ui_supported: unknown
+    workbook_as_code_supported: false
+    manual_build_supported: unknown
+    default_classification: Requires manual Sigma build
+    react_equivalent: modal dialog
+    prototype_guidance: Approximate with a dedicated Sigma page, section, or drilldown table. Do not rely on modal behavior in generated workbook-as-code.
+    canonical_allowed: conditional
+    notes: Workbook-as-code beta docs list modals as unsupported.
+    source: Sigma workbook-as-code docs
+    date_reviewed: "2026-06-17"
+
+  - feature: tabs_or_tabbed_container
+    category: layout
+    sigma_ui_supported: unknown
+    workbook_as_code_supported: false
+    manual_build_supported: unknown
+    default_classification: Requires manual Sigma build
+    react_equivalent: tabs
+    prototype_guidance: Approximate with separate pages or stacked sections.
+    canonical_allowed: conditional
+    notes: Workbook-as-code beta docs list tabs/tabbed containers as unsupported.
+    source: Sigma workbook-as-code docs
+    date_reviewed: "2026-06-17"
+
+  - feature: repeated_container
+    category: layout
+    sigma_ui_supported: unknown
+    workbook_as_code_supported: false
+    manual_build_supported: unknown
+    default_classification: Currently unsupported / aspirational
+    react_equivalent: repeated cards/list items
+    prototype_guidance: Approximate with tables or grouped tables. Do not design custom card grids as canonical.
+    canonical_allowed: false
+    notes: Workbook-as-code beta docs list repeated containers as unsupported.
+    source: Sigma workbook-as-code docs
+    date_reviewed: "2026-06-17"
+
+  - feature: form
+    category: writeback_or_editing
+    sigma_ui_supported: unknown
+    workbook_as_code_supported: false
+    manual_build_supported: unknown
+    default_classification: Currently unsupported / aspirational
+    react_equivalent: form
+    prototype_guidance: Model form-like activation data as Snowflake activation request fields; show/review in Sigma tables.
+    canonical_allowed: false
+    notes: Workbook-as-code beta docs list forms as unsupported.
+    source: Sigma workbook-as-code docs
+    date_reviewed: "2026-06-17"
+
+  - feature: popover
+    category: layout
+    sigma_ui_supported: unknown
+    workbook_as_code_supported: false
+    manual_build_supported: unknown
+    default_classification: Currently unsupported / aspirational
+    react_equivalent: popover
+    prototype_guidance: Use text elements, detail tables, or separate pages instead.
+    canonical_allowed: false
+    notes: Advanced layout not supported in workbook-as-code beta per unsupported advanced layouts list.
+    source: Sigma workbook-as-code docs
+    date_reviewed: "2026-06-17"
+
+  - feature: map_chart
+    category: chart
+    sigma_ui_supported: unknown
+    workbook_as_code_supported: false
+    manual_build_supported: unknown
+    default_classification: Requires manual Sigma build
+    react_equivalent: map visualization
+    prototype_guidance: Approximate with region tables, bar charts, or scatter/segment views unless map support is verified for target build.
+    canonical_allowed: conditional
+    notes: Workbook-as-code beta docs list maps as unsupported.
+    source: Sigma workbook-as-code docs
+    date_reviewed: "2026-06-17"
+
+  - feature: sankey_chart
+    category: chart
+    sigma_ui_supported: unknown
+    workbook_as_code_supported: false
+    manual_build_supported: unknown
+    default_classification: Currently unsupported / aspirational
+    react_equivalent: sankey chart
+    prototype_guidance: Approximate with funnel-like tables, stage conversion bars, or journey transition tables.
+    canonical_allowed: false
+    notes: Workbook-as-code beta docs list sankey as unsupported.
+    source: Sigma workbook-as-code docs
+    date_reviewed: "2026-06-17"
+
+  - feature: funnel_chart
+    category: chart
+    sigma_ui_supported: unknown
+    workbook_as_code_supported: false
+    manual_build_supported: unknown
+    default_classification: Requires manual Sigma build
+    react_equivalent: funnel chart
+    prototype_guidance: Approximate with bar charts ordered by journey stage or conversion-stage tables.
+    canonical_allowed: conditional
+    notes: Workbook-as-code beta docs list funnel as unsupported.
+    source: Sigma workbook-as-code docs
+    date_reviewed: "2026-06-17"
+
+  - feature: gauge_chart
+    category: chart
+    sigma_ui_supported: unknown
+    workbook_as_code_supported: false
+    manual_build_supported: unknown
+    default_classification: Requires manual Sigma build
+    react_equivalent: gauge
+    prototype_guidance: Prefer KPI chart with threshold/band context or bar chart.
+    canonical_allowed: conditional
+    notes: Workbook-as-code beta docs list gauge as unsupported.
+    source: Sigma workbook-as-code docs
+    date_reviewed: "2026-06-17"
+
+  - feature: box_plot_chart
+    category: chart
+    sigma_ui_supported: unknown
+    workbook_as_code_supported: false
+    manual_build_supported: unknown
+    default_classification: Currently unsupported / aspirational
+    react_equivalent: box plot
+    prototype_guidance: Use summary tables or percentile band charts instead.
+    canonical_allowed: false
+    notes: Workbook-as-code beta docs list box plot as unsupported.
+    source: Sigma workbook-as-code docs
+    date_reviewed: "2026-06-17"
+
+  - feature: waterfall_chart
+    category: chart
+    sigma_ui_supported: unknown
+    workbook_as_code_supported: false
+    manual_build_supported: unknown
+    default_classification: Requires manual Sigma build
+    react_equivalent: waterfall chart
+    prototype_guidance: Approximate with table plus bar/combo chart unless manually built in Sigma.
+    canonical_allowed: conditional
+    notes: Workbook-as-code beta docs list waterfall as unsupported.
+    source: Sigma workbook-as-code docs
+    date_reviewed: "2026-06-17"
+
+  - feature: custom_drag_and_drop_workflow
+    category: custom_app_interaction
+    sigma_ui_supported: false
+    workbook_as_code_supported: false
+    manual_build_supported: false
+    default_classification: React-only, not allowed in canonical prototype
+    react_equivalent: drag-and-drop planner or journey builder
+    prototype_guidance: Replace with controls, ordered tables, status fields, or activation request tables.
+    canonical_allowed: false
+    notes: Common React temptation; avoid in canonical IQX.
+    source: IQX product doctrine
+    date_reviewed: "2026-06-17"
+
+  - feature: multi_step_wizard
+    category: custom_app_interaction
+    sigma_ui_supported: false
+    workbook_as_code_supported: false
+    manual_build_supported: false
+    default_classification: React-only, not allowed in canonical prototype
+    react_equivalent: wizard
+    prototype_guidance: Approximate with sequential Sigma pages or activation readiness/review tables.
+    canonical_allowed: false
+    notes: Do not use as canonical flow unless a Sigma-native page sequence preserves business meaning.
+    source: IQX product doctrine
+    date_reviewed: "2026-06-17"
+
+  - feature: command_palette_or_chat_ui
+    category: custom_app_interaction
+    sigma_ui_supported: false
+    workbook_as_code_supported: false
+    manual_build_supported: false
+    default_classification: React-only, not allowed in canonical prototype
+    react_equivalent: command palette or chat panel
+    prototype_guidance: If AI Q&A is needed, describe Snowflake Cortex Analyst/Search capability and show outputs in Sigma tables/text/KPI surfaces unless an embedded chat pattern is verified.
+    canonical_allowed: false
+    notes: AI capability must be grounded in Snowflake and reviewed in Sigma.
+    source: IQX product doctrine
+    date_reviewed: "2026-06-17"
+
+  - feature: sigma_data_model_spec
+    category: semantic_layer
+    sigma_ui_supported: true
+    workbook_as_code_supported: not_applicable
+    manual_build_supported: true
+    default_classification: Sigma-native
+    react_equivalent: none
+    prototype_guidance: Useful for defining reusable Sigma sources, columns, metrics, relationships, filters, controls, folder groupings, formatting, and column-level security. Use alongside Snowflake semantic/mart definitions where appropriate.
+    canonical_allowed: true
+    notes: Data model create/get/update uses separate `/v2/dataModels/spec` endpoints and full-representation update semantics.
+    source: Sigma Public REST API OpenAPI; Sigma data-models skill references
+    date_reviewed: "2026-06-17"
+
+  - feature: column_level_security
+    category: governance
+    sigma_ui_supported: true
+    workbook_as_code_supported: not_applicable
+    manual_build_supported: true
+    default_classification: Sigma-native
+    react_equivalent: role-based field hiding
+    prototype_guidance: Use for sensitive fields in Sigma data models when demonstrating privacy or role-based access concepts.
+    canonical_allowed: true
+    notes: Also model PII and consent in Snowflake GOVERNANCE layer.
+    source: Sigma data-models column-level-security reference
+    date_reviewed: "2026-06-17"

@@ -1,0 +1,30 @@
+---
+description: IQX canonical platform doctrine — Sigma-first application layer, Snowflake-backed data/intelligence/activation, React non-canonical. Applies to all IQX offering design, data modeling, and prototype work.
+alwaysApply: true
+---
+
+# IQX Platform Doctrine (always on)
+
+Sigma and Snowflake are the **canonical designated technologies** for every IQX
+offering. When designing use cases, data models, prototypes, synthetic data,
+activation, or launch-readiness:
+
+1. **Sigma-first.** The canonical user experience lives in Sigma. Classify every
+   proposed interaction as `Sigma-native`, `Sigma-approximate`,
+   `Requires manual Sigma build`, or `unsupported/aspirational` against
+   `shared-templates/sigma-capability-matrix.yaml`.
+2. **Snowflake-backed.** Data, governed metrics, intelligence outputs, activation
+   state, and audit logging live in Snowflake
+   (`RAW→CORE→MART_SIGMA→SEMANTIC→ACTIVATION→GOVERNANCE`). Every Sigma page traces
+   to a Snowflake object.
+3. **React is non-canonical** — a visualization sketchpad only, never the source
+   of truth. Unsupported interactions are not presented as canonical.
+4. **Workbook-as-code is beta.** Only Sigma-supported elements become generated
+   workbook content; everything else stays in the feasibility matrix as
+   manual-build/aspirational. Use full-representation updates.
+5. **Technical honesty** beats demo polish. Prototypes must be reproducible in
+   Snowflake + Sigma and explainable in a sales conversation without overpromising.
+
+Full doctrine: `shared-templates/product-doctrine.md` (and the Sigma/Snowflake
+files in `shared-templates/`). Within an offering, the per-offering `shared/`
+copies apply.

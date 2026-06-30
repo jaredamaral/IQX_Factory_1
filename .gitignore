@@ -1,0 +1,13 @@
+# Secrets — never commit Sigma/Snowflake credentials
+.env
+**/.env
+!**/.env.example
+
+# OS / editor noise
+.DS_Store
+Thumbs.db
+
+# Python / node tooling caches (if used by scripts)
+__pycache__/
+*.pyc
+node_modules/
