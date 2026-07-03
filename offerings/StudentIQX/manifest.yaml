@@ -1,0 +1,76 @@
+# IQX Offering Manifest — STATE FILE (StudentIQX)
+#
+# The factory wrote this at scaffold time (Step 2). The iqx-stage-runner and
+# iqx-gate-review skills read and update it during Step 3. It is the single
+# source of truth for "where is this offering" so any new chat session can
+# resume without re-briefing.
+
+schema_version: 1
+offering:
+  name: "StudentIQX"
+  industry: "Higher education / student lifecycle intelligence (USER-PROVIDED)"
+  directory: "offerings/StudentIQX"
+  created: "2026-07-02"
+  blueprint_version: "1.2"
+  phases_version: "1.3-cursor"
+
+# Provider-agnostic tier mapping the user chose for THIS offering's run.
+# Filled in when the user starts Step 3; informational only.
+model_tier_mapping:
+  tier1: "<your strongest model>"
+  tier2: "<your balanced model>"
+  tier3: "<your fast model>"
+
+# Current position.
+current:
+  stage: 1
+  active_gate: null          # set to gate-N while awaiting human approval
+  blocked_reason: null
+
+# Human gates. status: pending | passed | revise | killed | hold
+gates:
+  gate-1: { name: "Proceed / Revise / Kill", status: pending, decided: null, note: null }
+  gate-2: { name: "Approve Offering Brief", status: pending, decided: null, note: null }
+  gate-3: { name: "Approve Sales Readiness", status: pending, decided: null, note: null }
+  gate-4: { name: "Launch Readiness Review", status: pending, decided: null, note: null }
+  gate-5: { name: "Approve Changes Into Canonical Offering", status: pending, decided: null, note: null }
+
+# Per-agent state. status: pending | running | needs_research | done | skipped
+# Mirrors factory/phases.yaml; all 27 pre-populated at pending.
+agents:
+  # ---- Stage 1 ----
+  - { id: industry-landscape-analyst,                       n: 1,  stage: 1, status: pending, output: null }
+  - { id: business-deep-dive-analyst,                       n: 2,  stage: 1, status: pending, output: null }
+  - { id: strategic-fitness-assessor,                       n: 3,  stage: 1, status: pending, output: null }
+  - { id: constituent-journey-mapper,                       n: 4,  stage: 1, status: pending, output: null }
+  - { id: persona-and-pain-analyst,                         n: 5,  stage: 1, status: pending, output: null }
+  - { id: systems-and-data-analyst,                         n: 6,  stage: 1, status: pending, output: null }
+  - { id: industry-evidence-researcher,                     n: 7,  stage: 1, status: pending, output: null }
+  - { id: commercial-wedge-validator,                       n: 8,  stage: 1, status: pending, output: null }
+  # ---- Stage 2 ----
+  - { id: regulatory-compliance-researcher,                 n: 9,  stage: 2, status: pending, output: null }
+  - { id: strategy-alignment-analyst,                       n: 10, stage: 2, status: pending, output: null }
+  - { id: market-and-icp-analyst,                           n: 11, stage: 2, status: pending, output: null }
+  - { id: use-case-architect,                               n: 12, stage: 2, status: pending, output: null }
+  - { id: customer-360-data-modeler,                        n: 13, stage: 2, status: pending, output: null }
+  - { id: value-case-modeler,                               n: 14, stage: 2, status: pending, output: null }
+  - { id: delivery-architecture-and-implementation-planner, n: 15, stage: 2, status: pending, output: null }
+  # ---- Stage 3 ----
+  - { id: competitive-positioning-analyst,                  n: 16, stage: 3, status: pending, output: null }
+  - { id: packaging-pricing-and-delivery-modeler,           n: 17, stage: 3, status: pending, output: null }
+  - { id: sales-objection-architect,                        n: 18, stage: 3, status: pending, output: null }
+  - { id: red-team-commercial-skeptic,                      n: 19, stage: 3, status: pending, output: null }
+  - { id: gtm-collateral-generator,                         n: 20, stage: 3, status: pending, output: null }
+  # ---- Stage 4 ----
+  - { id: prototype-experience-spec-builder,                n: 21, stage: 4, status: pending, output: null }
+  - { id: synthetic-data-generator,                         n: 22, stage: 4, status: pending, output: null }
+  - { id: launch-readiness-assessor,                        n: 23, stage: 4, status: pending, output: null }
+  # ---- Stage 5 (on demand) ----
+  - { id: slack-intake-monitor,                             n: 24, stage: 5, status: pending, output: null }
+  - { id: sales-learning-synthesizer,                       n: 25, stage: 5, status: pending, output: null }
+  - { id: offering-updater,                                 n: 26, stage: 5, status: pending, output: null }
+  - { id: research-verifier,                                n: 27, stage: 5, status: pending, output: null }
+
+# Append-only run log. The stage runner adds an entry per agent invocation.
+history: []
+#  - { ts: "<iso8601>", agent: <id>, action: invoked|completed|needs_research, model_tier: tierN, note: "" }

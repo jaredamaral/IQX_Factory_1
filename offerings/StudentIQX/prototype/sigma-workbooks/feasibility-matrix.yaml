@@ -1,0 +1,27 @@
+# Sigma Feasibility Matrix — StudentIQX (STUB)
+#
+# Placeholder created at scaffold time. Agent 21 (prototype-experience-spec-builder)
+# REPLACES this file in Stage 4 with a full entry per proposed interface pattern.
+# Classify every interaction against shared/sigma-capability-matrix.yaml as one of:
+#   sigma_native | sigma_approximate | requires_manual_sigma_build |
+#   unsupported_or_aspirational | react_only_not_canonical
+#
+# Doctrine: Sigma-first, Snowflake-backed. Snowflake Cortex is the canonical AI
+# toolkit. React is a non-canonical sketchpad only. Unsupported elements
+# (buttons, input tables, action sequences, modals, tabs, forms) must NOT be
+# emitted as generated workbook content — they stay here as manual/aspirational.
+
+schema_version: 0            # bump when Agent 21 authors the real matrix
+offering: StudentIQX
+status: stub                 # -> "authored" once Agent 21 runs
+generated_by: null           # -> prototype-experience-spec-builder
+
+interactions: []
+# Example entry format (Agent 21 fills these):
+# - interaction: "flag at-risk student cohort for advisor outreach"
+#   classification: sigma_approximate
+#   sigma_implementation: "table + controls + ACTIVATION request output table"
+#   manual_sigma_work_required: "possible action/button behavior"
+#   react_allowed: "yes, if visually equivalent"
+#   canonical: "Sigma approximation"
+#   traces_to: ["MART_SIGMA.<view>", "ACTIVATION.<table>"]
