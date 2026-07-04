@@ -17,9 +17,9 @@ offering:
 # Provider-agnostic tier mapping the user chose for THIS offering's run.
 # Filled in when the user starts Step 3; informational only.
 model_tier_mapping:
-  tier1: "<your strongest model>"
-  tier2: "<your balanced model>"
-  tier3: "<your fast model>"
+  tier1: "Claude Opus 4.8"
+  tier2: "Claude Sonnet 5"
+  tier3: "Composer 2.5 (Fast)"
 
 # Current position.
 current:
