@@ -9,7 +9,7 @@ Status: Agent 5 complete; persona pains remain `HYPOTHESIS` or `VERIFY` until ma
 
 `HYPOTHESIS`: The strongest early persona cluster is not one job title. It is the cross-functional group around enrollment-to-matriculation and retention: Enrollment leadership, enrollment operations, financial aid, student success/advising, Finance, and IT/Data/Compliance.
 
-`USER-PROVIDED`: StudentIQX is a staff-facing, complementary governed intelligence layer, not a replacement for SIS/CRM/LMS/advising/advancement systems (E-032, E-035, E-036). Persona pain should therefore be framed as fragmented intelligence, handoff failure, metric disagreement, and intervention measurement - not as point-tool replacement.
+`USER-PROVIDED`: StudentIQX is a staff-facing, complementary governed Unify + Intelligence + Activate layer, not a replacement for SIS/CRM/LMS/advising/advancement systems (E-032, E-035, E-036). Persona pain should therefore be framed as fragmented intelligence, handoff failure, metric disagreement, intervention measurement, and the missing closed loop from signal -> staff owner -> action status -> outcome - not as point-tool replacement.
 
 `VERIFY(E-029)`: Budget authority remains unknown. This inventory separates economic buyers, veto/co-buyer roles, operational managers, and daily users so Agent 8 can test who has both pain and will to act.
 
@@ -48,7 +48,7 @@ Status: Agent 5 complete; persona pains remain `HYPOTHESIS` or `VERIFY` until ma
 
 **Jobs to be done:**
 
-- `HYPOTHESIS`: Know which prospects, applicants, admits, and deposited students need attention before the class misses target.
+- `HYPOTHESIS`: Know which prospects, applicants, admits, and deposited students need attention before the class misses target, who owns follow-up, what status each intervention is in, and which outcomes came from each cohort/score.
 - `HYPOTHESIS`: Coordinate Admissions, Financial Aid, Marketing, Registrar, Orientation, Housing, Finance, and academic programs around one yield picture.
 - `VERIFY(E-031)`: Explain enrollment/yield/melt results using definitions that Finance, IR, Registrar, and Enrollment can trust.
 
@@ -56,7 +56,7 @@ Status: Agent 5 complete; persona pains remain `HYPOTHESIS` or `VERIFY` until ma
 
 | Pain | Business impact | Journey stages |
 |---|---|---|
-| `HYPOTHESIS`: CRM engagement, application status, aid status, deposit, orientation, and registration signals are not unified. | Lost yield, late melt response, weaker revenue predictability, staff chasing lists manually. | Recruiting, application, yield, melt |
+| `HYPOTHESIS`: CRM engagement, application status, aid status, deposit, orientation, and registration signals are not unified into assigned staff workflows with status and outcome logging. | Lost yield, late melt response, weaker revenue predictability, staff chasing lists manually. | Recruiting, application, yield, melt |
 | `VERIFY(E-031)`: Yield and melt definitions differ across offices. | Executive mistrust, disputed forecasts, slower action during peak cycle. | Yield, census/enrollment |
 | `VERIFY(E-029)`: Budget sponsor for the wedge is unknown. | Even strong pain may stall if Enrollment lacks budget or Finance/CIO approval. | All enrollment stages |
 
@@ -68,7 +68,7 @@ Status: Agent 5 complete; persona pains remain `HYPOTHESIS` or `VERIFY` until ma
 
 **Jobs to be done:**
 
-- `HYPOTHESIS`: Build reliable work queues for incomplete applicants, admits, deposited students, and melt-risk students.
+- `HYPOTHESIS`: Build assignable work queues for incomplete applicants, admits, deposited students, and melt-risk students, with owner, status, next action, and outcome tied back to the originating segment.
 - `HYPOTHESIS`: Reconcile source, status, aid, communication, event, and registration signals.
 - `HYPOTHESIS`: Give counselors prioritized action lists without forcing them to interpret raw reports.
 
@@ -76,9 +76,9 @@ Status: Agent 5 complete; persona pains remain `HYPOTHESIS` or `VERIFY` until ma
 
 | Pain | Business impact | Journey stages |
 |---|---|---|
-| `HYPOTHESIS`: Applicant checklist, communication history, aid readiness, and program review status live in separate systems. | More manual reconciliation, missed follow-ups, slower application completion. | Application |
-| `HYPOTHESIS`: Deposit does not reliably indicate registration, orientation, housing, payment, or aid readiness. | Melt risk appears too late; staff outreach is reactive. | Yield, melt |
-| `HYPOTHESIS`: Funnel lists are rebuilt manually for different leaders. | Staff time loss, inconsistent reporting, list fatigue. | Recruiting through matriculation |
+| `HYPOTHESIS`: Applicant checklist, communication history, aid readiness, and program review status live in separate systems instead of an assigned completion workflow with status and outcome logging. | More manual reconciliation, missed follow-ups, slower application completion. | Application |
+| `HYPOTHESIS`: Deposit does not reliably indicate registration, orientation, housing, payment, or aid readiness in a staff-owned melt workflow. | Melt risk appears too late; staff outreach is reactive and hard to tie back to yield outcome. | Yield, melt |
+| `HYPOTHESIS`: Funnel lists are rebuilt manually for different leaders instead of generated as governed, assignable segments with action status and outcomes. | Staff time loss, inconsistent reporting, list fatigue. | Recruiting through matriculation |
 
 ### 3. Admissions Counselor / Recruiter
 
@@ -88,7 +88,7 @@ Status: Agent 5 complete; persona pains remain `HYPOTHESIS` or `VERIFY` until ma
 
 **Jobs to be done:**
 
-- `HYPOTHESIS`: Know who to contact today and why.
+- `HYPOTHESIS`: Know who to contact today and why, accept or update assigned outreach, and log contact status/outcome without leaving the governed workflow.
 - `HYPOTHESIS`: See enough aid, program, event, and application context to personalize outreach.
 - `HYPOTHESIS`: Avoid duplicative or poorly timed communication.
 
@@ -96,8 +96,8 @@ Status: Agent 5 complete; persona pains remain `HYPOTHESIS` or `VERIFY` until ma
 
 | Pain | Business impact | Journey stages |
 |---|---|---|
-| `HYPOTHESIS`: Counselor sees CRM activity but not complete aid, orientation, deposit, or registration context. | Lower outreach relevance, missed save opportunities, student frustration. | Recruiting, application, yield |
-| `HYPOTHESIS`: Priority lists are opaque or stale. | Counselors spend time sorting instead of engaging. | Recruiting, application, yield |
+| `HYPOTHESIS`: Counselor sees CRM activity but not complete aid, orientation, deposit, or registration context inside an assigned outreach workflow. | Lower outreach relevance, missed save opportunities, student frustration, and weak outcome attribution. | Recruiting, application, yield |
+| `HYPOTHESIS`: Priority lists are opaque or stale and do not track owner, status, or outcome against the originating segment. | Counselors spend time sorting instead of engaging, and leaders cannot see which actions changed yield. | Recruiting, application, yield |
 | `VERIFY(E-032)`: Staff-facing scope is locked; student-facing self-service is out of canonical scope. | The counselor remains the human activation point; product value depends on better staff context. | All counselor workflows |
 
 ### 4. Financial Aid Leader / Aid Officer
@@ -108,7 +108,7 @@ Status: Agent 5 complete; persona pains remain `HYPOTHESIS` or `VERIFY` until ma
 
 **Jobs to be done:**
 
-- `HYPOTHESIS`: Identify students whose enrollment or persistence is blocked by affordability, missing aid steps, balances, or holds.
+- `HYPOTHESIS`: Identify students whose enrollment or persistence is blocked by affordability, missing aid steps, balances, or holds, assign the right Finance/Aid owner, and log resolution outcome.
 - `HYPOTHESIS`: Coordinate with Enrollment and Student Success without exposing inappropriate information.
 - `HYPOTHESIS`: Support discount/net tuition decisions with trusted context.
 
@@ -116,8 +116,8 @@ Status: Agent 5 complete; persona pains remain `HYPOTHESIS` or `VERIFY` until ma
 
 | Pain | Business impact | Journey stages |
 |---|---|---|
-| `HYPOTHESIS`: Aid completion and affordability signals are not visible in enrollment or advising workflows. | Lost yield, melt, preventable stop-outs, delayed registration. | Application, yield, retention |
-| `HYPOTHESIS`: Financial risk is mixed into generic "at risk" labels. | Wrong intervention owner; academic advisors may chase issues Finance must solve. | First-year and continuing retention |
+| `HYPOTHESIS`: Aid completion and affordability signals are not visible in enrollment or advising workflows with Finance/Aid owner assignment, status, and outcome logging. | Lost yield, melt, preventable stop-outs, delayed registration. | Application, yield, retention |
+| `HYPOTHESIS`: Financial risk is mixed into generic "at risk" labels instead of routed to the right staff owner with resolution status. | Wrong intervention owner; academic advisors may chase issues Finance must solve. | First-year and continuing retention |
 | `VERIFY(E-021)`: Aid-related student information requires careful access and audit handling. | Compliance risk and reluctance to share useful signals. | All student-level views |
 
 ### 5. VP Student Success / Dean Of Students
@@ -128,7 +128,7 @@ Status: Agent 5 complete; persona pains remain `HYPOTHESIS` or `VERIFY` until ma
 
 **Jobs to be done:**
 
-- `HYPOTHESIS`: Detect risk early enough for staff to intervene.
+- `HYPOTHESIS`: Detect risk early enough for staff to intervene, assign the intervention owner, track status, and connect the action to persistence outcome.
 - `HYPOTHESIS`: Separate academic, financial, registration, engagement, wellness/care, and administrative risks.
 - `VERIFY(E-031)`: Report retention/persistence outcomes using trusted definitions across IR, Academic Affairs, Finance, and Student Success.
 
@@ -136,7 +136,7 @@ Status: Agent 5 complete; persona pains remain `HYPOTHESIS` or `VERIFY` until ma
 
 | Pain | Business impact | Journey stages |
 |---|---|---|
-| `HYPOTHESIS`: LMS, advising notes, SIS grades/registration, holds, aid, and support referrals produce separate risk pictures. | Reactive support, missed interventions, advisor overload, retention loss. | First-year and continuing retention |
+| `HYPOTHESIS`: LMS, advising notes, SIS grades/registration, holds, aid, and support referrals produce separate risk pictures instead of one owner-assigned intervention workflow. | Reactive support, missed interventions, advisor overload, retention loss. | First-year and continuing retention |
 | `HYPOTHESIS`: Intervention outcomes are not consistently logged or linked to persistence outcomes. | Cannot prove what works; budget case weakens. | Intervention, persistence |
 | `VERIFY(E-017/E-018)`: Graduation and first-year retention are externally visible benchmark pressures. | Mission, reputation, and revenue consequences make this a serious but evidence-sensitive wedge. | Retention, completion |
 
@@ -148,17 +148,17 @@ Status: Agent 5 complete; persona pains remain `HYPOTHESIS` or `VERIFY` until ma
 
 **Jobs to be done:**
 
-- `HYPOTHESIS`: Understand why a student is at risk before the advising interaction.
-- `HYPOTHESIS`: See pre-enrollment context, aid/hold issues, academic progress, engagement, and prior outreach in one staff-safe view.
+- `HYPOTHESIS`: Understand why a student is at risk before the advising interaction and which intervention, owner, status, and outcome are already attached to the student.
+- `HYPOTHESIS`: See pre-enrollment context, aid/hold issues, academic progress, engagement, and prior outreach in one staff-safe activation workflow.
 - `HYPOTHESIS`: Log intervention outcomes without duplicate entry.
 
 **Fragmentation pains and impact:**
 
 | Pain | Business impact | Journey stages |
 |---|---|---|
-| `HYPOTHESIS`: Advisors inherit first-year students without admissions context or melt-risk history. | First-term support misses known risk factors. | Matriculation, first year |
-| `HYPOTHESIS`: Degree audit, LMS, holds, advising notes, and faculty alerts are separate. | Advisors lose time hunting context; students receive generic guidance. | First-year and continuing retention |
-| `HYPOTHESIS`: Transfer students appear as continuing students but lack local context. | Poor transfer onboarding, credit confusion, delayed progress. | Transfer entry, progression |
+| `HYPOTHESIS`: Advisors inherit first-year students without admissions context, melt-risk history, assigned follow-up, or prior outreach outcome. | First-term support misses known risk factors. | Matriculation, first year |
+| `HYPOTHESIS`: Degree audit, LMS, holds, advising notes, and faculty alerts are separate instead of one routed intervention workflow. | Advisors lose time hunting context; students receive generic guidance. | First-year and continuing retention |
+| `HYPOTHESIS`: Transfer students appear as continuing students but lack local context, assigned onboarding owner, and credit/progress resolution status. | Poor transfer onboarding, credit confusion, delayed progress. | Transfer entry, progression |
 
 ### 7. Retention / Early-Alert Coordinator
 
@@ -168,7 +168,7 @@ Status: Agent 5 complete; persona pains remain `HYPOTHESIS` or `VERIFY` until ma
 
 **Jobs to be done:**
 
-- `HYPOTHESIS`: Turn fragmented risk signals into actionable staff queues.
+- `HYPOTHESIS`: Turn fragmented risk signals into actionable staff queues with owner assignment, intervention status, escalation, and outcome logging.
 - `HYPOTHESIS`: Route the right risk to the right owner.
 - `HYPOTHESIS`: Measure intervention effectiveness across cohorts, programs, and risk types.
 
@@ -176,7 +176,7 @@ Status: Agent 5 complete; persona pains remain `HYPOTHESIS` or `VERIFY` until ma
 
 | Pain | Business impact | Journey stages |
 |---|---|---|
-| `HYPOTHESIS`: Risk signals are not explained by source or risk type. | Staff distrust scores, over-contact students, or miss true risks. | Risk, intervention |
+| `HYPOTHESIS`: Risk signals are not explained by source or risk type and are not consistently converted into assigned, tracked interventions. | Staff distrust scores, over-contact students, or miss true risks. | Risk, intervention |
 | `HYPOTHESIS`: Outreach occurs in multiple tools without a shared action/outcome log. | No feedback loop; hard to improve retention programs. | Intervention, persistence |
 | `VERIFY(E-021)`: Student-level risk views need FERPA-safe access, audit, and human review. | Compliance concern can block useful analytics. | Risk, intervention |
 
@@ -189,14 +189,14 @@ Status: Agent 5 complete; persona pains remain `HYPOTHESIS` or `VERIFY` until ma
 **Jobs to be done:**
 
 - `HYPOTHESIS`: Ensure status, credits, program, enrollment, and completion records are correct and policy-compliant.
-- `HYPOTHESIS`: Help academic and advising teams understand transfer credit and degree applicability.
+- `HYPOTHESIS`: Help academic and advising teams understand transfer credit and degree applicability, assign resolution owners, and log applicability outcomes.
 - `VERIFY(E-031)`: Protect official definitions while supporting operational views.
 
 **Fragmentation pains and impact:**
 
 | Pain | Business impact | Journey stages |
 |---|---|---|
-| `HYPOTHESIS`: Accepted transfer credits may not map cleanly to degree applicability. | Transfer students lose time, momentum, and trust; completion pathway becomes unclear. | Transfer, progression |
+| `HYPOTHESIS`: Accepted transfer credits may not map cleanly to degree applicability or an assigned resolution workflow. | Transfer students lose time, momentum, and trust; completion pathway becomes unclear. | Transfer, progression |
 | `HYPOTHESIS`: Official census/completion data differs from operational lists. | Reporting disputes and mistrust of dashboards. | Enrollment, persistence, graduation |
 | `VERIFY(E-021)`: Registrar often intersects with FERPA interpretation. | Access constraints can slow cross-office intelligence. | All student record views |
 
@@ -237,7 +237,7 @@ Status: Agent 5 complete; persona pains remain `HYPOTHESIS` or `VERIFY` until ma
 | Pain | Business impact | Journey stages |
 |---|---|---|
 | `HYPOTHESIS`: Enrollment, retention, and finance reports use different timing and definitions. | Weak revenue forecast confidence; budget decisions lag. | Yield, retention, finance planning |
-| `HYPOTHESIS`: Retention interventions are not tied to financial impact. | Hard to justify spend or prioritize programs. | Retention, intervention |
+| `HYPOTHESIS`: Retention interventions are not tracked from originating score/cohort to staff action, outcome, and financial impact. | Hard to justify spend or prioritize programs. | Retention, intervention |
 | `VERIFY(E-029)`: CFO role may be sponsor, approver, veto, or passive reviewer. | Sales motion can stall if budget authority is misidentified. | All wedges |
 
 ### 11. CIO / CDO / VP IT
@@ -308,7 +308,7 @@ Status: Agent 5 complete; persona pains remain `HYPOTHESIS` or `VERIFY` until ma
 
 **Jobs to be done:**
 
-- `HYPOTHESIS`: Segment alumni and donors by affinity, engagement, program, giving potential, and stewardship needs.
+- `HYPOTHESIS`: Segment alumni and donors by affinity, engagement, program, giving potential, and stewardship needs, assign cultivation/stewardship owners, and log outcomes.
 - `HYPOTHESIS`: Connect student experience, degree/program history, career outcomes, and alumni engagement where permitted.
 - `HYPOTHESIS`: Prove campaign and engagement impact.
 
@@ -316,8 +316,8 @@ Status: Agent 5 complete; persona pains remain `HYPOTHESIS` or `VERIFY` until ma
 
 | Pain | Business impact | Journey stages |
 |---|---|---|
-| `HYPOTHESIS`: Graduation-to-alumni identity handoff is incomplete or delayed. | Weak early alumni engagement and missed affinity windows. | Graduation, alumni |
-| `HYPOTHESIS`: Advancement CRM lacks governed student lifecycle context. | Generic segmentation, weaker stewardship, missed giving opportunities. | Alumni, donor cultivation |
+| `HYPOTHESIS`: Graduation-to-alumni identity handoff is incomplete or delayed and not routed as an assigned handoff workflow. | Weak early alumni engagement and missed affinity windows. | Graduation, alumni |
+| `HYPOTHESIS`: Advancement CRM lacks governed student lifecycle context, owner-assigned cultivation actions, and outcome logging tied to the original segment. | Generic segmentation, weaker stewardship, missed giving opportunities. | Alumni, donor cultivation |
 | `VERIFY(E-032)`: Student-facing alumni portal scope is out; staff-facing advancement intelligence is allowed. | Advancement value must be framed as staff intelligence, not a new alumni portal. | Alumni expansion |
 
 ### 15. School / College Dean Or Unit Leader
@@ -344,11 +344,11 @@ Status: Agent 5 complete; persona pains remain `HYPOTHESIS` or `VERIFY` until ma
 
 | Journey | Highest-pain personas | Current-state pain | Business impact |
 |---|---|---|---|
-| Enrollment yield / melt | VP Enrollment, Admissions Ops, Financial Aid, Counselors, CFO | `HYPOTHESIS`: Fragmented CRM, application, aid, deposit, orientation, housing, registration, and payment signals. | Lost yield, late melt response, unstable revenue forecasts, manual staff work. |
-| First-year retention | VP Student Success, Advisors, Early-Alert Coordinator, Financial Aid, IT/Data, Compliance | `HYPOTHESIS`: Advisors inherit students without pre-enrollment context; LMS/SIS/advising/aid signals split risk into partial views. | Preventable attrition, staff overload, weak intervention measurement. |
-| Continuing retention / progression | Advisors, Registrar, Academic Affairs, Finance, Student Success | `HYPOTHESIS`: Major changes, transfer-out risk, aid exhaustion, holds, course sequencing, and near-completion risk are not separated. | Delayed completion, stop-out, transfer-out, financial loss, student dissatisfaction. |
-| Transfer entry | Registrar, Transfer Admissions, Advisors, Program Leaders, Student Success | `HYPOTHESIS`: Prior-credit data, degree applicability, advising, and first local term success are poorly connected. | Lost transfer yield, poor onboarding, delayed time-to-degree. |
-| Advancement / alumni | CAO, Advancement Services, Gift Officers, Alumni Relations | `HYPOTHESIS`: Student history and alumni identity/engagement are weakly connected. | Missed engagement and giving opportunities; weaker segmentation. |
+| Enrollment yield / melt | VP Enrollment, Admissions Ops, Financial Aid, Counselors, CFO | `HYPOTHESIS`: Fragmented CRM, application, aid, deposit, orientation, housing, registration, and payment signals are not converted into governed owner-assigned action queues. | Lost yield, late melt response, unstable revenue forecasts, manual staff work, weak attribution of action to yield. |
+| First-year retention | VP Student Success, Advisors, Early-Alert Coordinator, Financial Aid, IT/Data, Compliance | `HYPOTHESIS`: Advisors inherit students without pre-enrollment context; LMS/SIS/advising/aid signals split risk into partial views without consistent assignment/status/outcome tracking. | Preventable attrition, staff overload, weak intervention measurement. |
+| Continuing retention / progression | Advisors, Registrar, Academic Affairs, Finance, Student Success | `HYPOTHESIS`: Major changes, transfer-out risk, aid exhaustion, holds, course sequencing, and near-completion risk are not separated into routed workflows. | Delayed completion, stop-out, transfer-out, financial loss, student dissatisfaction. |
+| Transfer entry | Registrar, Transfer Admissions, Advisors, Program Leaders, Student Success | `HYPOTHESIS`: Prior-credit data, degree applicability, advising, and first local term success are poorly connected to assigned resolution workflows. | Lost transfer yield, poor onboarding, delayed time-to-degree. |
+| Advancement / alumni | CAO, Advancement Services, Gift Officers, Alumni Relations | `HYPOTHESIS`: Student history and alumni identity/engagement are weakly connected to assigned cultivation or stewardship actions. | Missed engagement and giving opportunities; weaker segmentation. |
 | IT/Data/Compliance | CIO/CDO, Data Engineer, IR, FERPA/Security | `HYPOTHESIS`: Data ownership, identity resolution, semantic definitions, access, and audit are fragmented. | Feasibility risk, compliance risk, slow delivery, mistrusted intelligence. |
 
 ## Commercial Implications For Agent 8
@@ -360,6 +360,7 @@ Status: Agent 5 complete; persona pains remain `HYPOTHESIS` or `VERIFY` until ma
 5. `HYPOTHESIS`: Transfer and continuing-retention use cases may become stronger wedges for public regional, community college, online/extension, or adult learner-heavy contexts than a traditional first-time first-year story.
 6. `VERIFY(E-032/E-035/E-036)`: Persona messaging must stay complementary and staff-facing: "make existing systems intelligible and actionable" rather than "replace CRM/SIS/advising."
 7. `VERIFY(E-039/E-040)`: Public, private, and small liberal arts contexts may change who participates in the buying committee and how many personas must approve a POC; validate whether fewer layers actually creates more will to act.
+8. `VERIFY(E-032/E-035/E-036)`: Agent 8 must score in-product staff activation as a differentiator candidate, not just unified intelligence. The validation question is whether institutions value StudentIQX assignment/status/outcome tracking inside the governed layer, or prefer StudentIQX to trigger/action through incumbent CRM, advising, or case-management tools.
 
 ## Inputs For Agent 6
 
