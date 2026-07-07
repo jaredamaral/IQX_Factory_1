@@ -6,6 +6,21 @@ Every gate decision from `iqx-gate-review` is recorded here AND mirrored in
 
 ---
 
+## Decision #3 — Agent 3 informal gate override (proceed to Agent 4)
+- **Date:** 2026-07-07
+- **Gate:** none (informal Agent 3 checkpoint — not Gate 1)
+- **Decision:** **Override Revise Before Go** — proceed to Agent 4 (`constituent-journey-mapper`) and continue Stage 1 Agents 4–8.
+- **Rationale:** Agent 3 assessed strategic fitness as worth continuing but flagged open `GATING VERIFY` items (incumbent complement acceptance, relationship access, buying dynamics, metric governance, FERPA/AI). Positioning is locked in Decision #2. Remaining items are research objectives for Agents 4–8 and Gate 1, not preconditions requiring user answers now.
+- **Carry-forward (must not be treated as resolved):**
+  - Incumbent redundancy / complement market acceptance (E-008, E-023/E-028, E-035)
+  - Harvard GSE / Quinnipiac relationship strength and access (E-012, E-034)
+  - Finance budget role (E-029), campus vs system buying (E-030), metric definitions (E-031), FERPA/AI (E-021)
+  - ICP unsettled (standing constraint in `AGENTS.md`, E-007)
+- **Decided by:** Jared Amaral
+- **Affected artifacts:** `manifest.yaml` (Agent 4 may run); Agents 4–8 outputs; Gate 1 decision after Agent 8
+
+---
+
 ## Decision #2 — Pre-run positioning locks (Stage 1)
 - **Date:** 2026-07-07
 - **Gate:** none (pre–Stage 1 requirement; locked after Agents 1–3 exposed recurring provisional defaults)
@@ -48,7 +63,6 @@ Every gate decision from `iqx-gate-review` is recorded here AND mirrored in
   3. **ICP / segmentation stance:** the Confluence ICP + TAM + segmentation is a
      strong **HYPOTHESIS to validate via research — NOT settled truth.** The user
      explicitly does not yet know how to segment the market or where StudentIQX
-     resonates most; defining the ICP is an explicit research goal of this
      resonates most; defining the ICP is an explicit research goal of this
      offering.
 - **Decided by:** user ("Proceed with scaffold").
