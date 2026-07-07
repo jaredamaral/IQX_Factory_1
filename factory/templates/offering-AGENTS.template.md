@@ -17,8 +17,10 @@ and is produced by the 27-agent IQX army across 5 stages.
 
 ## 2. Industry context (labeled)
 
-> Filled from context intake. Tags: `USER-PROVIDED`, `HYPOTHESIS`,
-> `DO NOT ASSUME`, `VERIFY`.
+> Filled from context intake. **Inline tags:** use only the closed set in
+> `factory/IQX_AGENT_BLUEPRINT.md` §3.3 (`USER-PROVIDED`, `HYPOTHESIS`, `VERIFY`,
+> `GATING VERIFY`, `GATING HYPOTHESIS`). Standing constraints belong in prose
+> below — not as ad hoc inline tags.
 
 - **Industry:** <USER-PROVIDED>
 - **Structural oddities / constituent types / LOB equivalents:** <...>
@@ -26,7 +28,8 @@ and is produced by the 27-agent IQX army across 5 stages.
 - **Budget dynamics / buyer vs user:** <...>
 - **Regulatory regime:** <...>
 - **Commercial wedge hypothesis:** <HYPOTHESIS ...>
-- **DO NOT ASSUME:** <constraints>
+- **Standing constraints:** <persistent rules — e.g., ICP not settled; do not
+  invent inline tags for these>
 
 ## 3. Verndale context
 
@@ -40,11 +43,15 @@ and is produced by the 27-agent IQX army across 5 stages.
    See `shared/product-doctrine.md`.
 2. **Evidence discipline.** No external claim without an `EVIDENCE-LEDGER.md`
    row. Draft research with inline `VERIFY:` flags; Agent 27 finalizes.
-3. **Context labels** on every industry fact.
-4. **Write only inside your own** `agent-outputs/<agent-name>/` folder (Stage 4
+3. **Context labels** — closed set only (Blueprint §3.3): `USER-PROVIDED`,
+   `HYPOTHESIS`, `VERIFY`, `GATING VERIFY`, `GATING HYPOTHESIS`. Do not invent
+   new inline labels. Use structured sections for risks/constraints.
+4. **Locked decisions** — read `OFFERING-DECISIONS.md` before assuming
+   positioning, scope, or stack choices; do not re-derive as provisional caveats.
+5. **Write only inside your own** `agent-outputs/<agent-name>/` folder (Stage 4
    builders also write to `prototype/`).
-5. **Never silently mutate canonical artifacts** — propose changes in `PROPOSED/`.
-6. **Respect dependencies and gates** in `factory/phases.yaml` + `manifest.yaml`.
+6. **Never silently mutate canonical artifacts** — propose changes in `PROPOSED/`.
+7. **Respect dependencies and gates** in `factory/phases.yaml` + `manifest.yaml`.
 
 ## 5. Shared knowledge pack
 

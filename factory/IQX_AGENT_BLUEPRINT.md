@@ -72,13 +72,24 @@ An instance (e.g., BankIQX, FanIQX, StudentIQX) is the complete definition of wh
 
 ### 3.3 Factory Context Labeling
 
-When populating industry-specific context into agent files, the Factory must label every claim with one of the following tags:
+When populating industry-specific context into agent files, the Factory must label every claim with one of the **canonical inline context labels** below. Agents must **not invent new inline labels** (no `LOCAL-CHECK`, `RISK`, `CONSTRAINT`, `GATING CONSTRAINT`, `STRATEGY FIT`, etc.). Use structured sections (Risk Register tables, Caveats, Open Questions) for severity and blocking semantics instead of extra tags.
 
-- `CONFIRMED`: verified fact
-- `USER-PROVIDED`: supplied in the Factory input; treat as directional, not verified
-- `HYPOTHESIS`: assumed based on training knowledge; requires validation
-- `VERIFY`: specific claim requiring live web research before downstream agents consume it
-- `DO NOT ASSUME`: explicit constraint against a common assumption
+**Canonical inline labels (closed set):**
+
+| Label | Meaning |
+|-------|---------|
+| `USER-PROVIDED` | Supplied in factory intake or user context; directional, not verified. |
+| `HYPOTHESIS` | Assumed from reasoning or training knowledge; requires validation; non-blocking refinement uncertainty. |
+| `VERIFY` | External or factual claim requiring research; must have an `EVIDENCE-LEDGER.md` row before downstream agents treat it as fact. |
+| `GATING VERIFY` | Uncertainty that materially weakens or blocks proceed/kill judgment until resolved (Gate 1 or informal Agent 3 gate). |
+| `GATING HYPOTHESIS` | Strategic assumption that must be validated before Gate 1 but is not yet kill-blocking. |
+
+**Not inline tags:**
+
+- **`CONFIRMED`** — evidence-ledger **row status only**; only Agent 27 (`research-verifier`) may assign it after sourcing.
+- **Standing constraints** — persistent rules (e.g., "ICP is not settled") live in the offering's `AGENTS.md` and `OFFERING-DECISIONS.md` as prose; do not re-tag them inline on every mention.
+
+Cursor execution details: `factory/BLUEPRINT-ADDENDUM.md` §11.
 
 ### 3.4 Factory Outputs
 
@@ -267,9 +278,9 @@ Purpose: Rapidly assess whether a painful, budget-backed, executive-relevant wed
 
 **Inputs.** Industry brief (Agent 1), business profile (Agent 2), Verndale firm strategy and D&A practice strategy (provided in CLAUDE.md).
 
-**Outputs.** Strategic fitness assessment: go/no-go recommendation, rationale, caveats documented as constraints for downstream agents, strategic risks, and capability gaps that would need to be addressed.
+**Outputs.** Strategic fitness assessment: one of the **closed-set recommendations** (see `factory/BLUEPRINT-ADDENDUM.md` §12), rationale, caveats documented in structured sections (not ad hoc inline tags), strategic risks in a Risk Register table, and capability gaps that would need to be addressed.
 
-**Sequencing.** Runs after Agent 2. If the assessment is "no-go," the user may kill the instance before proceeding further. This is an informal gate; the formal gate remains at the end of Stage 1.
+**Sequencing.** Runs after Agent 2. If the assessment is **No-Go**, the user may kill the instance before proceeding further. **Revise Before Go** blocks Agent 4 until the user logs an override or resolves gating items in `OFFERING-DECISIONS.md`. **Go** and **Conditional Go** allow Agent 4 to proceed (Conditional Go carries GATING VERIFY items forward to Gate 1). This is an informal gate; the formal gate remains at the end of Stage 1.
 
 ---
 
@@ -285,7 +296,7 @@ Purpose: Rapidly assess whether a painful, budget-backed, executive-relevant wed
 
 **Outputs.** Journey maps per LOB and constituent type.
 
-**Sequencing.** Runs after Agent 3 (proceeds only if strategic fitness is a go).
+**Sequencing.** Runs after Agent 3 (proceeds only if Agent 3 recommendation is **Go** or **Conditional Go**, or the user has logged an explicit override for **Revise Before Go** in `OFFERING-DECISIONS.md`).
 
 ---
 

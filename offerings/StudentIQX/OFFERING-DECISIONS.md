@@ -6,6 +6,28 @@ Every gate decision from `iqx-gate-review` is recorded here AND mirrored in
 
 ---
 
+## Decision #2 — Pre-run positioning locks (Stage 1)
+- **Date:** 2026-07-07
+- **Gate:** none (pre–Stage 1 requirement; locked after Agents 1–3 exposed recurring provisional defaults)
+- **Decision:** Locked two positioning calls that every Stage 1 agent had been silently defaulting:
+  1. **Complement vs replacement:** StudentIQX is a **complementary governed
+     intelligence layer** that sits **alongside** SIS, CRM, LMS, and domain
+     platforms (EAB, Civitas, Slate, Ellucian, Salesforce, Starfish, etc.). It
+     does **not** replace those systems in canonical scope.
+  2. **Surface scope:** The canonical prototype and offering experience are
+     **staff-facing** operational intelligence (enrollment, student success,
+     advancement, IT/data users). **Student-facing self-service** is **out of
+     scope** unless explicitly unlocked in a future decision.
+- **Rationale:** Three consecutive agent runs (1–3) flagged both items as
+  unresolved despite converging on the same defaults. Locking removes re-derivation
+  noise; Agent 8/10/16 still validate market acceptance of the complementary,
+  staff-facing posture.
+- **Decided by:** user (via Claude governance review → Cursor hardening)
+- **Affected artifacts:** `AGENTS.md`, `EVIDENCE-LEDGER.md` (E-032, E-035),
+  Agents 4–8 prompts, downstream GTM/prototype agents
+
+---
+
 ## Decision #1 — Offering scaffold created
 - **Date:** 2026-07-02
 - **Type:** Scaffold (Step 2)
@@ -27,7 +49,8 @@ Every gate decision from `iqx-gate-review` is recorded here AND mirrored in
      strong **HYPOTHESIS to validate via research — NOT settled truth.** The user
      explicitly does not yet know how to segment the market or where StudentIQX
      resonates most; defining the ICP is an explicit research goal of this
-     offering. `DO NOT ASSUME` an ICP is settled.
+     resonates most; defining the ICP is an explicit research goal of this
+     offering.
 - **Decided by:** user ("Proceed with scaffold").
 - **Notes:** Open `VERIFY` items carried into `EVIDENCE-LEDGER.md` and
   `gap-check-report.md` (naming drift; ICP enrollment-band conflict 2,000–15,000

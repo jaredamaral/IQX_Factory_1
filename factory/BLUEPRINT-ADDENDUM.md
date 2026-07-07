@@ -142,3 +142,55 @@ Verndale strategy is captured at scaffold time in the offering's `AGENTS.md`
 (Verndale Context section) and/or via context intake. If a strategy source file
 is supplied, the factory places it in the offering's `shared/` folder and notes
 it in `docs-ledger.md`. It is not one of the 10 industry-agnostic templates.
+
+## 11. Canonical context-label vocabulary (closed set)
+
+**Problem this solves:** Without a fixed vocabulary, each agent run invents ad
+hoc inline tags (`LOCAL-CHECK`, `RISK`, `GATING CONSTRAINT`, etc.). Downstream
+agents cannot parse reliability consistently, and one agent's output must not
+assert a new "canonical" tag list.
+
+**Rule:** Every agent reads the same five inline labels from the Blueprint
+(§3.3) and the offering's `AGENTS.md` §4. **Do not invent new inline labels.**
+Use structured sections for what tags cannot express cleanly:
+
+- **Risk Register** table with Severity / Likelihood / Mitigation columns (not
+  inline `RISK`).
+- **Caveats / Open Questions / Capability Gaps** sections (not inline
+  `CONSTRAINT`, `GATING CONSTRAINT`, `LOCAL-CHECK`).
+- **Standing constraints** in `AGENTS.md` and locked decisions in
+  `OFFERING-DECISIONS.md` (not inline `DO NOT ASSUME` on every mention).
+
+**Evidence ledger vs inline tags:** Inline `VERIFY` flags draft claims. Row
+**status** in `EVIDENCE-LEDGER.md` uses `VERIFY | CONFIRMED | REJECTED`. Only
+Agent 27 assigns `CONFIRMED`.
+
+## 12. Agent 3 recommendation vocabulary (closed set)
+
+Agent 3 (`strategic-fitness-assessor`) is an **informal** checkpoint before
+detailed Stage 1 research continues. Its headline recommendation must be exactly
+one of:
+
+| Recommendation | Meaning | Agent 4 may proceed? |
+|----------------|---------|----------------------|
+| **Go** | Strategically fit to continue Stage 1. | Yes |
+| **Conditional Go** | Continue Stage 1; listed `GATING VERIFY` items must carry forward and be resolved before Gate 1. | Yes |
+| **Revise Before Go** | Strategic posture not settled; resolve gating items or log explicit user override in `OFFERING-DECISIONS.md` before Agent 4. | No (until override) |
+| **No-Go** | Not strategically fit; user may kill the offering. | No |
+
+Agents must not invent new recommendation categories (e.g., "Revise Before Go"
+is valid; ad hoc variants are not). The stage runner enforces the Agent 4
+sequencing rule in Blueprint Agent 4.
+
+## 13. Git commit discipline (Cursor / Codex runs)
+
+The governance loop assumes an **auditable state**. Commit:
+
+1. After each agent completes (output + `manifest.yaml` + ledger updates).
+2. Again after any post-hoc revision to that agent's output.
+3. At each human gate decision (`OFFERING-DECISIONS.md` + manifest gate status).
+
+Minimum before starting the next agent: working tree committed or intentionally
+stashed. Do not rely on overwritten output files as the only history.
+
+The `iqx-stage-runner` skill includes a commit reminder on agent completion.

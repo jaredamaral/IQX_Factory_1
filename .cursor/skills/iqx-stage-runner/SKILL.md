@@ -43,6 +43,10 @@ by `manifest.yaml`.
    <path>`, append a `history` entry (ts, agent, action, model_tier). When the
    last agent in a stage completes, set `current.active_gate` to that stage's
    gate and tell the user to run `iqx-gate-review`.
+10. **Commit reminder.** Tell the user to commit the agent output, any
+    `manifest.yaml` / `EVIDENCE-LEDGER.md` changes, and gate decisions before
+    starting the next agent (see `factory/BLUEPRINT-ADDENDUM.md` §13). Offer to
+    commit if the user asks.
 
 ## Guardrails
 - Never skip a required gate or unmet dependency.

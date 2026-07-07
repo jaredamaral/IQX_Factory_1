@@ -2,13 +2,15 @@
 
 Canonical sequence from `factory/phases.yaml` and `manifest.yaml`. All **27 agents**, grouped by stage, with **human gates** inserted where they fire.
 
+**Git discipline:** Commit after each agent completes and after any post-hoc revision (`factory/BLUEPRINT-ADDENDUM.md` §13). Minimum: commit before starting the next agent.
+
 ---
 
 ## Stage 1 — Commercial Scan
 
 1. **industry-landscape-analyst** (tier1, web research)
 2. **business-deep-dive-analyst** (tier1)
-3. **strategic-fitness-assessor** (tier2) — *informal go/no-go; you may kill before proceeding*
+3. **strategic-fitness-assessor** (tier2) — *informal gate; closed-set recommendation: Go | Conditional Go | Revise Before Go | No-Go*
 4. **constituent-journey-mapper** (tier2)
 5. **persona-and-pain-analyst** (tier2)
 6. **systems-and-data-analyst** (tier2) — *can run in parallel with #5*

@@ -12,7 +12,7 @@
 - Phase graph: `factory/phases.yaml`
 - State: `manifest.yaml`
 
-> **Canonical product name is** `StudentIQX`**.** `VERIFY:` source material
+> **Canonical product name is `StudentIQX`.** `VERIFY:` source material
 > (Confluence) drifts across "StudentIQ", "SIQ", and "Student360". Standardize
 > every deliverable on **StudentIQX** and treat the source-naming drift as an
 > open verification item (see `EVIDENCE-LEDGER.md` and `gap-check-report.md`).
@@ -21,8 +21,10 @@
 
 ## 2. Industry context (labeled)
 
-> Filled from context intake. Tags: `USER-PROVIDED`, `HYPOTHESIS`,
-> `DO NOT ASSUME`, `VERIFY`.
+> Filled from context intake. **Inline tags (closed set):** `USER-PROVIDED`,
+> `HYPOTHESIS`, `VERIFY`, `GATING VERIFY`, `GATING HYPOTHESIS` — see
+> `factory/IQX_AGENT_BLUEPRINT.md` §3.3. **Standing constraints** (below) are
+> prose rules, not inline tags. **Locked decisions** are in `OFFERING-DECISIONS.md`.
 
 
 
@@ -54,8 +56,8 @@ users do their jobs better.
 with different jobs-to-be-done.
 - **EXPLICIT RESEARCH MANDATE (USER-PROVIDED):** research is needed to
 understand this space, the true nature of the problem, and to position
-StudentIQX as a compelling solution. **DO NOT ASSUME** the problem framing is
-proven — validate it, and raise inconsistencies.
+StudentIQX as a compelling solution. Validate the problem framing; raise
+inconsistencies (`GATING VERIFY` if kill-blocking).
 
 
 
@@ -82,8 +84,9 @@ extension schools, and online programs add structure (`HYPOTHESIS`).
 Learning, Ellucian Illuminate.
 - **SIS / LMS / advising systems:** Banner (Ellucian), Colleague, PeopleSoft,
 Workday Student, Canvas, Blackboard, Starfish.
-- Incumbent **complementarity vs. displacement** is an open question — see
-`gap-check-report.md`.
+- Incumbent **complementarity vs. displacement** — **locked:** complementary
+  governed intelligence layer alongside incumbents (see `OFFERING-DECISIONS.md`
+  Decision #2). Agent 8 still validates market acceptance of that posture.
 
 
 
@@ -115,18 +118,19 @@ privacy laws, Title IV/IX contexts, and accreditation data requirements
 
 
 
-### DO NOT ASSUME (constraints)
+### Standing constraints (prose — not inline tags)
 
-- **DO NOT ASSUME an ICP is settled.** The user explicitly does not yet know how
-to segment the higher-ed market or where StudentIQX resonates most. Defining
-the ICP is an **explicit research objective** of this offering. The Confluence
-ICP/TAM/segmentation material is a strong `HYPOTHESIS` to validate — not truth.
-- **DO NOT ASSUME** the 8 named agentic workflows / 4 pillars from the source
-survive research; treat them as hypotheses.
-- **DO NOT silently resolve** the ICP enrollment-band conflict (2,000–15,000 vs
-3,000–15,000) — carry it as an open `VERIFY`.
-- **DO NOT ASSUME** Coalesce or generic "Snowflake Intelligence" are in
-canonical scope — they are ADJACENT/`VERIFY` (see §3).
+These persist across Stage 1. Do not re-tag them inline on every mention; read
+this section and `OFFERING-DECISIONS.md`.
+
+- **ICP is not settled.** Defining the ICP is an explicit research objective.
+  Confluence ICP/TAM/segmentation material is `HYPOTHESIS` to validate — not truth.
+- The 8 named agentic workflows / 4 pillars from source material are `HYPOTHESIS`
+  until Agent 12 rebuilds use cases from validated pains.
+- **Do not silently resolve** the ICP enrollment-band conflict (2,000–15,000 vs
+  3,000–15,000) — carry as `GATING VERIFY` until resolved.
+- Coalesce and generic "Snowflake Intelligence" are ADJACENT/`VERIFY`, not
+  canonical scope (see §3 and Decision #1).
 
 
 
@@ -153,14 +157,21 @@ canonical scope — they are ADJACENT/`VERIFY` (see §3).
 2. **Evidence discipline.** No external claim without an `EVIDENCE-LEDGER.md`
   row. Draft research with inline `VERIFY:` flags; Agent 27 finalizes. The
    Confluence sources are seeded as **unverified** — validate before use.
-3. **Context labels** on every industry fact (`USER-PROVIDED` / `HYPOTHESIS` /
-  `DO NOT ASSUME` / `VERIFY` / `CONFIRMED`).
-4. **Write only inside your own** `agent-outputs/<agent-name>/` folder (Stage 4
-  builders also write to `prototype/`).
-5. **Never silently mutate canonical artifacts** — propose changes in `PROPOSED/`.
-6. **Respect dependencies and gates** in `factory/phases.yaml` + `manifest.yaml`.
-7. **Standardize naming on** `StudentIQX` across all deliverables; flag any
-  source drift (StudentIQ / SIQ / Student360) as `VERIFY`.
+3. **Context labels (closed set).** On industry facts use only: `USER-PROVIDED`,
+   `HYPOTHESIS`, `VERIFY`, `GATING VERIFY`, `GATING HYPOTHESIS` (Blueprint §3.3).
+   Do **not** invent inline tags (`RISK`, `LOCAL-CHECK`, `CONSTRAINT`, etc.).
+   Use Risk Register tables and structured sections instead. `CONFIRMED` is
+   evidence-ledger row status only (Agent 27).
+4. **Locked decisions.** Read `OFFERING-DECISIONS.md` before assuming positioning,
+   surface scope, or stack. Do not re-derive locked items as provisional caveats.
+5. **Write only inside your own** `agent-outputs/<agent-name>/` folder (Stage 4
+   builders also write to `prototype/`).
+6. **Never silently mutate canonical artifacts** — propose changes in `PROPOSED/`.
+7. **Respect dependencies and gates** in `factory/phases.yaml` + `manifest.yaml`.
+8. **Git discipline.** Commit after each agent completes and after revisions
+   (Blueprint addendum §13).
+9. **Standardize naming on `StudentIQX`** across all deliverables; flag source
+   drift (StudentIQ / SIQ / Student360) as `VERIFY`.
 
 
 

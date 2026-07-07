@@ -10,5 +10,6 @@ sources into `research-inputs/`; Agent 27 (research-verifier) finalizes rows.
 
 ## Status legend
 - **VERIFY** — drafted by an agent, not yet sourced
-- **CONFIRMED** — backed by a cited source the user accepted
+- **CONFIRMED** — backed by a cited source the user accepted (Agent 27 only)
 - **REJECTED** — could not be substantiated; must not appear in canonical artifacts
+- **LOCKED** — governance/positioning decision in OFFERING-DECISIONS.md

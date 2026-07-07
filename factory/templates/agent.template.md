@@ -27,8 +27,10 @@ tools: [Read, Write, Edit, Glob, Grep]   # per tool_profile in factory/phases.ya
 ## Domain Knowledge
 <Industry-specific knowledge for this agent, grounded in the offering's labeled
 context and the shared knowledge pack. Honor Sigma-first / Snowflake-backed
-doctrine. Use context labels. For research agents, emit VERIFY: flags rather than
-unsourced claims.>
+doctrine. Use **only** the canonical inline context labels (Blueprint §3.3).
+For research agents, emit `VERIFY:` flags rather than unsourced claims. Put
+risks in a Risk Register table; put blocking uncertainties in `GATING VERIFY`.
+Do not invent new inline tags. Read locked decisions from `OFFERING-DECISIONS.md`.>
 
 ## Instructions
 1. Read inputs above (offering AGENTS.md first, then dependency outputs, then

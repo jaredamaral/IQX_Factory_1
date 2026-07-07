@@ -39,9 +39,9 @@ gates:
 # Mirrors factory/phases.yaml; all 27 pre-populated at pending.
 agents:
   # ---- Stage 1 ----
-  - { id: industry-landscape-analyst,                       n: 1,  stage: 1, status: pending, output: null }
-  - { id: business-deep-dive-analyst,                       n: 2,  stage: 1, status: pending, output: null }
-  - { id: strategic-fitness-assessor,                       n: 3,  stage: 1, status: pending, output: null }
+  - { id: industry-landscape-analyst,                       n: 1,  stage: 1, status: done, output: "agent-outputs/industry-landscape-analyst/industry-brief.md" }
+  - { id: business-deep-dive-analyst,                       n: 2,  stage: 1, status: done, output: "agent-outputs/business-deep-dive-analyst/business-profile.md" }
+  - { id: strategic-fitness-assessor,                       n: 3,  stage: 1, status: done, output: "agent-outputs/strategic-fitness-assessor/strategic-fitness-assessment.md" }
   - { id: constituent-journey-mapper,                       n: 4,  stage: 1, status: pending, output: null }
   - { id: persona-and-pain-analyst,                         n: 5,  stage: 1, status: pending, output: null }
   - { id: systems-and-data-analyst,                         n: 6,  stage: 1, status: pending, output: null }
@@ -72,5 +72,12 @@ agents:
   - { id: research-verifier,                                n: 27, stage: 5, status: pending, output: null }
 
 # Append-only run log. The stage runner adds an entry per agent invocation.
-history: []
+history:
+  - { ts: "2026-07-04T00:00:00-04:00", agent: industry-landscape-analyst, action: invoked, model_tier: tier1, note: "Codex continuation mode; web research with citations" }
+  - { ts: "2026-07-04T00:00:00-04:00", agent: industry-landscape-analyst, action: completed, model_tier: tier1, note: "Wrote Agent 1 industry brief and updated EVIDENCE-LEDGER.md" }
+  - { ts: "2026-07-06T21:35:13-04:00", agent: business-deep-dive-analyst, action: invoked, model_tier: tier1, note: "Ran Agent 2 from Agent 1 industry brief" }
+  - { ts: "2026-07-06T21:35:13-04:00", agent: business-deep-dive-analyst, action: completed, model_tier: tier1, note: "Wrote business profile and updated evidence usage references" }
+  - { ts: "2026-07-07T11:26:32-04:00", agent: strategic-fitness-assessor, action: invoked, model_tier: tier2, note: "Ran Agent 3 from Agent 1 and Agent 2 outputs plus strategy bridge" }
+  - { ts: "2026-07-07T11:26:32-04:00", agent: strategic-fitness-assessor, action: completed, model_tier: tier2, note: "Wrote conditional-go strategic fitness assessment" }
+  - { ts: "2026-07-07T17:00:00-04:00", agent: governance-hardening, action: completed, model_tier: n/a, note: "Claude review gaps 1-4: canonical tags, Agent 3 recommendation set, OFFERING-DECISIONS positioning locks, git discipline; aligned Agent 1-3 outputs" }
 #  - { ts: "<iso8601>", agent: <id>, action: invoked|completed|needs_research, model_tier: tierN, note: "" }
