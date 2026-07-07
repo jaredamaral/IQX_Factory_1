@@ -42,7 +42,7 @@ agents:
   - { id: industry-landscape-analyst,                       n: 1,  stage: 1, status: done, output: "agent-outputs/industry-landscape-analyst/industry-brief.md" }
   - { id: business-deep-dive-analyst,                       n: 2,  stage: 1, status: done, output: "agent-outputs/business-deep-dive-analyst/business-profile.md" }
   - { id: strategic-fitness-assessor,                       n: 3,  stage: 1, status: done, output: "agent-outputs/strategic-fitness-assessor/strategic-fitness-assessment.md" }
-  - { id: constituent-journey-mapper,                       n: 4,  stage: 1, status: pending, output: null }
+  - { id: constituent-journey-mapper,                       n: 4,  stage: 1, status: done, output: "agent-outputs/constituent-journey-mapper/journey-maps.md" }
   - { id: persona-and-pain-analyst,                         n: 5,  stage: 1, status: pending, output: null }
   - { id: systems-and-data-analyst,                         n: 6,  stage: 1, status: pending, output: null }
   - { id: industry-evidence-researcher,                     n: 7,  stage: 1, status: pending, output: null }
@@ -80,4 +80,6 @@ history:
   - { ts: "2026-07-07T11:26:32-04:00", agent: strategic-fitness-assessor, action: invoked, model_tier: tier2, note: "Ran Agent 3 from Agent 1 and Agent 2 outputs plus strategy bridge" }
   - { ts: "2026-07-07T11:26:32-04:00", agent: strategic-fitness-assessor, action: completed, model_tier: tier2, note: "Wrote conditional-go strategic fitness assessment" }
   - { ts: "2026-07-07T17:00:00-04:00", agent: governance-hardening, action: completed, model_tier: n/a, note: "Claude review gaps 1-4: canonical tags, Agent 3 recommendation set, OFFERING-DECISIONS positioning locks, git discipline; aligned Agent 1-3 outputs" }
+  - { ts: "2026-07-07T14:15:42-04:00", agent: constituent-journey-mapper, action: invoked, model_tier: tier2, note: "Ran Agent 4 after Decision #3 override" }
+  - { ts: "2026-07-07T14:15:42-04:00", agent: constituent-journey-mapper, action: completed, model_tier: tier2, note: "Wrote journey maps and updated evidence usage references" }
 #  - { ts: "<iso8601>", agent: <id>, action: invoked|completed|needs_research, model_tier: tierN, note: "" }
