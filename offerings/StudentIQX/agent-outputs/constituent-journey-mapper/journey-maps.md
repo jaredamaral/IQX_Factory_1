@@ -3,7 +3,7 @@
 Agent: `constituent-journey-mapper`  
 Stage: 1 — Commercial Scan  
 Run date: 2026-07-07  
-Status: Agent 4 complete; all `VERIFY` and `GATING VERIFY` items remain open until later agents or gate review resolve them.
+Status: Agent 4 complete; all `VERIFY` and `GATING HYPOTHESIS` items remain open until later agents or gate review resolve them.
 
 ## Execution Context
 
@@ -17,6 +17,8 @@ Status: Agent 4 complete; all `VERIFY` and `GATING VERIFY` items remain open unt
 
 `VERIFY`: Budget holder, campus-vs-system buying authority, school/college autonomy, technology governance, metric definitions, FERPA/AI constraints, and incumbent-market acceptance remain unresolved or partially validated (E-021, E-029/E-031, E-037/E-038).
 
+`HYPOTHESIS`: Journey opportunities should be read through the three-condition fit filter from prior strategy work: whether the institution owns enough cross-journey data to govern the workflow, whether the lifecycle moment has enough student lifetime value / institutional impact to optimize, and whether there is budget plus organizational will to act. Agent 8 should score the journey options explicitly against those three conditions.
+
 ## Journey Spine
 
 | Stage | Constituent state | Primary office(s) | Common systems touched | Core staff job | Key handoff / risk |
@@ -25,6 +27,7 @@ Status: Agent 4 complete; all `VERIFY` and `GATING VERIFY` items remain open unt
 | Application | Applicant, incomplete applicant, completed applicant | Admissions, program/department, financial aid | CRM, application platform, document management, SIS staging, aid systems | Complete application, evaluate readiness/fit, coordinate aid and program review | Application status, aid status, and outreach history may live in separate workflows. |
 | Enrollment / yield | Admit, deposited student, melt risk, matriculant | Enrollment, Financial Aid, Orientation, Housing, Registrar, Finance | CRM, SIS, aid, orientation, housing, payment, communication systems | Convert admit to enrolled student and reduce melt | Admit/deposit signals often hand off awkwardly to SIS, orientation, and first-term support. |
 | Active student / first year | Matriculant, enrolled student, first-year student | Student Success, Academic Affairs, Advising, Registrar, Finance | SIS, LMS, advising, degree audit, aid, billing/holds, support systems | Keep student engaged, registered, progressing, and supported | Enrollment data does not always become actionable advising context. |
+| Continuing student | Sophomore, junior, senior, major-switcher, transfer-in, transfer-out risk | Student Success, Academic Affairs, Advising, Registrar, Finance | SIS, LMS, advising, degree audit, aid/billing, major/program systems, transfer-credit evaluation | Keep students progressing after the first year and detect new retention/completion risks | Continuing-student risk may emerge from major changes, unmet requirements, aid exhaustion, course sequencing, or transfer intent rather than first-year acclimation. |
 | Risk / intervention | At-risk student, stop-out risk, student with hold, disengaged student | Student Success, Advisors, Faculty, Student Affairs, Finance | LMS, SIS, advising notes, early alert, aid/billing, support referrals | Prioritize outreach, coordinate intervention, measure response | Risk can be academic, financial, engagement, wellness/care, or administrative; combining without governance can mislead. |
 | Persistence / re-enrollment | Persister, continuing student, stop-out, returning student | Student Success, Registrar, Finance, Academic Affairs | SIS, registration, advising, aid/billing, CRM/reactivation | Support term-to-term continuation or re-entry | Stop-out and re-entry journeys can fall between Enrollment and Student Success ownership. |
 | Graduation | Candidate, completer, graduate | Registrar, Academic Affairs, Student Success, Career Services | SIS, degree audit, advising, career services, advancement handoff | Confirm completion, clear requirements, transition record | Graduation outcome may not connect cleanly to alumni/advancement record. |
@@ -52,7 +55,7 @@ Moments of truth:
 
 ## Journey Map 2: First-Year Retention / Student Success
 
-This journey extends the leading wedge into first-year persistence and general retention (`USER-PROVIDED`, E-041).
+This journey covers the first-year portion of the retention wedge (`USER-PROVIDED`, E-041). General / continuing retention is mapped separately below so the broader wording in Decision #4 is not collapsed into first-year-only dynamics.
 
 | Journey step | Constituent state | Owning office(s) | Staff-facing StudentIQX moment | Systems / data touched | Blind spot to expose |
 |---|---|---|---|---|---|
@@ -69,7 +72,46 @@ Moments of truth:
 - `HYPOTHESIS`: Early alert and advising triage are likely high-value staff workflows if data can be unified without overpromising AI.
 - `VERIFY(E-021)`: FERPA and PII constraints must shape risk scoring, intervention notes, and auditability.
 
-## Journey Map 3: Advancement / Alumni Expansion
+## Journey Map 3: Continuing Retention / Progression
+
+This journey covers general retention after the first-year handoff. It is a distinct branch because later-stage retention risk is less about acclimation and more about progress, program fit, finance, sequencing, completion confidence, and transfer-out risk.
+
+| Journey step | Constituent state | Owning office(s) | Staff-facing StudentIQX moment | Systems / data touched | Blind spot to expose |
+|---|---|---|---|---|---|
+| Program fit check | Continuing student / major-switcher | Academic Affairs, Advising, Registrar, school/college program office | `HYPOTHESIS`: Program-progress view showing major changes, gateway-course outcomes, credit applicability, advisor notes, and next-best academic action. | SIS, degree audit, LMS, advising, program records | Major changes can reset degree progress while appearing as ordinary enrollment. |
+| Financial continuity | Continuing student with emerging affordability risk | Finance, Financial Aid, Student Success | `HYPOTHESIS`: Retention-risk queue separating academic risk from affordability, aid exhaustion, balance, hold, and registration risk. | Aid, billing, holds, SIS registration, advising | A student may be academically healthy but unable to register, persist, or complete because of financial barriers. |
+| Course sequencing / availability | Student blocked by pathway constraints | Registrar, Academic Affairs, department scheduler, Advising | `HYPOTHESIS`: Cohort progression view showing unmet prerequisites, limited course availability, sequencing bottlenecks, and expected graduation delay. | SIS, catalog, degree audit, registration, advising | Progress risk can be structural, not behavioral, and may require program/registrar action rather than student outreach. |
+| Transfer-out risk | Continuing student considering exit | Student Success, Advising, Registrar, Financial Aid | `HYPOTHESIS`: Transfer-risk signal combining engagement, holds, course withdrawal, program dissatisfaction, financial pressure, and transcript/request behavior where permitted. | SIS, LMS, advising, transcript requests, aid/billing | Transfer intent may surface indirectly and too late for staff to intervene. |
+| Near-completer support | Senior / near-completer | Registrar, Advising, Academic Affairs, Finance | `HYPOTHESIS`: Completion-confidence view showing remaining requirements, financial holds, registration blockers, and graduation-readiness status. | Degree audit, SIS, advising, billing/holds, graduation application | Near-completers can be counted as retained until they fail to finish. |
+
+Moments of truth:
+
+- `HYPOTHESIS`: Major-switch and program-fit decisions.
+- `HYPOTHESIS`: Financial exhaustion or hold-driven registration failure after first year.
+- `HYPOTHESIS`: Course sequencing and degree-applicability bottlenecks.
+- `HYPOTHESIS`: Transfer-out risk before withdrawal or transcript request becomes irreversible.
+- `VERIFY(E-031)`: Retention, persistence, progression, completion, and transfer-out definitions may differ across IR, Registrar, Finance, Advising, and school/college leadership.
+
+## Journey Map 4: Transfer Entry / Transfer-Heavy Segments
+
+This is a missing branch in a purely linear prospect-to-alumni map. `HYPOTHESIS`: If transfer-heavy institutions, community colleges, online divisions, or adult learner programs remain in ICP consideration, the journey must account for students who enter midstream with prior credits, different enrollment signals, and different retention risk.
+
+| Journey step | Constituent state | Owning office(s) | Staff-facing StudentIQX moment | Systems / data touched | Blind spot to expose |
+|---|---|---|---|---|---|
+| Transfer inquiry / application | Transfer prospect / transfer applicant | Admissions, transfer admissions, program office | `HYPOTHESIS`: Transfer pipeline view combining source institution, intended program, prior credits, incomplete materials, and likely enrollment barriers. | CRM, application, transcript/document management, program review | Transfer applicants may not behave like first-time applicants; missing transcript/credit data can hide risk. |
+| Credit evaluation | Admitted transfer / credit-evaluation pending | Registrar, Academic Affairs, program office | `HYPOTHESIS`: Credit-applicability view showing accepted credits, rejected credits, program fit, and remaining requirements. | SIS, transfer-credit evaluation, degree audit, catalog, transcript data | Raw credits accepted may not equal credits applicable to the intended degree. |
+| Advising / registration | Transfer matriculant | Advising, Registrar, school/college program | `HYPOTHESIS`: Transfer onboarding view showing degree map, prerequisites, holds, registration readiness, and advisor handoff. | SIS, degree audit, advising, registration, aid/billing | Transfer students can appear as continuing students but lack local advising/context. |
+| First local term | Active transfer student | Student Success, Advising, Faculty | `HYPOTHESIS`: Transfer-success watchlist separating academic adjustment, credit applicability, registration, financial, and engagement risk. | SIS, LMS, advising, aid/billing, support referrals | Transfer risk may not align with first-time first-year risk models. |
+| Completion pathway | Continuing transfer / near-completer | Registrar, Advising, Academic Affairs | `HYPOTHESIS`: Completion-confidence view specific to transfer credit, residency requirements, remaining courses, and expected time-to-degree. | Degree audit, SIS, advising, catalog, registration | A transfer student can be close in credits but far from degree completion because of residency, major, or prerequisite rules. |
+
+Moments of truth:
+
+- `HYPOTHESIS`: Prior-credit applicability to intended degree.
+- `HYPOTHESIS`: Transfer advising handoff into registration and first local term.
+- `HYPOTHESIS`: Time-to-degree and completion confidence for transfer students.
+- `VERIFY(E-031)`: Transfer retention and completion definitions may not align with first-time cohort definitions.
+
+## Journey Map 5: Advancement / Alumni Expansion
 
 This is currently an expansion journey, not the leading wedge, unless a specific account has advancement sponsorship.
 
@@ -87,7 +129,7 @@ Moments of truth:
 - `HYPOTHESIS`: Donor segmentation and stewardship prioritization.
 - `VERIFY(E-032)`: Student-facing alumni portals are out of canonical scope; Staff-facing advancement intelligence is allowed.
 
-## Journey Map 4: IT / Data / Compliance Journey
+## Journey Map 6: IT / Data / Compliance Journey
 
 This journey is internal, but it governs whether any staff-facing lifecycle view is credible.
 
@@ -107,14 +149,14 @@ Moments of truth:
 
 ## Journey Variants By Institution Structure
 
-| Structure | Journey modification | Specific blind spot |
-|---|---|---|
-| Single-campus private college | `HYPOTHESIS`: Offices may coordinate more directly; fewer approval layers may support a faster diagnostic/POC. | The same people may own several journey steps, but systems can still fragment context. |
-| Small liberal arts college | `VERIFY(E-040)`: May have fewer buying-decision layers and could be an ICP candidate. | Smaller teams may have fewer data staff and less capacity for complex implementation. |
-| Public regional university | `VERIFY(E-039)`: May face slower, board-governed technology buying and public governance layers. | Staff pain may be high while procurement / IT timing slows action. |
-| Multi-campus public system | `VERIFY(E-030)`: System office may control technology/procurement while campuses own student workflows. | Journey map must distinguish system-level data governance from campus-level advising/enrollment practice. |
-| Large university with schools/colleges | `USER-PROVIDED` + `VERIFY(E-037/E-038)`: Schools may operate like distinct businesses while technology governance may be central, local, or split. | Harvard GSE-like units may need school-specific journey maps under university-level infrastructure. |
-| Extension / online division | `HYPOTHESIS`: Direct enrollment, adult learner, part-time, stop-out/re-entry, and employer/workforce journeys may dominate. | CRM/LMS signals may matter more than residential student signals. |
+| Structure | Journey steps most changed | Staff-facing moments that change | Specific blind spot |
+|---|---|---|---|
+| Single-campus private college | Enrollment yield, first-year retention, financial risk | `HYPOTHESIS`: One cross-functional melt / retention queue may be feasible if Enrollment, Success, Finance, and IT can align quickly. | The same people may own several journey steps, but systems and metric definitions can still fragment context. |
+| Small liberal arts college | Yield, advising, financial-risk intervention, near-completer support | `VERIFY(E-040)`: Fewer decision layers may make a fast diagnostic/POC viable, but the staff surface may need to combine multiple roles in one view. | Smaller teams may have less data capacity and may need lighter implementation even if organizational will is high. |
+| Public regional university | Melt, transfer entry, continuing retention, stop-out/re-entry | `VERIFY(E-039)`: Staff pain may be acute, but procurement / board governance can slow approval; StudentIQX may need a data-readiness or POC path before full platform commitment. | Transfer-heavy and affordability-driven journeys may matter more than traditional first-time residential assumptions. |
+| Multi-campus public system | Source inventory, identity resolution, metric governance, campus-specific advising / enrollment action | `VERIFY(E-030)`: System office may approve warehouse, security, procurement, and standard definitions while campuses own outreach queues and intervention workflows. | Agent 6 must separate system-level data/platform authority from campus-level staff action, because the buyer may not own the workflow and the workflow owner may not own the platform. |
+| Large university with schools/colleges | Program fit, school-specific enrollment funnels, continuing retention, transfer/credit evaluation | `USER-PROVIDED` + `VERIFY(E-037/E-038)`: School-level leaders may need unit-specific journey maps and KPIs under central IT, central SIS, and school-local application/advising tools. | Harvard GSE-like units may have real business autonomy without matching technology autonomy, creating a fit-filter risk around ownership and will to act. |
+| Extension / online division | Direct enrollment, adult learner onboarding, continuing retention, stop-out/re-entry, employer/workforce pathways | `HYPOTHESIS`: CRM/LMS engagement, part-time pacing, employer affiliation, and reactivation signals may be more important than residential orientation/housing signals. | The journey may skip or compress traditional admissions steps, so Agent 6 should not assume a residential first-time student data model. |
 
 ## Cross-Stage Discontinuities
 
@@ -128,6 +170,9 @@ Moments of truth:
 8. `HYPOTHESIS`: Graduation completion may not reliably trigger a high-quality alumni/advancement identity handoff.
 9. `GATING HYPOTHESIS`: School/college business autonomy may not match technology autonomy, creating mismatched owners for workflow pain vs data/platform authority (E-038).
 10. `VERIFY(E-021)`: Student-level risk and activation views must preserve FERPA-safe access, audit, review, and explanation paths.
+11. `HYPOTHESIS`: Continuing-student risk may be misread if StudentIQX treats all retention as first-year retention.
+12. `HYPOTHESIS`: Transfer students may enter mid-lifecycle with prior credits, different source systems, and different risk signals than first-time students.
+13. `HYPOTHESIS`: Multi-campus systems may need one governed data layer with multiple campus-specific action queues and local KPI variants.
 
 ## Inputs For Agent 5 And Agent 6
 
@@ -136,8 +181,11 @@ Agent 5 should use these journey maps to identify persona pains at the handoff p
 - `HYPOTHESIS`: Enrollment staff managing melt without unified aid/orientation/registration signals.
 - `HYPOTHESIS`: Advisors inheriting first-year students without pre-enrollment context.
 - `HYPOTHESIS`: Student Success teams triaging risk from fragmented LMS/SIS/advising/finance signals.
+- `HYPOTHESIS`: Continuing-retention owners separating major-switch, transfer-out, aid/hold, course sequencing, and near-completer risk instead of treating all risk as one queue.
+- `HYPOTHESIS`: Transfer-student owners coordinating credit evaluation, degree applicability, transfer advising, and first local term success.
 - `HYPOTHESIS`: Finance and executive sponsors lacking trusted cross-office definitions for enrollment and retention impact.
 - `HYPOTHESIS`: IT/Data teams mediating conflicting source ownership and semantic definitions.
+- `HYPOTHESIS`: Economic buyers evaluating each journey against data ownership, student/institutional value at stake, and budget/will to act.
 
 Agent 6 should use these journey maps to inventory system boundaries and authoritative sources, especially:
 
@@ -145,4 +193,5 @@ Agent 6 should use these journey maps to inventory system boundaries and authori
 - `VERIFY(E-031)`: metric owner, grain, source, timing, and inclusion/exclusion definitions.
 - `VERIFY(E-032/E-035/E-036)`: staff-facing complementary surfaces across incumbents, not replacement workflows.
 - `VERIFY(E-021)`: FERPA-sensitive fields, access roles, and audit requirements.
-
+- `HYPOTHESIS`: transfer-credit evaluation, degree audit, transcript, and advising boundaries for transfer-heavy segments.
+- `HYPOTHESIS`: structure-specific implementation patterns: system-level governance with campus action queues, school-level views under central systems, and lightweight single-campus POC surfaces.
