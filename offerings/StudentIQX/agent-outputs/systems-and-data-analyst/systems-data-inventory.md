@@ -11,7 +11,9 @@ Status: Agent 6 complete; system-market claims remain `VERIFY` until Agent 27 fi
 
 `USER-PROVIDED`: The canonical StudentIQX target stack is Snowflake as data layer, Sigma as staff experience layer, and Snowflake Cortex as AI toolkit. Coalesce and generic "Snowflake Intelligence" remain adjacent / `VERIFY` only (E-009).
 
-`USER-PROVIDED`: Decision #2 scopes StudentIQX as staff-facing Unify + Intelligence + Activate. Agent 6 therefore models not only read-only views, but also staff-initiated, human-reviewed owner assignment, intervention-status tracking, and outcome logging in the governed Sigma/Snowflake layer (E-032/E-035/E-036).
+`USER-PROVIDED`: Decision #2 scopes StudentIQX as staff-facing Unify + Intelligence + Activate. Agent 6 therefore models not only read-only views, but also staff-initiated, human-reviewed owner assignment, intervention-status tracking, AI draft review, payload handoff, and outcome ingestion in the governed Sigma/Snowflake layer (E-032/E-035/E-036/E-045).
+
+`USER-PROVIDED`: The reference activation pattern is melt risk: StudentIQX scores incoming students with reason codes, an enrollment leader decides whether/how to intervene, an integrated LLM drafts channel-appropriate content, a human approves or edits before payload export, StudentIQX pushes the execution payload to CRM/marketing, and StudentIQX later ingests a matriculation-outcome feed. StudentIQX does not send the email or place the call itself (E-045).
 
 `VERIFY(E-021/E-031)`: FERPA/PII and metric-definition conflicts are not downstream implementation details. They are core data-model requirements: every student-level insight needs role-aware access, auditability, explanation, and explicit metric owner/grain/source/timing.
 
@@ -35,8 +37,8 @@ Status: Agent 6 complete; system-market claims remain `VERIFY` until Agent 27 fi
 | Identity / access / security | IT, IAM, Security, Registrar/Privacy | `VERIFY(E-021)`: role, affiliation, access rights, audit records, sensitive-data permissions | All staff-facing surfaces | Must govern Sigma/Snowflake access and field/row-level permissions. | Access managed system-by-system can produce overexposure, under-sharing, and inconsistent audit trails. |
 | Advancement CRM / alumni platform | Advancement, Alumni Relations, Advancement Services | `HYPOTHESIS` + `VERIFY(E-028/E-025/E-023)`: alumni identity, engagement, events, giving, campaigns, prospect research, stewardship | Graduation handoff, alumni, donor cultivation | May be Salesforce, Slate/advancement modules, EAB, Blackbaud-like systems, or institution-specific platform. | Graduate-to-alumni identity match can break; student/program/engagement history may not flow to advancement segmentation. |
 | Career services / outcomes | Career Services, Alumni Relations, Academic Affairs | `HYPOTHESIS`: career advising, internships, employment outcomes, employer engagement, alumni career signals | Active student, graduation, alumni | Often separate from SIS/advancement and unevenly populated. | Outcomes and engagement data may be useful for advancement and program value but weakly governed. |
-| Outreach / communication tools | Enrollment, Student Success, Advancement, Marketing | `HYPOTHESIS`: email/SMS/call campaigns, reminders, message engagement, suppression/consent, contact attempts | Recruiting, yield, intervention, re-entry, alumni | May sit inside CRM/advising/advancement tools or separate messaging platforms. | Action outcomes may be trapped in point tools; consent/suppression rules must be respected. |
-| StudentIQX governed layer | IT/Data with business owners; Sigma/Snowflake/Cortex | `USER-PROVIDED` + `HYPOTHESIS`: unified identity spine, semantic definitions, risk/cohort scores, staff assignments, action status, outcomes, audit fields | Cross-lifecycle: enrollment, retention, transfer, advancement, governance | Complementary layer alongside source systems; should read from operational systems and write governed activation/outcome records without autonomous action. | Must avoid becoming another ungoverned system of record; source-of-truth and writeback boundaries need explicit design. |
+| Outreach / communication tools | Enrollment, Student Success, Advancement, Marketing | `HYPOTHESIS`: email/SMS/call campaigns, reminders, message engagement, suppression/consent, contact attempts | Recruiting, yield, intervention, re-entry, alumni | May sit inside CRM/advising/advancement tools or separate messaging platforms. `USER-PROVIDED`: CRM/marketing remains the consent/suppression enforcement point. | Action outcomes may be trapped in point tools; StudentIQX may ingest contact/consent/suppression as read-only contact intelligence but must not enforce those rules. |
+| StudentIQX governed layer | IT/Data with business owners; Sigma/Snowflake/Cortex | `USER-PROVIDED` + `HYPOTHESIS`: unified identity spine, semantic definitions, risk/cohort scores, reason codes, staff assignments, LLM draft records, human approval/edit records, payload handoff status, action status, outcomes, audit fields | Cross-lifecycle: enrollment, retention, transfer, advancement, governance | Complementary layer alongside source systems; should read from operational systems, own decision/draft/tracking records, push execution payloads to channel-owning systems, and ingest outcomes without autonomous action. | Must avoid becoming another ungoverned system of record; source-of-truth, execution ownership, and bidirectional payload completeness need explicit design before Agent 13 finalizes the model. |
 
 ## Data Domains And Likely Authoritative Sources
 
@@ -52,7 +54,8 @@ Status: Agent 6 complete; system-market claims remain `VERIFY` until Agent 27 fi
 | Holds / balances | `HYPOTHESIS`: student accounts / SIS | Finance, Financial Aid, Advisors | Barrier type, responsible office, resolution status, impact on registration/persistence. |
 | Degree progress / transfer credit | `HYPOTHESIS`: degree audit + SIS + registrar evaluation | Registrar, Advisors, Academic Affairs | Applicable vs accepted credits, requirement gaps, completion confidence, resolution workflow. |
 | Official retention / graduation metrics | `VERIFY(E-031)`: IR / Registrar / Academic Affairs | Executives, Finance, Student Success, IR | Semantic layer supporting multiple governed definitions by cohort, grain, source, and timing. |
-| Staff assignment / action status / outcome | `USER-PROVIDED` + `HYPOTHESIS`: StudentIQX governed activation tables | Enrollment Ops, Advisors, Success, Financial Aid, Advancement, IT/Data | Canonical activation spine: originating segment/score/cohort, staff owner, action type, due/status, outcome, timestamp, audit. |
+| Staff assignment / decision / draft / status / outcome | `USER-PROVIDED` + `HYPOTHESIS`: StudentIQX governed activation tables plus CRM/marketing execution confirmations | Enrollment Ops, Advisors, Success, Financial Aid, Advancement, IT/Data | Canonical activation spine: originating segment/score/cohort, reason code, staff owner, decision, LLM draft, human approve/edit, payload handoff, status, outcome feed, timestamp, audit. |
+| Contact intelligence | `USER-PROVIDED`: CRM/marketing/advising source systems | Enrollment Ops, Counselors, Advisors, Marketing, Compliance | Read-only contact, consent, and suppression context surfaced to the user; enforcement remains in the source execution platform. |
 | Alumni identity / giving / engagement | `HYPOTHESIS`: Advancement CRM + alumni/event tools | Advancement, Alumni Relations, Finance | Identity link from graduate to alumnus, engagement segments, owner assignment, campaign/stewardship outcomes. |
 
 ## Fragmentation Narrative
@@ -66,7 +69,7 @@ Status: Agent 6 complete; system-market claims remain `VERIFY` until Agent 27 fi
 5. **Continuing student:** Degree audit, major changes, course availability, aid exhaustion, holds, transfer-out risk, and near-completer status live across registrar, finance, academic, and advising domains.
 6. **Transfer student:** Transfer credit has at least two meanings: accepted credits and degree-applicable credits. The second is what matters for time-to-degree and completion risk.
 7. **Graduation -> alumni:** Advancement may create or update alumni identity after completion, but student engagement, program affinity, career outcomes, and consent/suppression history may not flow cleanly.
-8. **Staff action -> outcome:** The largest newly clarified data gap is the activation feedback loop. If staff assignments and actions happen only in CRM/advising/point tools and outcomes are not written back to the governed layer, StudentIQX cannot prove which scores, cohorts, or interventions changed yield, persistence, completion, or engagement.
+8. **Staff action -> outcome:** The largest newly clarified data gap is the activation feedback loop. If staff decisions, draft approvals, payload handoffs, execution confirmations, and outcomes are not tied back to the governed layer, StudentIQX cannot report even observed correlation between scores, cohorts, interventions, and yield/persistence/completion/engagement outcomes. It must not claim causation without a controlled-comparison caveat.
 
 ## Identity Resolution Requirements
 
@@ -98,16 +101,21 @@ Status: Agent 6 complete; system-market claims remain `VERIFY` until Agent 27 fi
 
 ## Activation Data Model Requirements
 
-`USER-PROVIDED`: StudentIQX activation is in scope only when staff-initiated and human-reviewed. The governed layer must support action without becoming an autonomous actor.
+`USER-PROVIDED`: StudentIQX activation is in scope only when staff-initiated and human-reviewed. The governed layer supports decisioning, drafting, tracking, payload handoff, and outcome ingestion without becoming the execution channel or an autonomous actor.
 
 | Activation object | Purpose | Minimum fields / relationships | Source or owner |
 |---|---|---|---|
 | Originating segment / cohort | Links action back to the reason a constituent was surfaced. | segment ID, cohort definition, score/model version, metric definition, timestamp, source systems. | StudentIQX semantic layer; business owner signs off. |
 | Constituent assignment | Assigns a person to a staff owner. | constituent ID, lifecycle state, staff owner, office, assignment reason, due date, priority, access basis. | StudentIQX activation table; routed from score/segment. |
-| Intervention / action record | Tracks staff action and status. | action type, status, notes category, communication/referral flag, human reviewer, timestamps, source link. | Staff user in Sigma; may reference CRM/advising action. |
-| Outcome record | Logs what happened after action. | outcome type, outcome date, disposition, next action, yield/retention/completion/giving outcome link, confidence/provenance. | Staff user or integrated operational system. |
+| Contact intelligence record | Gives staff context before deciding on action. | preferred channel, contactability, consent/suppression indicators, source system, freshness, allowed-use notes. | Read-only from CRM/marketing/advising; enforcement remains in the source execution platform. |
+| Intervention decision record | Captures the human decision to act or not act. | decision, decision-maker, reason, selected channel, selected intervention type, defer/no-action reason, timestamp, originating score/cohort. | StudentIQX/Sigma staff user. |
+| LLM draft / approval record | Tracks generated content and required human review. | prompt/context ID, generated email/call talktrack/content, reason code inputs, reviewer, edit history, approval status, approval timestamp. | StudentIQX/Cortex + Sigma staff review. Mandatory approval/edit before payload export. |
+| Execution payload record | Tracks the handoff to the channel-owning system, not execution itself. | payload ID, destination system, payload content/version, approved-by, sent-to-CRM timestamp, external campaign/task/message ID, delivery/acceptance confirmation if available. | StudentIQX creates payload; CRM/marketing/advising platform executes. |
+| Intervention status record | Tracks StudentIQX-owned status around decision and handoff. | status, owner, due date, escalation, payload handoff status, external execution reference, last known external status. | StudentIQX, with optional confirmation from channel-owning system. |
+| External peer-intervention record | Represents peer outreach only as externally sourced data. | external intervention type, peer-channel flag, source system, status/outcome, student/staff-visible constraints, provenance. | CRM/advising/other external system; not a StudentIQX-native workflow because peers are not StudentIQX staff users. |
+| Outcome record | Logs what happened after action. | outcome type, outcome date, matriculation/persistence/completion/giving outcome link, source feed, confidence/provenance, correlation-only caveat. | Staff user or integrated operational system; matriculation-outcome feed for melt example. |
 | Audit / access event | Proves governed use. | user, role, constituent, fields accessed, action taken, timestamp, policy/access rule. | Sigma/Snowflake/IAM audit. |
-| Feedback aggregate | Measures whether the workflow works. | cohort, intervention type, owner/team, status distribution, outcome distribution, conversion/persistence impact, caveats. | StudentIQX analytics layer. |
+| Feedback aggregate | Reports observed workflow outcomes. | cohort, intervention type, owner/team, status distribution, outcome distribution, conversion/persistence correlation, explicit non-causal caveat unless controlled comparison exists. | StudentIQX analytics layer. |
 
 ## Systems-To-Persona Pain Trace
 
@@ -145,8 +153,14 @@ Recommended conceptual entities:
 - `metric_definition`
 - `segment_or_score`
 - `staff_assignment`
+- `contact_intelligence`
+- `intervention_decision`
+- `llm_content_draft`
+- `human_content_approval`
 - `activation_action`
+- `execution_payload_handoff`
 - `activation_outcome`
+- `external_peer_intervention`
 - `access_policy`
 - `audit_event`
 
@@ -160,14 +174,20 @@ Recommended conceptual entities:
 6. `HYPOTHESIS`: Identity resolution can produce false matches or missed matches if source provenance and match confidence are not preserved.
 7. `HYPOTHESIS`: LMS engagement signals can be misleading if interpreted without course context, faculty practices, enrollment status, and date windows.
 8. `HYPOTHESIS`: Advising and care notes may include sensitive context that should not flow into broad analytics surfaces.
-9. `HYPOTHESIS`: Activation records can become another silo unless action/status/outcome tables are governed and tied to source segments/cohorts.
+9. `HYPOTHESIS`: Activation records can become another silo unless decision/draft/status/payload/outcome tables are governed and tied to source segments/cohorts.
 10. `HYPOTHESIS`: Transfer-credit records require separate modeling of prior credits, accepted credits, applicable credits, and degree requirements.
+11. `USER-PROVIDED`: Contact/consent/suppression data must remain read-only contact intelligence in StudentIQX; CRM/marketing remains enforcement.
+12. `USER-PROVIDED`: Peer-to-peer interventions are out of scope for StudentIQX-native activation and may only be ingested as external intervention/outcome records.
+13. `USER-PROVIDED`: Outcome reporting is correlational only; downstream Agent 12 and later GTM/sales agents must not claim interventions caused, improved, or drove outcomes without a controlled-comparison caveat.
+14. `GATING HYPOTHESIS`: Full bidirectional payload completeness is deferred. Agent 13 must decide what contact/outcome history, if any, should be pushed back to CRM/advising systems so StudentIQX does not recreate cross-tool outreach-history gaps.
 
 ## Open Questions For Agent 8
 
-1. `GATING VERIFY`: Do target institutions value in-product staff assignment/status/outcome tracking inside StudentIQX, or do they expect StudentIQX to hand off to CRM/advising/case-management systems for all action?
+1. `GATING VERIFY`: For each advising/case-management platform in the target segment, does StudentIQX's decide/draft/track/ingest pattern do something the platform does not do today, such as predictive scoring with reason codes, cross-office assignment, AI-drafted content with mandatory human review, payload handoff, and correlational outcome ingestion?
 2. `VERIFY`: Which source systems are most common in the actual target segment, and which are authoritative for enrollment, aid, retention, advising, and action outcomes?
 3. `VERIFY`: Is the strongest first-customer signal a failed Student 360 / warehouse / student-success initiative (E-011), or a narrower melt/retention workflow with sufficient data access?
 4. `VERIFY`: Does the buyer have authority to approve access to source systems and Snowflake/Sigma activation tables, or does that sit with central IT/system office?
 5. `VERIFY`: Which metric families are politically contested enough to slow a demo or POC: yield/melt, retention/persistence, net tuition, transfer success, or completion?
-6. `VERIFY`: Where should StudentIQX store staff action records when incumbents already own CRM/advising workflows: governed Sigma/Snowflake tables, integrated writeback to point systems, or hybrid?
+6. `VERIFY`: Where should StudentIQX store decision/draft/status/outcome records when incumbents own execution: governed Sigma/Snowflake tables, integrated writeback to point systems, or hybrid?
+7. `GATING HYPOTHESIS`: Full bidirectional payload completeness is deferred to Agent 13: what must StudentIQX push back to CRM/advising to avoid recreating outreach-history fragmentation?
+8. `VERIFY`: Do institutions see the decide/draft/track/ingest pattern as complementary to existing platforms today, or as a path that could displace narrower point-tool functionality over time if StudentIQX proves more valuable?

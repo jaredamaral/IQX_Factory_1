@@ -70,6 +70,7 @@ inconsistencies before any downstream agent consumes them.
 | E-042 | Verndale willing to co-invest in POC, data-readiness discovery, or similar to win first higher-ed customer | VERIFY | USER-PROVIDED intake 2026-07-07 | med | 8,14,17,20 | 2026-07-07 |
 | E-043 | Snowflake and Sigma are aware of StudentIQX; partner support expected to be opportunistic, not dedicated co-sell | VERIFY | USER-PROVIDED intake 2026-07-07 | low | 8,10,16 | 2026-07-07 |
 | E-044 | No Verndale higher-ed analytics case studies available at intake | VERIFY | USER-PROVIDED intake 2026-07-07 | med | 3,8,16,20 | 2026-07-07 |
+| E-045 | StudentIQX activation pattern is locked: staff decide whether/how to intervene; integrated LLM may draft channel-appropriate content, but mandatory human approve/edit is required before payload export; StudentIQX pushes execution payloads to CRM/marketing and does not send email/place calls; contact/consent/suppression are read-only contact intelligence with enforcement in CRM/marketing; peer outreach is external only; outcome reporting is correlational only; bidirectional payload completeness is deferred to Agent 13 | LOCKED | USER-PROVIDED 2026-07-07; OFFERING-DECISIONS.md Decision #2 | high | 6,8,12,13,16,21 | 2026-07-07 |
 
 ## Consolidated open VERIFY / questions
 - Source-naming drift: StudentIQX vs StudentIQ vs SIQ vs Student360 (E-001).
@@ -88,6 +89,7 @@ inconsistencies before any downstream agent consumes them.
 - First-customer co-invest posture (E-042); opportunistic Snowflake/Sigma partners (E-043).
 - No higher-ed case studies (E-044).
 - Staff-facing Unify + Intelligence + Activate scope locked (E-032); complementary positioning locked (E-035, E-036).
+- Activation design pattern and guardrails locked (E-045): human approval before payload export, CRM/marketing consent enforcement, peer outreach external only, correlational outcome reporting only, bidirectional payload completeness deferred.
 - Context-label vocabulary locked to five inline tags (E-033).
 - Harvard GSE / Quinnipiac: proceed without near-term discovery (E-034, E-012).
 - Whether the entire problem thesis holds under research (per user's mandate).

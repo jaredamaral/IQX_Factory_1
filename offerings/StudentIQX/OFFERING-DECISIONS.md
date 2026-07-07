@@ -82,6 +82,25 @@ Every gate decision from `iqx-gate-review` is recorded here AND mirrored in
      or workflow. **Student-facing self-service** is **out of scope** unless
      explicitly unlocked in a future decision. **Unreviewed or autonomous
      action** is also out of scope.
+  3. **Reference activation pattern:** For melt risk, StudentIQX may score incoming
+     students with reason codes; an enrollment leader decides whether and how to
+     intervene; StudentIQX, using an integrated LLM, drafts channel-appropriate
+     content such as email copy or call talktracks; a human must approve or edit
+     that content before any payload leaves StudentIQX; StudentIQX tracks the
+     intervention decision and status; StudentIQX later ingests a matriculation
+     outcome feed to close the loop. StudentIQX may push an execution payload to
+     the CRM or marketing platform, but it does **not** send the email or place
+     the call itself.
+  4. **Activation rules:** Contact, consent, and suppression data are read-only
+     contact intelligence in StudentIQX; the CRM or marketing platform remains
+     the enforcement point. Peer-to-peer outreach is out of scope for StudentIQX
+     native activation because peers are not staff users; peer interventions may
+     be visible only as externally sourced intervention/outcome records. Outcome
+     reporting is correlational only and must not claim an intervention caused,
+     improved, or drove an outcome without a controlled-comparison caveat. Full
+     bidirectional payload completeness, including how much contact/outcome
+     history StudentIQX pushes back to CRM, is deferred for Agent 13 and must not
+     be decided prematurely.
 - **Rationale:** Three consecutive agent runs (1–3) flagged both items as
   unresolved despite converging on the same defaults. Locking removes re-derivation
   noise; Agent 8/10/16 still validate market acceptance of the complementary,

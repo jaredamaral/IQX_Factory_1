@@ -66,6 +66,24 @@ inside Sigma/Snowflake: assigning constituents to staff owners, tracking
 intervention status, and logging outcomes back to the originating cohort, score,
 segment, or workflow. Out of scope: student-facing self-service surfaces and
 unreviewed/autonomous action.
+- **Reference activation pattern (USER-PROVIDED, locked by Decision #2):** In a
+  melt-risk workflow, StudentIQX scores incoming students with reason codes; an
+  enrollment leader decides whether/how to intervene; StudentIQX, with an
+  integrated LLM, drafts channel-appropriate content such as email copy or a call
+  talktrack; a human must approve or edit the draft before any payload leaves
+  StudentIQX; StudentIQX tracks intervention decision/status; StudentIQX later
+  ingests a matriculation-outcome feed to close the loop. StudentIQX pushes the
+  execution payload to the CRM/marketing platform; it does **not** send the email
+  or place the call itself.
+- **Activation guardrails (USER-PROVIDED, locked):** Mandatory human review is
+  required for all AI-generated content before export/payload. Contact, consent,
+  and suppression data are read-only contact intelligence; CRM/marketing remains
+  the enforcement point. Peer-to-peer interventions are out of scope for native
+  StudentIQX activation and may appear only as externally sourced
+  intervention/outcome records. Outcome reporting is correlational only; no agent
+  may claim an intervention caused, improved, or drove an outcome without an
+  explicit controlled-comparison caveat. Full bidirectional payload completeness
+  is deferred to Agent 13 and must remain an open design question.
 - **User base (HYPOTHESIS):** a wide set of users across the student lifecycle
 with different jobs-to-be-done.
 - **EXPLICIT RESEARCH MANDATE (USER-PROVIDED):** research is needed to
@@ -180,8 +198,12 @@ this section and `OFFERING-DECISIONS.md`.
   360, intelligence/insights, and staff-initiated/human-reviewed activation —
   **alongside** incumbent operational systems (SIS, CRM, LMS, domain platforms).
   Reinforces Decision #2 (E-035). Agent 8 must test market acceptance of this
-  Activate-layer complement: whether buyers value in-product assignment, status,
-  and outcome logging, or prefer action to stay in incumbent CRM/advising tools.
+  Activate-layer complement: for each advising/case-management platform in the
+  target segment, does StudentIQX's decide/draft/track/ingest pattern do
+  something the platform does not do today (predictive scoring with reason codes,
+  cross-office assignment, AI-drafted content, correlational outcome loop),
+  making it complementary now with possible displacement of narrower point-tool
+  functionality over time if valuable enough?
 - **Known relationships / clients in this industry (USER-PROVIDED):**
   - Harvard University, Graduate School of Education (GSE). `VERIFY:` nature of
   relationship and decision-makers. **School/college-level account** inside a large
@@ -230,6 +252,10 @@ this section and `OFFERING-DECISIONS.md`.
    (Blueprint addendum §13).
 9. **Standardize naming on `StudentIQX`** across all deliverables; flag source
    drift (StudentIQ / SIQ / Student360) as `VERIFY`.
+10. **Causal-language constraint.** Downstream agents, especially Agent 12 and
+   later GTM/sales agents, must treat activation outcome reporting as observed
+   correlation unless there is an explicit controlled-comparison caveat. Do not
+   claim an intervention caused, improved, or drove an outcome by default.
 
 
 
