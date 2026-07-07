@@ -1,5 +1,5 @@
 # IQX Agent Blueprint
-# Version 1.2
+# Version 1.3
 # Master Specification for IQX Offering Definition
 
 ---
@@ -20,13 +20,46 @@ An IQX offering is a semi-productized "customer intelligence and activation plat
 
 The primary business entity in a given industry has customer data scattered across many disconnected systems. This fragmentation prevents the business from seeing the complete picture of its customers efficiently, causing it to miss timely or critical opportunities to convert prospects, serve and delight existing customers, foster loyalty, or retain customers at risk of leaving.
 
-### 2.2 Three Layers
+### 2.2 Product Architecture: Three Layers
 
 **Unified data layer (Customer 360).** Customer data from multiple source systems is unified to create full-view customer profiles.
 
 **Intelligence layer.** Synthesis of whole customer profiles to uncover net-new insights or better-quality insights previously too difficult or time-consuming to perform at scale. Examples: new segmentations, cross-sell opportunities, churn predictions, health scores, upward or declining trends, or whatever insights and KPIs are important to managing the business.
 
-**Activation layer.** New or better insights are provided to IQX end users with the means to take action, often powered by AI or agentic tools. For each activation use case, the following must be defined: who acts, what trigger causes action, what recommendation appears, what system or action channel is used, what the user can approve/edit/reject, what gets logged, how success is measured, what feedback improves the intelligence, and what compliance guardrails apply.
+**Activation layer.** New or better insights are provided to IQX end users with the means to take action, often powered by AI or agentic tools. Activation is governed by the **Activation Design Pattern** (Section 2.2.1). For each activation use case, the following must be defined: who acts, what trigger causes action, what recommendation appears, what IQX-owned decision/draft/track/ingest steps occur, which channel system of record receives the execution payload, what the user can approve/edit/reject, what gets logged, how success is measured, what feedback improves the intelligence, and what compliance guardrails apply.
+
+#### 2.2.1 Activation Design Pattern (canonical)
+
+This principle defines what **Activate** means across every IQX vertical. It applies to every offering instance. Agents must not rediscover or relitigate this split per industry.
+
+**Neither full ownership nor full handoff.** Prior framings treated activation as either "IQX owns the full workflow end-to-end" or "IQX hands everything to the incumbent system." Both are wrong. IQX uses a **functional split**: decide, draft, track, and ingest stay in IQX; send, act, and execute stay with the system of record for that channel.
+
+**IQX owns (governed layer — Sigma experience + Snowflake `ACTIVATION` / `GOVERNANCE` state):**
+
+- **Decision layer:** scores, reasons, recommendations, cohort or segment selection, and the human decision to act — including approve, edit, reject, defer, and assignment.
+- **Content preparation:** AI-drafted or templated outreach and content, with human review before handoff.
+- **Workflow and status tracking:** assignment to owners, intervention status, audit trail, and governed workflow state inside the IQX experience.
+- **Outcome ingestion:** results and feedback pulled back into IQX to close the loop and improve the intelligence layer.
+
+**Channel systems own (execution — not IQX):**
+
+- **Channel execution:** the actual send (email, SMS), actual call, actual enrollment or record update, or any other channel-specific action.
+- Execution happens in whatever system **already owns that channel** — CRM, marketing automation, SIS, case management, telephony, or other operational tools of record.
+- IQX **pushes a payload** to trigger execution in that system.
+- IQX **pulls a result** back in to record outcome and close the loop.
+
+| IQX governed layer | Channel system of record |
+|---|---|
+| Score, reason, recommendation | — |
+| Human decision to act and how | — |
+| AI-drafted content (reviewed) | — |
+| Assignment and status tracking | — |
+| Payload construction and sync log | Receives payload; performs send / act / update |
+| Outcome ingestion and feedback | Returns execution result or status |
+
+Every activation use case must name both sides of this split: what IQX owns in Sigma and Snowflake, which destination class and system receives the payload, what the payload contains, how execution is triggered, and how outcomes are ingested. See `shared/activation-data-patterns.md` for destination-neutral schema patterns.
+
+Staff-initiated, human-reviewed activation remains the default IQX posture. IQX does not replace channel systems; it governs the decision, tracks the workflow, and closes the loop while channel systems execute.
 
 ### 2.3 Technology Stack
 
@@ -438,7 +471,7 @@ Purpose: Define the strategic, analytical, and data foundations of the IQX offer
 
 **Inputs.** Persona and pain inventory (Agent 5), journey maps (Agent 4), systems and data inventory (Agent 6), regulatory constraints (Agent 9), differentiation brief (Agent 10), commercial wedge assessment (Agent 8). Also reads: `shared/product-doctrine.md`, `shared/sigma-capability-matrix.yaml`, `shared/sigma-first-design-rules.md`, `shared/snowflake-platform-rules.md`, `shared/activation-data-patterns.md`, `shared/quality-gates.md`.
 
-**Outputs per use case.** User persona, job to be done being addressed, pain point being remedied, insight or action enabled, data required, success definition. For activation use cases: who acts, trigger, recommendation, action channel, user approve/edit/reject options, logging, success measurement, feedback loop, compliance guardrails.
+**Outputs per use case.** User persona, job to be done being addressed, pain point being remedied, insight or action enabled, data required, success definition. For activation use cases (per Section 2.2.1): who acts, trigger, recommendation, IQX-owned decision/draft/track/ingest steps, channel system of record and destination class for execution payload, user approve/edit/reject options, logging, success measurement, feedback loop, compliance guardrails.
 
 Each use case must also include a structured Sigma and Snowflake contract:
 
@@ -452,6 +485,8 @@ sigma_experience:
   required_tables:
   required_charts:
   activation_surface:
+    iqx_owned_steps:        # decision, draft, track, ingest (Section 2.2.1)
+    channel_execution:      # destination class, payload trigger, outcome ingestion
 
 snowflake_contract:
   required_entities:
@@ -466,7 +501,7 @@ snowflake_contract:
 
 **Outputs for intelligence layer.** Net-new insights, scoring and propensity models needed, AI and agentic capabilities required, activation connections.
 
-**Quality rule.** No use case is complete unless it maps persona, job to be done, pain point, product remedy, required data, required metric, Sigma experience, Snowflake data contract, activation behavior, and measurable business outcome.
+**Quality rule.** No use case is complete unless it maps persona, job to be done, pain point, product remedy, required data, required metric, Sigma experience, Snowflake data contract, activation behavior (including both IQX-owned and channel-execution sides per Section 2.2.1), and measurable business outcome.
 
 **Sequencing.** Runs after Agents 9 and 10 complete. Can run in parallel with Agent 11 (market-and-icp-analyst).
 
