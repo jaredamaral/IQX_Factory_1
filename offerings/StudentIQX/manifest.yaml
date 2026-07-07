@@ -44,7 +44,7 @@ agents:
   - { id: strategic-fitness-assessor,                       n: 3,  stage: 1, status: done, output: "agent-outputs/strategic-fitness-assessor/strategic-fitness-assessment.md" }
   - { id: constituent-journey-mapper,                       n: 4,  stage: 1, status: done, output: "agent-outputs/constituent-journey-mapper/journey-maps.md" }
   - { id: persona-and-pain-analyst,                         n: 5,  stage: 1, status: done, output: "agent-outputs/persona-and-pain-analyst/persona-pain-inventory.md" }
-  - { id: systems-and-data-analyst,                         n: 6,  stage: 1, status: pending, output: null }
+  - { id: systems-and-data-analyst,                         n: 6,  stage: 1, status: done, output: "agent-outputs/systems-and-data-analyst/systems-data-inventory.md" }
   - { id: industry-evidence-researcher,                     n: 7,  stage: 1, status: pending, output: null }
   - { id: commercial-wedge-validator,                       n: 8,  stage: 1, status: pending, output: null }
   # ---- Stage 2 ----
@@ -84,4 +84,6 @@ history:
   - { ts: "2026-07-07T14:15:42-04:00", agent: constituent-journey-mapper, action: completed, model_tier: tier2, note: "Wrote journey maps and updated evidence usage references" }
   - { ts: "2026-07-07T15:20:38-04:00", agent: persona-and-pain-analyst, action: invoked, model_tier: tier2, note: "Ran Agent 5 from business profile and journey maps" }
   - { ts: "2026-07-07T15:20:38-04:00", agent: persona-and-pain-analyst, action: completed, model_tier: tier2, note: "Wrote persona pain inventory and updated evidence usage references" }
+  - { ts: "2026-07-07T16:45:18-04:00", agent: systems-and-data-analyst, action: invoked, model_tier: tier2, note: "Ran Agent 6 from business profile, journey maps, and persona inventory" }
+  - { ts: "2026-07-07T16:45:18-04:00", agent: systems-and-data-analyst, action: completed, model_tier: tier2, note: "Wrote systems/data inventory and updated evidence usage references" }
 #  - { ts: "<iso8601>", agent: <id>, action: invoked|completed|needs_research, model_tier: tierN, note: "" }
