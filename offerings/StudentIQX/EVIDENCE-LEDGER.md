@@ -54,13 +54,22 @@ inconsistencies before any downstream agent consumes them.
 | E-026 | Ellucian Student positions its SIS as uniting administrative processes, improving data accuracy, supporting learner success from enrollment through graduation, eliminating data silos, providing real-time data, compliance controls, and AI across solutions | VERIFY | Ellucian Student: https://www.ellucian.com/products/student | med | 1,2,3,6,8,16 | 2026-07-06 |
 | E-027 | WICHE projects 38 states will see high-school graduate declines by 2041 compared with 2023; the Midwest and Northeast have already experienced declines, the South grows before a late slight decline, and the West more closely mirrors national projections | VERIFY | WICHE Knocking at the College Door: https://www.wiche.edu/knocking/ | med | 1,2,8,11 | 2026-07-06 |
 | E-028 | Salesforce positions Education Cloud around connected education journeys across recruitment/admissions, academic operations, student success, advancement/alumni relations, communications/engagement, and lifelong learning | VERIFY | Salesforce Education: https://www.salesforce.com/education/ | med | 1,2,3,6,8,16 | 2026-07-06 |
-| E-029 | Finance/CFO or president-level budget governance is a recurring cross-cutting buying-center role across Enrollment, Student Success, Advancement, IT/Data, and executive Student 360 motions | VERIFY | Agent 2 synthesis from Agent 1 + gap-check buyer/user divergence; requires sales/account validation | low | 2,3,8,11,14,17 | 2026-07-07 |
-| E-030 | Multi-campus systems, university systems, schools/colleges, extension units, and online divisions may shift buying authority from campus office level to system, school, or unit level | VERIFY | Agent 2 synthesis from intake structural-oddity context; requires account research | low | 2,3,8,11,15,20 | 2026-07-07 |
-| E-031 | Shared higher-ed KPI names such as enrollment, yield, melt, persistence, retention, graduation, net tuition, and alumni engagement may have conflicting definitions across offices and source systems | VERIFY | Agent 2 synthesis; requires Agent 6 systems/source-of-truth validation and Agent 13 metric-grain validation | low | 2,3,6,8,13,21 | 2026-07-07 |
+| E-029 | Budget holder for StudentIQX wedges is unknown at intake; Finance/CFO may be sponsor, approver, veto, or passive — must be discovered through market conversations | VERIFY | USER-PROVIDED intake 2026-07-07; Agent 2 synthesis | med | 2,3,8,11,14,17 | 2026-07-07 |
+| E-030 | Buying authority varies by institution structure: multi-campus systems, university systems, schools/colleges (which may operate as distinct businesses), extension units, and online divisions; school-level vs university-level technology governance is unclear | VERIFY | USER-PROVIDED intake 2026-07-07; Agent 2 synthesis | med | 2,3,4,8,11,15,20 | 2026-07-07 |
+| E-031 | KPI names (enrollment, yield, melt, persistence, retention, etc.) will conflict across offices and schools; StudentIQX must support institution-specific definitions via governed semantic layer — conflict is expected, not a defect | VERIFY | USER-PROVIDED design principle 2026-07-07; Agent 2 synthesis | med | 2,3,6,8,13,21 | 2026-07-07 |
 | E-032 | Canonical prototype scope is staff-facing operational intelligence; student-facing self-service is out of scope unless unlocked in OFFERING-DECISIONS | LOCKED | OFFERING-DECISIONS.md Decision #2 | high | 4,8,10,12,21 | 2026-07-07 |
 | E-033 | Context-label vocabulary is fixed to five inline tags (USER-PROVIDED, HYPOTHESIS, VERIFY, GATING VERIFY, GATING HYPOTHESIS); agents must not invent new inline labels | LOCKED | factory/IQX_AGENT_BLUEPRINT.md §3.3; BLUEPRINT-ADDENDUM §11 | high | all | 2026-07-07 |
 | E-035 | StudentIQX is positioned as a complementary governed intelligence layer alongside SIS/CRM/LMS and domain platforms, not a replacement | LOCKED | OFFERING-DECISIONS.md Decision #2 | high | 2,3,8,10,16 | 2026-07-07 |
-| E-034 | Harvard GSE likely maps to a graduate/professional school inside a large research university ecosystem, while Quinnipiac likely maps closer to the private nonprofit / mid-sized institution pattern; both mappings require relationship and institution-fit validation | VERIFY | Agent 3 synthesis from intake relationship context + Agent 1/2 fit analysis | low | 3,8,10,11 | 2026-07-07 |
+| E-034 | Harvard GSE is a school/college-level unit inside a large research university (distinct business processes from other schools); Quinnipiac likely maps to private nonprofit / mid-sized pattern; relationship access unverified; no near-term discovery planned | VERIFY | USER-PROVIDED intake 2026-07-07; Agent 3 synthesis | med | 3,4,8,10,11 | 2026-07-07 |
+| E-036 | Verndale expects all IQX offerings to be a governed Student/customer 360 + intelligence + activation layer alongside SIS/CRM/LMS — not replacement | LOCKED | USER-PROVIDED; OFFERING-DECISIONS.md Decision #2, #4 | high | all | 2026-07-07 |
+| E-037 | Within large universities, schools/colleges may operate as distinct businesses (systems, processes, JTBD) even when under one brand | VERIFY | USER-PROVIDED intake 2026-07-07 | med | 4,5,6,8,11 | 2026-07-07 |
+| E-038 | Technology services may be split: university-provided infrastructure vs school/college application support — extent unknown | VERIFY | USER-PROVIDED GATING HYPOTHESIS 2026-07-07 | med | 6,8,15 | 2026-07-07 |
+| E-039 | Public universities may have slower, more board-governed technology buying; private institutions may have less bureaucratic layering | VERIFY | USER-PROVIDED HYPOTHESIS; advisor-sourced, not yet independently verified | low | 8,11,17 | 2026-07-07 |
+| E-040 | Small liberal arts colleges may have fewer buying-decision layers — candidate ICP segment | VERIFY | USER-PROVIDED HYPOTHESIS; advisor-sourced | low | 8,11 | 2026-07-07 |
+| E-041 | User wedge instinct: pre-enrollment/enrollment through matriculation + first-year/general retention as first motion | VERIFY | USER-PROVIDED HYPOTHESIS 2026-07-07; validate vs E-011 at Agent 8 | med | 4,5,8,12 | 2026-07-07 |
+| E-042 | Verndale willing to co-invest in POC, data-readiness discovery, or similar to win first higher-ed customer | VERIFY | USER-PROVIDED intake 2026-07-07 | med | 8,14,17,20 | 2026-07-07 |
+| E-043 | Snowflake and Sigma are aware of StudentIQX; partner support expected to be opportunistic, not dedicated co-sell | VERIFY | USER-PROVIDED intake 2026-07-07 | low | 8,10,16 | 2026-07-07 |
+| E-044 | No Verndale higher-ed analytics case studies available at intake | VERIFY | USER-PROVIDED intake 2026-07-07 | med | 3,8,16,20 | 2026-07-07 |
 
 ## Consolidated open VERIFY / questions
 - Source-naming drift: StudentIQX vs StudentIQ vs SIQ vs Student360 (E-001).
@@ -70,13 +79,17 @@ inconsistencies before any downstream agent consumes them.
 - Whether Coalesce and "Snowflake Intelligence" are canonical scope (E-009).
 - Nature/strength of Harvard GSE and Quinnipiac relationships (E-012).
 - Whether the 8 named agents / 4 pillars survive research (E-010).
-- Whether StudentIQX is commercially viable as a complementary intelligence layer against EAB, Civitas, Slate, Ellucian, Salesforce, and other incumbents, rather than being perceived as redundant or replacement scope (E-008, E-023/E-028).
-- Whether Finance/CFO is sponsor, approver, veto node, or passive reviewer for each likely wedge (E-029).
-- Whether first-account motion is campus-led, system-led, school-led, or unit-led (E-030).
-- Which metric definitions are contested across Enrollment, IR, Academic Affairs, Finance, Student Success, Advancement, and IT/Data (E-031).
-- Staff-facing scope locked (E-032); complementary positioning locked (E-035).
+- Whether StudentIQX is commercially viable as a complementary intelligence layer (market acceptance of E-035/E-036) — not whether complement is Verndale's intent.
+- Budget holder unknown — discover in market (E-029).
+- School/college autonomy and tech governance split (E-037, E-038); public vs private buying speed (E-039).
+- Small liberal arts as ICP candidate (E-040) — hypothesis only.
+- User wedge instinct: enrollment→matriculation + retention (E-041) vs failed-Student-360 signal (E-011) — Agent 8 reconciles.
+- Metric definition conflict is expected; semantic flexibility required (E-031).
+- First-customer co-invest posture (E-042); opportunistic Snowflake/Sigma partners (E-043).
+- No higher-ed case studies (E-044).
+- Staff-facing scope locked (E-032); complementary positioning locked (E-035, E-036).
 - Context-label vocabulary locked to five inline tags (E-033).
-- Harvard GSE and Quinnipiac need to be mapped to fit segments and actual sponsor access before they are treated as strategic relationship capital (E-034).
+- Harvard GSE / Quinnipiac: proceed without near-term discovery (E-034, E-012).
 - Whether the entire problem thesis holds under research (per user's mandate).
 
 ## Status legend

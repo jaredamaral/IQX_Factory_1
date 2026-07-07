@@ -6,6 +6,48 @@ Every gate decision from `iqx-gate-review` is recorded here AND mirrored in
 
 ---
 
+## Decision #4 — User intake: Stage 1 strategic context (2026-07-07)
+- **Date:** 2026-07-07
+- **Gate:** none
+- **Decision:** Recorded user-provided answers to open Stage 1 risks and commercial
+  posture. Key points:
+  1. **IQX complement doctrine (USER-PROVIDED):** Verndale expects StudentIQX — like
+     all IQX offerings — as a separate **governed layer** (Student 360,
+     intelligence/insights, AI-enabled activation) **alongside** Slate, Salesforce,
+     SIS/LMS, and domain platforms. Reinforces Decision #2.
+  2. **Relationships:** No near-term discovery on Harvard GSE / Quinnipiac; **proceed
+     anyway** and treat relationship validation as opportunistic (E-012, E-034).
+  3. **Budget holder:** **Unknown**; must be discovered through market-facing
+     conversations (E-029 remains open).
+  4. **School/college autonomy (USER-PROVIDED):** Within large universities, schools
+     or colleges (e.g., Harvard GSE vs HBS vs Law) may operate like distinct
+     businesses — different systems, processes, roles/JTBD on the **business side**.
+     Whether **technology** is similarly decentralized is **unclear** (university
+     infra vs school-level application support is `GATING HYPOTHESIS`). **Public**
+     institutions tend toward more board-level technology governance and slower
+     cycles; **private** institutions tend toward less bureaucracy (`HYPOTHESIS`,
+     advisor-sourced, `VERIFY`). Small liberal arts colleges may have fewer buying
+     layers (`HYPOTHESIS`, advisor-sourced, `VERIFY`) — candidate ICP signal, not
+     settled ICP.
+  5. **Metric definitions (USER-PROVIDED design principle):** Conflicting KPI
+     definitions across units are **expected**, not a flaw to eliminate. StudentIQX
+     is a **platform with reusable components**, not plug-and-play; it must support
+     institution- and school-specific metric and process definitions (semantic/governance
+     layer — Agents 6, 13).
+  6. **Proof gap:** No Verndale higher-ed analytics case studies available now
+     (E-012 area); proof must be built.
+  7. **First-customer commercial posture (USER-PROVIDED):** Verndale willing to
+     **co-invest** in POC, data-readiness discovery, or similar to win first customer.
+  8. **Partners (USER-PROVIDED):** Snowflake and Sigma are aware; support is
+     **opportunistic**, not a dedicated co-sell motion.
+  9. **Wedge instinct (USER-PROVIDED, `HYPOTHESIS`):** First motion = **pre-enrollment /
+     enrollment through matriculation**, coupled with **first-year / general
+     retention**. Agent 8 validates against failed-Student-360 entry signal (E-011).
+- **Decided by:** Jared Amaral
+- **Affected artifacts:** `AGENTS.md`, `EVIDENCE-LEDGER.md` (E-036–E-044), Agents 4–8
+
+---
+
 ## Decision #3 — Agent 3 informal gate override (proceed to Agent 4)
 - **Date:** 2026-07-07
 - **Gate:** none (informal Agent 3 checkpoint — not Gate 1)

@@ -52,6 +52,13 @@ drop-out / stop-out risk, and alumni engagement.
 each lifecycle stage AND across stages; (b) new views/models conveying new
 insights, trends, risks, and predictions; (c) AI-enabled workflows that help
 users do their jobs better.
+- **Platform shape (USER-PROVIDED):** StudentIQX is **not plug-and-play**. It is a
+platform with **reusable components** (data model patterns, semantic metrics,
+Sigma experiences, activation patterns) plus **flexibility** for each institution
+or school/college to define its own metrics, processes, and governance rules.
+Conflicting KPI definitions across offices are expected; the offering must
+accommodate them via governed semantic definitions (Agents 6, 13), not assume
+one universal dictionary.
 - **User base (HYPOTHESIS):** a wide set of users across the student lifecycle
 with different jobs-to-be-done.
 - **EXPLICIT RESEARCH MANDATE (USER-PROVIDED):** research is needed to
@@ -67,13 +74,26 @@ inconsistencies (`GATING VERIFY` if kill-blocking).
 prospect → applicant → enrolled/matriculated → active student → graduate →
 alumnus/donor. (USER-PROVIDED lifecycle; stage-to-department mapping is
 `HYPOTHESIS`.)
+- **School/college autonomy within universities (USER-PROVIDED):** At larger
+universities, **schools or colleges may operate like distinct businesses** —
+different systems, processes, roles, and jobs-to-be-done on the **business side**
+(e.g., Harvard GSE vs Harvard Business School vs Law School). **Technology
+governance may not mirror business autonomy** — `GATING HYPOTHESIS`: some
+services (e.g., infrastructure) may be university-provided while application
+support may be school/college-owned; Agents 6 and 8 must validate per account.
+- **Public vs private control (USER-PROVIDED + `HYPOTHESIS`, advisor-sourced,
+  `VERIFY`):** Public universities may have **more board-level technology
+  governance and slower buying cycles**; private institutions may have **less
+  bureaucratic layering**. A higher-ed advisor suggested **small liberal arts
+  colleges** as a segment with **fewer buying-decision layers** — treat as an
+  **ICP hypothesis** for Agent 11, not settled ICP (E-040).
 - **LOB equivalents / functional areas (HYPOTHESIS, from Confluence source):**
 Admissions & Enrollment; Student Success & Retention; Advancement & Alumni;
 Operations / Compliance / Platform Health (IT & data).
 - **Institution-type heterogeneity (USER-PROVIDED):** higher-ed institutions
 differ by size, cost, prestige, selectivity, number of colleges/departments,
 educational focus (academic / research / professional), and control
-(not-for-profit / for-profit). Multi-campus and multi-school systems,
+(public / private nonprofit / for-profit). Multi-campus and multi-school systems,
 extension schools, and online programs add structure (`HYPOTHESIS`).
 
 
@@ -97,8 +117,12 @@ source): VP Enrollment Management / Admissions; Dean of Student Affairs / VP
 Student Success / Provost; VP Advancement / Chief Advancement Officer; CIO /
 CDO / VP IT (co-buyer, FERPA-activated). Users are front-line advisors,
 enrollment/ops staff, gift officers, and analysts.
-- Budget authority, procurement language, and buying committees vary by function
-and institution type (`HYPOTHESIS`, `VERIFY`).
+- **Budget holder (USER-PROVIDED):** **Unknown** for StudentIQX wedges today.
+Must be discovered through market-facing conversations (`GATING VERIFY`, E-029).
+Do not assume Enrollment, Student Success, IT/Data, or Finance owns budget
+without account validation.
+- Budget authority, procurement language, and buying committees vary by function,
+institution type, and **school/college vs university level** (`HYPOTHESIS`, `VERIFY`).
 
 
 
@@ -114,7 +138,15 @@ privacy laws, Title IV/IX contexts, and accreditation data requirements
 
 ### Commercial wedge hypothesis
 
-- **HYPOTHESIS:** the single strongest entry signal is a failed/stalled "Student 360" / data-warehouse / student-success initiative at an institution with 3+ disconnected systems and enrollment-cliff or retention exposure. Functional entry likely via Enrollment & Yield (lead motion) or Student Success & Retention. **This is a hypothesis to validate, not a settled wedge.**
+- **USER-PROVIDED wedge instinct (`HYPOTHESIS` — validate at Agent 8):** First
+  motion = **pre-enrollment / enrollment through matriculation**, coupled with
+  **first-year matriculant retention or general retention**. Aligns with Agent 2
+  provisional ranking (Enrollment #1, Student Success #2).
+- **HYPOTHESIS (Confluence / Agent 2):** A strong **entry signal** may still be a
+  failed/stalled Student 360 / data-warehouse / student-success initiative at an
+  institution with 3+ disconnected systems and enrollment or retention pressure
+  (E-011). User wedge instinct and this signal are **both hypotheses** until Agent 8
+  reconciles them — do not treat either as settled.
 
 
 
@@ -136,12 +168,29 @@ this section and `OFFERING-DECISIONS.md`.
 
 ## 3. Verndale context
 
+- **IQX positioning doctrine (USER-PROVIDED):** Verndale expects **every IQX
+  offering**, including StudentIQX, to be a **separate governed layer** — Student
+  360, intelligence/insights, and AI-enabled activation — **alongside** incumbent
+  operational systems (SIS, CRM, LMS, domain platforms). Reinforces Decision #2
+  (E-035).
 - **Known relationships / clients in this industry (USER-PROVIDED):**
   - Harvard University, Graduate School of Education (GSE). `VERIFY:` nature of
-  relationship and decision-makers.
+  relationship and decision-makers. **School/college-level account** inside a large
+  university — see structural oddities above (E-034, E-037).
   - Some contacts at Quinnipiac University. `VERIFY:` contacts and relationship
   strength.
   - "That's about it" — no other known higher-ed relationships.
+  - **USER-PROVIDED (2026-07-07):** No near-term discovery planned on existing
+  relationships; proceed with Stage 1 and treat access as opportunistic.
+- **Higher-ed proof (USER-PROVIDED):** No Verndale higher-ed analytics case studies
+  or credentials available at intake. Proof gap is acknowledged; prototype and
+  first-customer motion must build credibility.
+- **First-customer commercial posture (USER-PROVIDED):** Verndale is willing to
+  **co-invest** in POC, data-readiness discovery, or similar to win a first
+  higher-ed customer (E-042).
+- **Partner posture (USER-PROVIDED):** Snowflake and Sigma are **aware** of
+  StudentIQX direction; partner support is **opportunistic**, not a dedicated
+  co-sell program (E-043).
 - **Technology scope — canonical prototype stack (USER-PROVIDED + doctrine):**
   - **Snowflake = data layer.**
   - **Sigma = user / experience layer.**
