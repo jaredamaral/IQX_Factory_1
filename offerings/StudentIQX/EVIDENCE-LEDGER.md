@@ -57,11 +57,11 @@ inconsistencies before any downstream agent consumes them.
 | E-029 | Budget holder for StudentIQX wedges is unknown at intake; Finance/CFO may be sponsor, approver, veto, or passive — must be discovered through market conversations | VERIFY | USER-PROVIDED intake 2026-07-07; Agent 2 synthesis | med | 2,3,4,5,8,11,14,17 | 2026-07-07 |
 | E-030 | Buying authority varies by institution structure: multi-campus systems, university systems, schools/colleges (which may operate as distinct businesses), extension units, and online divisions; school-level vs university-level technology governance is unclear | VERIFY | USER-PROVIDED intake 2026-07-07; Agent 2 synthesis | med | 2,3,4,5,8,11,15,20 | 2026-07-07 |
 | E-031 | KPI names (enrollment, yield, melt, persistence, retention, etc.) will conflict across offices and schools; StudentIQX must support institution-specific definitions via governed semantic layer — conflict is expected, not a defect | VERIFY | USER-PROVIDED design principle 2026-07-07; Agent 2 synthesis | med | 2,3,4,5,6,8,13,21 | 2026-07-07 |
-| E-032 | Canonical prototype scope is staff-facing operational intelligence; student-facing self-service is out of scope unless unlocked in OFFERING-DECISIONS | LOCKED | OFFERING-DECISIONS.md Decision #2 | high | 4,5,8,10,12,21 | 2026-07-07 |
+| E-032 | Canonical prototype scope is staff-facing Unify + Intelligence + Activate: staff-initiated, human-reviewed assignment, intervention-status tracking, and outcome logging in the governed Sigma/Snowflake experience are in scope; student-facing self-service and unreviewed/autonomous action are out of scope unless unlocked in OFFERING-DECISIONS | LOCKED | OFFERING-DECISIONS.md Decision #2 | high | 4,5,8,10,12,21 | 2026-07-07 |
 | E-033 | Context-label vocabulary is fixed to five inline tags (USER-PROVIDED, HYPOTHESIS, VERIFY, GATING VERIFY, GATING HYPOTHESIS); agents must not invent new inline labels | LOCKED | factory/IQX_AGENT_BLUEPRINT.md §3.3; BLUEPRINT-ADDENDUM §11 | high | all | 2026-07-07 |
-| E-035 | StudentIQX is positioned as a complementary governed intelligence layer alongside SIS/CRM/LMS and domain platforms, not a replacement | LOCKED | OFFERING-DECISIONS.md Decision #2 | high | 2,3,4,5,8,10,16 | 2026-07-07 |
+| E-035 | StudentIQX is positioned as a complementary governed layer alongside SIS/CRM/LMS and domain platforms, not a replacement; the complement includes in-product staff activation/workflow tracking, not only dashboard intelligence | LOCKED | OFFERING-DECISIONS.md Decision #2 | high | 2,3,4,5,8,10,16 | 2026-07-07 |
 | E-034 | Harvard GSE is a school/college-level unit inside a large research university (distinct business processes from other schools); Quinnipiac likely maps to private nonprofit / mid-sized pattern; relationship access unverified; no near-term discovery planned | VERIFY | USER-PROVIDED intake 2026-07-07; Agent 3 synthesis | med | 3,4,8,10,11 | 2026-07-07 |
-| E-036 | Verndale expects all IQX offerings to be a governed Student/customer 360 + intelligence + activation layer alongside SIS/CRM/LMS — not replacement | LOCKED | USER-PROVIDED; OFFERING-DECISIONS.md Decision #2, #4 | high | all | 2026-07-07 |
+| E-036 | Verndale expects all IQX offerings to be a governed Student/customer 360 + intelligence + staff-initiated/human-reviewed activation layer alongside SIS/CRM/LMS — not replacement | LOCKED | USER-PROVIDED; OFFERING-DECISIONS.md Decision #2, #4 | high | all | 2026-07-07 |
 | E-037 | Within large universities, schools/colleges may operate as distinct businesses (systems, processes, JTBD) even when under one brand | VERIFY | USER-PROVIDED intake 2026-07-07 | med | 4,5,6,8,11 | 2026-07-07 |
 | E-038 | Technology services may be split: university-provided infrastructure vs school/college application support — extent unknown | VERIFY | USER-PROVIDED GATING HYPOTHESIS 2026-07-07 | med | 4,5,6,8,15 | 2026-07-07 |
 | E-039 | Public universities may have slower, more board-governed technology buying; private institutions may have less bureaucratic layering | VERIFY | USER-PROVIDED HYPOTHESIS; advisor-sourced, not yet independently verified | low | 4,5,8,11,17 | 2026-07-07 |
@@ -79,7 +79,7 @@ inconsistencies before any downstream agent consumes them.
 - Whether Coalesce and "Snowflake Intelligence" are canonical scope (E-009).
 - Nature/strength of Harvard GSE and Quinnipiac relationships (E-012).
 - Whether the 8 named agents / 4 pillars survive research (E-010).
-- Whether StudentIQX is commercially viable as a complementary intelligence layer (market acceptance of E-035/E-036) — not whether complement is Verndale's intent.
+- Whether StudentIQX is commercially viable as a complementary governed layer with staff activation/workflow tracking (market acceptance of E-035/E-036) — not whether complement is Verndale's intent.
 - Budget holder unknown — discover in market (E-029).
 - School/college autonomy and tech governance split (E-037, E-038); public vs private buying speed (E-039).
 - Small liberal arts as ICP candidate (E-040) — hypothesis only.
@@ -87,7 +87,7 @@ inconsistencies before any downstream agent consumes them.
 - Metric definition conflict is expected; semantic flexibility required (E-031).
 - First-customer co-invest posture (E-042); opportunistic Snowflake/Sigma partners (E-043).
 - No higher-ed case studies (E-044).
-- Staff-facing scope locked (E-032); complementary positioning locked (E-035, E-036).
+- Staff-facing Unify + Intelligence + Activate scope locked (E-032); complementary positioning locked (E-035, E-036).
 - Context-label vocabulary locked to five inline tags (E-033).
 - Harvard GSE / Quinnipiac: proceed without near-term discovery (E-034, E-012).
 - Whether the entire problem thesis holds under research (per user's mandate).

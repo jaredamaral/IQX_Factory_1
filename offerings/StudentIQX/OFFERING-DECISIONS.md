@@ -71,14 +71,23 @@ Every gate decision from `iqx-gate-review` is recorded here AND mirrored in
      intelligence layer** that sits **alongside** SIS, CRM, LMS, and domain
      platforms (EAB, Civitas, Slate, Ellucian, Salesforce, Starfish, etc.). It
      does **not** replace those systems in canonical scope.
-  2. **Surface scope:** The canonical prototype and offering experience are
-     **staff-facing** operational intelligence (enrollment, student success,
-     advancement, IT/data users). **Student-facing self-service** is **out of
-     scope** unless explicitly unlocked in a future decision.
+  2. **Surface scope and Activate layer:** The canonical prototype and offering
+     experience are **staff-facing** and include all three IQX architecture
+     layers: **Unify, Intelligence, and Activate**. "Staff-facing" must not be
+     read narrowly as dashboards that staff inspect before acting somewhere
+     else. The Activate layer is in scope when it is **staff-initiated** and
+     **human-reviewed** inside the governed Sigma/Snowflake experience: assigning
+     specific constituents to specific staff owners, tracking intervention
+     status, and logging outcomes back to the originating cohort, score, segment,
+     or workflow. **Student-facing self-service** is **out of scope** unless
+     explicitly unlocked in a future decision. **Unreviewed or autonomous
+     action** is also out of scope.
 - **Rationale:** Three consecutive agent runs (1–3) flagged both items as
   unresolved despite converging on the same defaults. Locking removes re-derivation
   noise; Agent 8/10/16 still validate market acceptance of the complementary,
-  staff-facing posture.
+  staff-facing posture and whether buyers value in-product activation/workflow
+  tracking versus keeping action in incumbent CRM, advising, or case-management
+  tools.
 - **Decided by:** user (via Claude governance review → Cursor hardening)
 - **Affected artifacts:** `AGENTS.md`, `EVIDENCE-LEDGER.md` (E-032, E-035),
   Agents 4–8 prompts, downstream GTM/prototype agents

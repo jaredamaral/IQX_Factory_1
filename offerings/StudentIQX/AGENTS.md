@@ -59,6 +59,13 @@ or school/college to define its own metrics, processes, and governance rules.
 Conflicting KPI definitions across offices are expected; the offering must
 accommodate them via governed semantic definitions (Agents 6, 13), not assume
 one universal dictionary.
+- **Activate layer scope (USER-PROVIDED, locked by Decision #2):** "Staff-facing"
+means staff use the governed StudentIQX experience to act, not merely to view a
+dashboard. In-scope activation includes staff-initiated, human-reviewed workflow
+inside Sigma/Snowflake: assigning constituents to staff owners, tracking
+intervention status, and logging outcomes back to the originating cohort, score,
+segment, or workflow. Out of scope: student-facing self-service surfaces and
+unreviewed/autonomous action.
 - **User base (HYPOTHESIS):** a wide set of users across the student lifecycle
 with different jobs-to-be-done.
 - **EXPLICIT RESEARCH MANDATE (USER-PROVIDED):** research is needed to
@@ -170,9 +177,11 @@ this section and `OFFERING-DECISIONS.md`.
 
 - **IQX positioning doctrine (USER-PROVIDED):** Verndale expects **every IQX
   offering**, including StudentIQX, to be a **separate governed layer** — Student
-  360, intelligence/insights, and AI-enabled activation — **alongside** incumbent
-  operational systems (SIS, CRM, LMS, domain platforms). Reinforces Decision #2
-  (E-035).
+  360, intelligence/insights, and staff-initiated/human-reviewed activation —
+  **alongside** incumbent operational systems (SIS, CRM, LMS, domain platforms).
+  Reinforces Decision #2 (E-035). Agent 8 must test market acceptance of this
+  Activate-layer complement: whether buyers value in-product assignment, status,
+  and outcome logging, or prefer action to stay in incumbent CRM/advising tools.
 - **Known relationships / clients in this industry (USER-PROVIDED):**
   - Harvard University, Graduate School of Education (GSE). `VERIFY:` nature of
   relationship and decision-makers. **School/college-level account** inside a large
