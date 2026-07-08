@@ -6,6 +6,28 @@ Every gate decision from `iqx-gate-review` is recorded here AND mirrored in
 
 ---
 
+## Decision #5 — Gate 1 override (proceed to Stage 2 despite Revise recommendation)
+- **Date:** 2026-07-08
+- **Gate:** gate-1
+- **Decision:** **Override Revise** — proceed to Stage 2. Agent 8 recommended Revise,
+  citing unresolved EAB differentiation (E-058) and unknown budget holder (E-029)
+  as gate-blocking. User overrides: proceed to Stage 2. All seven candidate
+  wedges (Agent 2's five plus Agent 4's Continuing Retention and Transfer Entry)
+  are retained as a market-entry/use-case inventory, not narrowed to one.
+  Melt-to-Matriculation Activation Accelerator is designated the build and demo
+  spine because it is the most concretely defined and highest-value entry point,
+  not because the other wedges are eliminated.
+- **Rationale:** Prototype-driven validation (build, show to Harvard GSE and
+  Quinnipiac, iterate) is faster than pre-build discovery conversations. EAB
+  differentiation and the budget-holder question will be tested against a working
+  prototype rather than resolved before building it.
+- **Carry-forward, not resolved:** EAB/incumbent differentiation (E-058), budget
+  holder (E-029). Both remain open sales-learning risks, not build blockers.
+- **Decided by:** Jared Amaral
+- **Affected artifacts:** `manifest.yaml`, `EVIDENCE-LEDGER.md`, Stage 2 agents
+
+---
+
 ## Decision #4 — User intake: Stage 1 strategic context (2026-07-07)
 - **Date:** 2026-07-07
 - **Gate:** none

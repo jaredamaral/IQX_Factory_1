@@ -23,13 +23,13 @@ model_tier_mapping:
 
 # Current position.
 current:
-  stage: 1
-  active_gate: gate-1        # set to gate-N while awaiting human approval
+  stage: 2
+  active_gate: null          # set to gate-N while awaiting human approval
   blocked_reason: null
 
 # Human gates. status: pending | passed | revise | killed | hold
 gates:
-  gate-1: { name: "Proceed / Revise / Kill", status: pending, decided: null, note: null }
+  gate-1: { name: "Proceed / Revise / Kill", status: passed, decided: "2026-07-08", note: "Override Revise; proceed to Stage 2 per OFFERING-DECISIONS.md Decision #5. E-058 and E-029 remain open sales-learning risks, not build blockers." }
   gate-2: { name: "Approve Offering Brief", status: pending, decided: null, note: null }
   gate-3: { name: "Approve Sales Readiness", status: pending, decided: null, note: null }
   gate-4: { name: "Launch Readiness Review", status: pending, decided: null, note: null }
@@ -90,4 +90,5 @@ history:
   - { ts: "2026-07-07T20:04:34-04:00", agent: industry-evidence-researcher, action: completed, model_tier: tier1, note: "Wrote proof-point library and added evidence rows E-046-E-057" }
   - { ts: "2026-07-07T20:26:41-04:00", agent: commercial-wedge-validator, action: invoked, model_tier: tier1, note: "Ran Agent 8 from all Stage 1 outputs and EAB melt workflow addendum" }
   - { ts: "2026-07-07T20:26:41-04:00", agent: commercial-wedge-validator, action: completed, model_tier: tier1, note: "Wrote Gate 1 commercial wedge assessment; recommendation Revise" }
+  - { ts: "2026-07-08T00:00:00-04:00", agent: gate-review, action: completed, model_tier: n/a, note: "Gate 1 passed by user override despite Agent 8 Revise; proceed to Stage 2 with all seven wedges retained and Melt-to-Matriculation Activation Accelerator as build/demo spine" }
 #  - { ts: "<iso8601>", agent: <id>, action: invoked|completed|needs_research, model_tier: tierN, note: "" }
