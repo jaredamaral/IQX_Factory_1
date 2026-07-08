@@ -7,7 +7,7 @@ Status: Agent 8 complete; this is the Gate 1 decision packet, not the human gate
 
 ## Headline Recommendation
 
-**Recommendation: Revise Before Proceed.**
+**Recommendation: Revise.**
 
 `HYPOTHESIS`: StudentIQX should stay alive, but Stage 1 should not receive a clean Proceed yet. The best current wedge is **Enrollment Melt + First-Term Handoff Intelligence**, packaged as a governed Snowflake/Sigma accelerator that scores deposited students, routes staff-owned interventions, drafts human-reviewed outreach content, pushes approved payloads to CRM/marketing tools, and ingests matriculation/first-term outcomes for correlation-only measurement.
 
@@ -38,6 +38,28 @@ The market pain is real enough to continue: enrollment volatility, demographic p
 3. `HYPOTHESIS`: CFO, Finance, IR, Enrollment, and Student Success lack a trusted closed loop from score or segment -> staff owner -> action status -> outcome -> agreed metric definition.
 
    Business consequence: leaders cannot credibly decide whether intervention capacity, technology spend, or staff effort is protecting net tuition, improving persistence, or just creating activity (`VERIFY(E-029/E-031/E-053)`).
+
+## Persona Validation Priority
+
+This ranking is independent of Harvard GSE and Quinnipiac relationship access. It ranks Agent 5's fifteen personas by convergence of pain severity, fit-filter strength, and buying-role proximity for a single salesperson trying to decide whom to lead with first.
+
+| Rank | Persona | Fit read | Lead-with pain |
+|---|---|---|---|
+| 1 | VP Enrollment Management | `HYPOTHESIS`: Highest convergence for the proposed wedge: acute melt/yield pain, direct revenue accountability, and plausible executive sponsorship. | "You need to know which deposited students need action now, why, who owns the action, and whether they matriculated." |
+| 2 | CFO / VP Finance | `VERIFY(E-029)`: Strongest budget-proximity persona even if not a daily user; needed to convert melt/retention pain into fundable net-tuition logic. | "You need a credible, definition-aligned business case for whether intervention spend protects revenue." |
+| 3 | Director of Admissions / Enrollment Operations | `HYPOTHESIS`: Highest operational pain in the first wedge; can describe the broken lists, handoffs, and status gaps in detail, but may not sign. | "Your team is rebuilding funnel and melt lists manually without one governed owner/status/outcome loop." |
+| 4 | CIO / CDO / VP IT | `HYPOTHESIS`: Required co-buyer because the wedge depends on source access, Snowflake/Sigma feasibility, governance, and non-replacement positioning. | "Business offices need cross-system action intelligence without creating another ungoverned silo." |
+| 5 | VP Student Success / Dean of Students | `HYPOTHESIS` + `VERIFY(E-049)`: Strong mission and retention relevance; buying role is plausible, but first wedge should reach them through the first-term handoff. | "Your advisors inherit students after matriculation without the risk and outreach context Enrollment already knew." |
+| 6 | Financial Aid Leader / Aid Officer | `HYPOTHESIS`: Critical signal owner for melt and retention; strong pain but usually co-owner rather than economic buyer. | "Aid friction is one of the highest-value risk signals, but it is not routed to the right staff owner with status and resolution outcome." |
+| 7 | Institutional Research / Analytics Leader | `VERIFY(E-031)`: High influence on trust and definitions; unlikely to sign, but can make or break credibility with Finance and executives. | "Yield, melt, retention, census, and finance definitions need governed semantic handling before leaders trust the workflow." |
+| 8 | Retention / Early-Alert Coordinator | `HYPOTHESIS`: Very high workflow pain and outcome-loop need; buying proximity is lower unless reporting to a strong VP Student Success sponsor. | "Risk lists need owner assignment, intervention status, and outcome logging rather than another static alert queue." |
+| 9 | FERPA / Registrar / Privacy / Security Officer | `VERIFY(E-021)`: High veto proximity and necessary for AI/risk trust; pain is governance and risk reduction rather than revenue ownership. | "Student-level risk, AI drafts, and action records need role-aware access, audit, explanation, and human review." |
+| 10 | Academic Advisor / Success Coach | `HYPOTHESIS`: Acute daily-user pain, especially after handoff; low buying authority, best used to validate workflow ergonomics. | "You need pre-enrollment, aid, holds, outreach, and risk context in one staff-safe workflow before advising the student." |
+| 11 | Registrar / Transfer-Credit Leader | `HYPOTHESIS`: Important data/compliance owner; first-wedge relevance is narrower unless transfer or official census definitions are central. | "Official status, transfer credit, census, and completion definitions must not be overwritten by operational lists." |
+| 12 | School / College Dean or Unit Leader | `VERIFY(E-037/E-038)`: Potential sponsor in decentralized universities, but fit depends heavily on whether local business authority matches data/platform authority. | "Your unit needs actionable program-level enrollment and retention intelligence even when central systems control the data." |
+| 13 | Admissions Counselor / Recruiter | `HYPOTHESIS`: High daily pain, but low budget authority; valuable for usability proof after executive/ops sponsor is engaged. | "You need to know who to contact today and why, without interpreting stale priority lists." |
+| 14 | VP Advancement / Chief Advancement Officer | `HYPOTHESIS`: Real expansion buyer but weak first-wedge fit compared with melt/retention. | "Lifecycle identity and action tracking could enrich alumni segmentation later, but this is not the first sales lead." |
+| 15 | Gift Officer / Alumni Relations Manager | `HYPOTHESIS`: Daily-user pain for an expansion journey; lowest relevance to the current melt-to-matriculation wedge. | "Student history may improve engagement segmentation, but the first wedge should not start here." |
 
 ## Named Economic Buyer
 
@@ -213,7 +235,7 @@ Gate 1 should move from Revise to Proceed only if these are answered well enough
 
 ## Recommendation Detail
 
-**Revise Before Proceed** means:
+**Revise** means:
 
 - Do not kill StudentIQX. The pain is real enough, and the activation pattern has a plausible wedge.
 - Do not broadly proceed as "unified student intelligence." That is too broad and too exposed to incumbents.
@@ -225,7 +247,7 @@ Gate 1 should move from Revise to Proceed only if these are answered well enough
 
 | Gate question | Agent 8 answer |
 |---|---|
-| Proceed, revise, or kill? | **Revise Before Proceed.** |
+| Proceed, revise, or kill? | **Revise.** |
 | Minimum viable wedge | Melt-to-Matriculation Activation Accelerator. |
 | Primary buyer | `HYPOTHESIS`: VP Enrollment, with CFO and CIO/CDO required. |
 | Budget source | `GATING VERIFY`: unknown; likely shared Enrollment/Finance/IT or executive strategic fund. |

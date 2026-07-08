@@ -89,5 +89,5 @@ history:
   - { ts: "2026-07-07T20:04:34-04:00", agent: industry-evidence-researcher, action: invoked, model_tier: tier1, note: "Ran Agent 7 with web research after Agent 6 activation updates" }
   - { ts: "2026-07-07T20:04:34-04:00", agent: industry-evidence-researcher, action: completed, model_tier: tier1, note: "Wrote proof-point library and added evidence rows E-046-E-057" }
   - { ts: "2026-07-07T20:26:41-04:00", agent: commercial-wedge-validator, action: invoked, model_tier: tier1, note: "Ran Agent 8 from all Stage 1 outputs and EAB melt workflow addendum" }
-  - { ts: "2026-07-07T20:26:41-04:00", agent: commercial-wedge-validator, action: completed, model_tier: tier1, note: "Wrote Gate 1 commercial wedge assessment; recommendation Revise Before Proceed" }
+  - { ts: "2026-07-07T20:26:41-04:00", agent: commercial-wedge-validator, action: completed, model_tier: tier1, note: "Wrote Gate 1 commercial wedge assessment; recommendation Revise" }
 #  - { ts: "<iso8601>", agent: <id>, action: invoked|completed|needs_research, model_tier: tierN, note: "" }

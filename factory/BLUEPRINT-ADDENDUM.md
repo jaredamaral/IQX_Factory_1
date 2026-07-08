@@ -182,7 +182,26 @@ Agents must not invent new recommendation categories (e.g., "Revise Before Go"
 is valid; ad hoc variants are not). The stage runner enforces the Agent 4
 sequencing rule in Blueprint Agent 4.
 
-## 13. Git commit discipline (Cursor / Codex runs)
+## 13. Human gate recommendation vocabulary (closed set)
+
+Every formal human gate packet must use the gate's canonical decision vocabulary
+as the headline recommendation. Do not invent explanatory variants such as
+"Revise Before Proceed" or "Conditional Approval" as the formal label. Put
+conditions, caveats, and rationale in the body.
+
+| Gate | Canonical headline recommendation options | Notes |
+|------|-------------------------------------------|-------|
+| **Gate 1** | **Proceed** / **Revise** / **Kill** | Commercial viability decision after Agent 8. |
+| **Gate 2** | **Approve** / **Revise** / **Kill** | Offering Brief approval. |
+| **Gate 3** | **Approve** / **Revise** / **Kill** | Sales readiness approval. |
+| **Gate 4** | **Approve** / **Revise** / **Kill** | Launch readiness approval. |
+| **Gate 5** | **Approve** / **Revise** / **Kill** | Canonical offering update approval. |
+
+Manifest gate statuses remain machine-oriented (`pending | passed | revise |
+killed | hold`), but human-facing recommendation labels in gate packets must use
+the table above exactly.
+
+## 14. Git commit discipline (Cursor / Codex runs)
 
 The governance loop assumes an **auditable state**. Commit:
 
