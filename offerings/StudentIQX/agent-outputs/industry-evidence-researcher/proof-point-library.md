@@ -11,7 +11,7 @@ The evidence supports a disciplined StudentIQX story, but not an overconfident R
 
 - `VERIFY(E-047)`: EDUCAUSE's 2025 data-empowered institution framing supports the need for strong data foundations, modern data classification, and AI-ready data in higher ed. This substantiates the IT/Data co-buyer and governance side of StudentIQX.
 - `VERIFY(E-049/E-050/E-051)`: NSC data gives strong proof that persistence, stop-out/re-entry, and transfer are real, measurable lifecycle problems. This supports the enrollment-to-retention wedge, especially where staff can act before matriculation, stop-out, or transfer loss becomes irreversible.
-- `VERIFY(E-052/E-054/E-055/E-056/E-057)`: Incumbents already claim unified data, predictive/AI intelligence, workflow, student success, admissions, and advancement scope. This is not just background competition; it is the gating differentiation question for Agent 8.
+- `VERIFY(E-052/E-054/E-055/E-056/E-057/E-058)`: Incumbents already claim unified data, predictive/AI intelligence, workflow, student success, admissions, and advancement scope. EAB now also narrates a deposit-to-day-one melt-prevention workflow that closely parallels StudentIQX's reference activation pattern, making this both validation signal and gating differentiation question for Agent 8.
 - `GATING HYPOTHESIS`: No independent, clean dollar estimate was found for the "cost of fragmented student data." Downstream GTM should avoid saying fragmentation costs institutions `$X` unless Agent 14 builds a transparent value model from institution-specific assumptions.
 - `USER-PROVIDED`: Activation outcome language must stay correlational. StudentIQX can report observed relationships between scores, staff actions, and outcomes; it must not claim interventions caused, improved, or drove outcomes without controlled-comparison evidence.
 
@@ -101,6 +101,8 @@ The evidence supports a disciplined StudentIQX story, but not an overconfident R
 | E-017 / E-018 | Completion and first-year retention benchmarks. | Avoid causal intervention claims. |
 | E-019 / E-020 | Affordability and public-confidence pressure. | StudentIQX supports decisions; it does not solve affordability or public trust directly. |
 
+Melt-specific validation and competitive overlap: see `E-058` under Theme 4. EAB's own melt-prevention marketing is strong evidence that the deposit-to-day-one window is commercially recognized, but it is also the sharpest incumbent-overlap test for Agent 8.
+
 ## Theme 3 — Advancement Value
 
 Advancement has plausible lifecycle-extension value but weaker independent proof for first-wedge priority.
@@ -125,6 +127,14 @@ Approved wording: "Advancement is credible as an expansion motion once StudentIQ
 - **Freshness:** Time-sensitive; recheck by Agent 16.
 - **Approved wording:** "EAB claims strong retention/graduation ROI and extensive staff workflow/AI capabilities, making differentiation against Navigate360 a gating issue."
 - **Do not say:** "EAB's ROI claims are independently verified."
+
+### E-058 — EAB's melt-prevention narrative is the sharpest incumbent-overlap test
+
+- **Claim:** EAB's March 2026 marketing content specifically narrates a deposit-day-to-day-one summer melt workflow protecting net tuition revenue with incomplete milestone tracking, scaled personalized outreach, and embedded AI agents for immediate student answers.
+- **Source:** EAB, "Student success as a revenue strategy in higher education": https://eab.com/resources/blog/student-success-blog/student-success-as-a-revenue-strategy-in-higher-education/
+- **Source type:** Vendor marketing / competitive positioning.
+- **Confidence:** Medium for workflow-positioning proof; low for generalized ROI.
+- **Approved wording:** "The EAB melt narrative validates StudentIQX's wedge but removes any easy 'EAB is only broad CRM' assumption; Agent 8 must compare against this specific workflow."
 
 ### E-054 — Civitas overlaps the unify-intelligence-action loop
 
@@ -175,6 +185,7 @@ These are the `VERIFY` annotations downstream agents should carry or insert when
 - `VERIFY(E-047/E-053)`: Data-foundation and AI-readiness language is supported by EDUCAUSE, but not a quantified fragmentation-cost proof.
 - `VERIFY(E-049/E-050/E-051)`: Retention, stop-out, and transfer are live, measurable lifecycle pressures; StudentIQX value depends on whether staff action can be operationalized and measured.
 - `GATING VERIFY(E-052/E-054/E-055/E-056/E-057)`: Incumbents already claim much of the lifecycle-data/intelligence/workflow territory. Agent 8 must validate whether StudentIQX's Snowflake/Sigma governed activation layer is complementary and budget-worthy.
+- `GATING VERIFY(E-058)`: EAB is specifically marketing a summer-melt / deposit-to-day-one workflow with AI agents and personalized outreach. Agent 8 must run a named EAB comparison: what does StudentIQX do differently or better in governed Snowflake/Sigma decide/draft/track/ingest, and would buyers value that difference enough to fund StudentIQX alongside or instead of EAB workflow capacity?
 - `VERIFY(E-004/E-005/E-006/E-007)`: TAM and enrollment-band claims remain unverified and should not be used in sales material or sizing models until Agent 11.
 - `VERIFY(E-029)`: Budget holder remains unknown; evidence does not answer "who signs."
 
@@ -187,6 +198,7 @@ Use these only with ledger IDs and caveats:
 3. `VERIFY(E-051)`: "Transfer is a material branch: NSC reported transfer students were 13.1% of continuing and returning undergraduates in fall 2024."
 4. `VERIFY(E-047)`: "EDUCAUSE frames strong data foundations and AI-ready data as current institutional priorities."
 5. `GATING VERIFY(E-052/E-054)`: "The competitive bar is high: EAB and Civitas already claim unified data, predictive intelligence, AI, and staff workflows."
+6. `GATING VERIFY(E-058)`: "EAB's own melt-prevention marketing validates deposit-to-day-one revenue risk as a real workflow, but makes EAB the named comparison point for StudentIQX's activation differentiation."
 
 ## Red Lines
 

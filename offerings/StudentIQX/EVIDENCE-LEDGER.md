@@ -83,6 +83,7 @@ inconsistencies before any downstream agent consumes them.
 | E-055 | Technolutions says Slate is trusted by 2,000+ colleges and universities and serves admissions, student success, and advancement from a single unified interface | VERIFY | Technolutions Slate: https://technolutions.com/ | med | 7,8,11,16,18,20 | 2026-07-07 |
 | E-056 | Ellucian Student claims unified student services, real-time data, compliance controls, AI guidance, early alerts, degree planning, advancement analytics, and human-led AI across the student lifecycle | VERIFY | Ellucian Student: https://www.ellucian.com/products/student | med | 7,8,12,13,16,18,20 | 2026-07-07 |
 | E-057 | Salesforce Education Cloud positions connected education journeys across recruitment/admissions, academic operations, student success, advancement/alumni relations, communications/marketing/engagement, and lifelong learning | VERIFY | Salesforce Education: https://www.salesforce.com/education/ | med | 7,8,12,16,18,20 | 2026-07-07 |
+| E-058 | EAB marketing content explicitly frames deposit-day-to-day-one summer melt prevention as a net-tuition-revenue protection workflow, citing incomplete milestones, scaled personalized outreach, and embedded AI agents for immediate student answers; this validates the melt-to-matriculation pain point while sharpening StudentIQX differentiation risk against EAB's similar AI-driven workflow narrative | VERIFY | EAB Student Success as Revenue Strategy blog: https://eab.com/resources/blog/student-success-blog/student-success-as-a-revenue-strategy-in-higher-education/ | med | 7,8,14,16,18,20 | 2026-07-08 |
 
 ## Consolidated open VERIFY / questions
 - Source-naming drift: StudentIQX vs StudentIQ vs SIQ vs Student360 (E-001).
@@ -105,6 +106,7 @@ inconsistencies before any downstream agent consumes them.
 - Context-label vocabulary locked to five inline tags (E-033).
 - Harvard GSE / Quinnipiac: proceed without near-term discovery (E-034, E-012).
 - Agent 7 found directional evidence for data foundations, retention/persistence, stop-out/re-entry, transfer, and incumbent overlap, but did **not** find an independent general dollar estimate for the cost of fragmented student data (see proof-point library).
+- EAB's own 2026 marketing around summer melt prevention (E-058) is both validation signal and competitive warning: the melt-to-matriculation window is recognized as a commercial pain point, but Agent 8 must compare StudentIQX's governed Snowflake/Sigma decide/draft/track/ingest pattern against EAB's narrated AI-driven melt-prevention workflow specifically, not only against broad EAB platform claims.
 - Whether the entire problem thesis holds under research (per user's mandate).
 
 ## Status legend

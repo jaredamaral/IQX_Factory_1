@@ -41,6 +41,16 @@ user mandate: the ICP is unproven and the wedge selection must stay defensible,
 not assumed. Packaging hypothesis options: diagnostic, accelerator, full build,
 managed service.
 
+Named incumbent comparison point: `VERIFY(E-058)` says EAB's own March 2026
+marketing explicitly narrates a deposit-day-to-day-one summer melt workflow
+protecting net tuition revenue with incomplete milestone tracking, scaled
+personalized outreach, and embedded AI agents for immediate student answers.
+Treat this as both validation signal and competitive warning. The Agent 8
+differentiation test must ask specifically: what does StudentIQX's governed
+Snowflake/Sigma decide/draft/track/ingest pattern do differently or better than
+EAB's narrated AI-driven melt-prevention workflow, and would buyers value that
+difference enough to fund StudentIQX alongside or instead of EAB capacity?
+
 ## Instructions
 1. Read `AGENTS.md` and every Stage 1 output.
 2. Produce the commercial wedge assessment containing: top 3 buyer pains; named
