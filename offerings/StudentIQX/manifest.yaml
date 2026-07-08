@@ -45,7 +45,7 @@ agents:
   - { id: constituent-journey-mapper,                       n: 4,  stage: 1, status: done, output: "agent-outputs/constituent-journey-mapper/journey-maps.md" }
   - { id: persona-and-pain-analyst,                         n: 5,  stage: 1, status: done, output: "agent-outputs/persona-and-pain-analyst/persona-pain-inventory.md" }
   - { id: systems-and-data-analyst,                         n: 6,  stage: 1, status: done, output: "agent-outputs/systems-and-data-analyst/systems-data-inventory.md" }
-  - { id: industry-evidence-researcher,                     n: 7,  stage: 1, status: pending, output: null }
+  - { id: industry-evidence-researcher,                     n: 7,  stage: 1, status: done, output: "agent-outputs/industry-evidence-researcher/proof-point-library.md" }
   - { id: commercial-wedge-validator,                       n: 8,  stage: 1, status: pending, output: null }
   # ---- Stage 2 ----
   - { id: regulatory-compliance-researcher,                 n: 9,  stage: 2, status: pending, output: null }
@@ -86,4 +86,6 @@ history:
   - { ts: "2026-07-07T15:20:38-04:00", agent: persona-and-pain-analyst, action: completed, model_tier: tier2, note: "Wrote persona pain inventory and updated evidence usage references" }
   - { ts: "2026-07-07T16:45:18-04:00", agent: systems-and-data-analyst, action: invoked, model_tier: tier2, note: "Ran Agent 6 from business profile, journey maps, and persona inventory" }
   - { ts: "2026-07-07T16:45:18-04:00", agent: systems-and-data-analyst, action: completed, model_tier: tier2, note: "Wrote systems/data inventory and updated evidence usage references" }
+  - { ts: "2026-07-07T20:04:34-04:00", agent: industry-evidence-researcher, action: invoked, model_tier: tier1, note: "Ran Agent 7 with web research after Agent 6 activation updates" }
+  - { ts: "2026-07-07T20:04:34-04:00", agent: industry-evidence-researcher, action: completed, model_tier: tier1, note: "Wrote proof-point library and added evidence rows E-046-E-057" }
 #  - { ts: "<iso8601>", agent: <id>, action: invoked|completed|needs_research, model_tier: tierN, note: "" }
