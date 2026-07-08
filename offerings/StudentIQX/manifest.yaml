@@ -24,7 +24,7 @@ model_tier_mapping:
 # Current position.
 current:
   stage: 1
-  active_gate: null          # set to gate-N while awaiting human approval
+  active_gate: gate-1        # set to gate-N while awaiting human approval
   blocked_reason: null
 
 # Human gates. status: pending | passed | revise | killed | hold
@@ -46,7 +46,7 @@ agents:
   - { id: persona-and-pain-analyst,                         n: 5,  stage: 1, status: done, output: "agent-outputs/persona-and-pain-analyst/persona-pain-inventory.md" }
   - { id: systems-and-data-analyst,                         n: 6,  stage: 1, status: done, output: "agent-outputs/systems-and-data-analyst/systems-data-inventory.md" }
   - { id: industry-evidence-researcher,                     n: 7,  stage: 1, status: done, output: "agent-outputs/industry-evidence-researcher/proof-point-library.md" }
-  - { id: commercial-wedge-validator,                       n: 8,  stage: 1, status: pending, output: null }
+  - { id: commercial-wedge-validator,                       n: 8,  stage: 1, status: done, output: "agent-outputs/commercial-wedge-validator/commercial-wedge-assessment.md" }
   # ---- Stage 2 ----
   - { id: regulatory-compliance-researcher,                 n: 9,  stage: 2, status: pending, output: null }
   - { id: strategy-alignment-analyst,                       n: 10, stage: 2, status: pending, output: null }
@@ -88,4 +88,6 @@ history:
   - { ts: "2026-07-07T16:45:18-04:00", agent: systems-and-data-analyst, action: completed, model_tier: tier2, note: "Wrote systems/data inventory and updated evidence usage references" }
   - { ts: "2026-07-07T20:04:34-04:00", agent: industry-evidence-researcher, action: invoked, model_tier: tier1, note: "Ran Agent 7 with web research after Agent 6 activation updates" }
   - { ts: "2026-07-07T20:04:34-04:00", agent: industry-evidence-researcher, action: completed, model_tier: tier1, note: "Wrote proof-point library and added evidence rows E-046-E-057" }
+  - { ts: "2026-07-07T20:26:41-04:00", agent: commercial-wedge-validator, action: invoked, model_tier: tier1, note: "Ran Agent 8 from all Stage 1 outputs and EAB melt workflow addendum" }
+  - { ts: "2026-07-07T20:26:41-04:00", agent: commercial-wedge-validator, action: completed, model_tier: tier1, note: "Wrote Gate 1 commercial wedge assessment; recommendation Revise Before Proceed" }
 #  - { ts: "<iso8601>", agent: <id>, action: invoked|completed|needs_research, model_tier: tierN, note: "" }
