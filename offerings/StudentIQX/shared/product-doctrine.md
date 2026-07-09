@@ -112,6 +112,27 @@ Every Sigma page or workflow must trace back to one or more of:
 
 Metrics must be defined once and reused consistently across use cases, Snowflake marts, Sigma workbook specs, sales narratives, and prototype demo scripts.
 
+## Activation Design Pattern (canonical)
+
+This principle defines what **Activate** means across every IQX vertical. It is specified in `factory/IQX_AGENT_BLUEPRINT.md` Section 2.2.1 and applies to every offering instance.
+
+**Functional split:** IQX owns decide, draft, track, and ingest. Channel systems of record own send, act, and execute.
+
+**IQX owns (Sigma experience + Snowflake `ACTIVATION` / `GOVERNANCE` state):**
+
+- Decision layer: scores, reasons, recommendations, and human decisions to act
+- Content preparation: AI-drafted or templated content with human review
+- Workflow and status tracking: assignment, intervention status, audit trail
+- Outcome ingestion: results and feedback pulled back to close the loop
+
+**Channel systems own (execution):**
+
+- Actual send (email, SMS), call, enrollment or record update, or other channel-specific action
+- Whatever CRM, marketing automation, SIS, case management, or operational tool already owns that channel
+- IQX pushes a payload to trigger execution and pulls a result back in
+
+Prior framings that treated activation as either "IQX owns the full workflow" or "IQX hands everything to the incumbent" are superseded by this split.
+
 ## Activation Doctrine
 
 Activation is not merely a button or UI flourish. Every activation use case must define:

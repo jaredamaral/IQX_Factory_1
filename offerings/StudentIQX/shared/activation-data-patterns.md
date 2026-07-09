@@ -10,6 +10,16 @@ Activation is the layer where customer intelligence becomes action. It must be m
 
 Do not treat activation as a button.
 
+### Activation Design Pattern (canonical)
+
+IQX uses a **functional split** between the governed layer and channel execution. This pattern is defined in `factory/IQX_AGENT_BLUEPRINT.md` Section 2.2.1 and applies to every offering.
+
+**IQX owns:** decision layer (score, reason, recommendation, human decision to act), content preparation (AI-drafted content with review), workflow/status tracking (assignment, intervention status, audit), and outcome ingestion.
+
+**Channel systems own:** send, act, execute — email, SMS, call, enrollment or record update, or any other channel-specific action in the CRM, marketing automation, SIS, case management, or other system of record for that channel. IQX pushes a payload out to trigger execution and pulls a result back in to close the loop.
+
+Snowflake `ACTIVATION` tables model both sides: governed IQX state plus destination payloads, sync logs, and ingested outcomes.
+
 Every activation use case must define:
 
 - Who acts
